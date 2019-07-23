@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Accommodation:</strong>
+  <%= @stay.accommodation %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @stay.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @stay.end_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @stay.user %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @stay.created_at %>
+</p>
+
+<p>
+  <strong>Confirmed:</strong>
+  <%= @stay.confirmed %>
+</p>
+
+<p>
+  <strong>Rejected:</strong>
+  <%= @stay.rejected %>
+</p>
+
+<%= link_to 'Edit', edit_stay_path(@stay) %> |
+<%= link_to 'Back', stays_path %>

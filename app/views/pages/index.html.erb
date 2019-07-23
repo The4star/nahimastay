@@ -1,0 +1,9 @@
+<h1>Sup man!</h1>
+<% if current_user %>
+    <h2>Welcome to NahImaStay</h1>
+    <br>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "bodylinks"  %>
+<% else %>
+    <%= link_to("Log in", new_user_session_path, :class => "bodylinks") %>
+<% end %>
+<br>
