@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @profile.created_at %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <strong>Karma coins:</strong>
+  <%= @profile.karma_coins %>
+</p>
+
+<p>
+  <strong>Host rating:</strong>
+  <%= @profile.host_rating %>
+</p>
+
+<p>
+  <strong>Guest rating:</strong>
+  <%= @profile.guest_rating %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
