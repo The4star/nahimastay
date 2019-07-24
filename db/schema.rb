@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_003456) do
+ActiveRecord::Schema.define(version: 2019_07_24_012711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_003456) do
     t.string "country"
     t.string "city"
     t.string "address"
-    t.bigint "user_id"
+    t.bigint "host_id"
     t.float "accommodation_rating"
     t.datetime "available_start_date"
     t.datetime "available_end_date"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_003456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["accomtype_id"], name: "index_accommodations_on_accomtype_id"
-    t.index ["user_id"], name: "index_accommodations_on_user_id"
+    t.index ["host_id"], name: "index_accommodations_on_host_id"
   end
 
   create_table "accomtypes", force: :cascade do |t|
@@ -96,13 +96,13 @@ ActiveRecord::Schema.define(version: 2019_07_24_003456) do
     t.bigint "accommodation_id"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.bigint "user_id"
+    t.bigint "guest_id"
     t.datetime "created_at", null: false
     t.boolean "confirmed"
     t.boolean "rejected"
     t.datetime "updated_at", null: false
     t.index ["accommodation_id"], name: "index_stays_on_accommodation_id"
-    t.index ["user_id"], name: "index_stays_on_user_id"
+    t.index ["guest_id"], name: "index_stays_on_guest_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -121,11 +121,11 @@ ActiveRecord::Schema.define(version: 2019_07_24_003456) do
 
   add_foreign_key "accommodationreviews", "stays"
   add_foreign_key "accommodations", "accomtypes"
-  add_foreign_key "accommodations", "users"
+  add_foreign_key "accommodations", "users", column: "host_id"
   add_foreign_key "guestreviews", "stays"
   add_foreign_key "messages", "stays"
   add_foreign_key "profiles", "users"
   add_foreign_key "stays", "accommodations"
-  add_foreign_key "stays", "users"
+  add_foreign_key "stays", "users", column: "guest_id"
   add_foreign_key "users", "roles"
 end

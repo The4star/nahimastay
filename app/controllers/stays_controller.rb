@@ -69,6 +69,6 @@ class StaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stay_params
-      params.require(:stay).permit(:accommodation_id, :start_date, :end_date, :user_id, :created_at, :confirmed, :rejected)
+      params.require(:stay).permit(:accommodation_id, :start_date, :end_date, :guest_id, :created_at, :confirmed, :rejected)
     end
 end
