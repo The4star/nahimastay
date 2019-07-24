@@ -7,6 +7,12 @@ class StaysController < ApplicationController
     @stays = Stay.all
   end
 
+  def guest
+  end
+
+  def accom
+  end
+
   # GET /stays/1
   # GET /stays/1.json
   def show
