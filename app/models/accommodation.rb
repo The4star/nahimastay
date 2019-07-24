@@ -1,5 +1,5 @@
 class Accommodation < ApplicationRecord
-  belongs_to :user as :host
+  belongs_to :host, :class_name => 'User'
   belongs_to :accomtype
   has_many :stays
 end

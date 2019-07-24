@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_071819) do
+ActiveRecord::Schema.define(version: 2019_07_24_003456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodationreviews", force: :cascade do |t|
+    t.integer "communication_rating"
+    t.integer "location_rating"
+    t.integer "cleanliness_rating"
+    t.integer "ammenities_rating"
+    t.integer "host_rating"
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.bigint "stay_id"
+    t.datetime "updated_at", null: false
+    t.index ["stay_id"], name: "index_accommodationreviews_on_stay_id"
+  end
 
   create_table "accommodations", force: :cascade do |t|
     t.datetime "date_created"
@@ -39,6 +52,25 @@ ActiveRecord::Schema.define(version: 2019_07_23_071819) do
     t.float "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "guestreviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "cleanliness_rating"
+    t.integer "communication_rating"
+    t.integer "ease_of_hosting_rating"
+    t.text "comments"
+    t.bigint "stay_id"
+    t.datetime "updated_at", null: false
+    t.index ["stay_id"], name: "index_guestreviews_on_stay_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.bigint "stay_id"
+    t.datetime "updated_at", null: false
+    t.index ["stay_id"], name: "index_messages_on_stay_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -87,8 +119,11 @@ ActiveRecord::Schema.define(version: 2019_07_23_071819) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "accommodationreviews", "stays"
   add_foreign_key "accommodations", "accomtypes"
   add_foreign_key "accommodations", "users"
+  add_foreign_key "guestreviews", "stays"
+  add_foreign_key "messages", "stays"
   add_foreign_key "profiles", "users"
   add_foreign_key "stays", "accommodations"
   add_foreign_key "stays", "users"
