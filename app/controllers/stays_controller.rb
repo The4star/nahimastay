@@ -4,7 +4,21 @@ class StaysController < ApplicationController
   # GET /stays
   # GET /stays.json
   def index
-    @stays = Stay.all
+    # if params[:accommodation_id]
+    #   @stays = Accommodation.find(accommodation_id).stays
+    #   @title = Accommodation.name
+    # elsif params[:guest_id]
+    #   @stays = User.find(guest_id).stays
+    #   @title = User.profile.name
+    # end
+
+    # @stays = Stay.all
+  end
+
+  def guest
+  end
+
+  def accom
   end
 
   # GET /stays/1
@@ -64,6 +78,7 @@ class StaysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stay
+      print params
       @stay = Stay.find(params[:id])
     end
 
