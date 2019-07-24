@@ -1,0 +1,2 @@
+module GuestreviewsHelper
+end

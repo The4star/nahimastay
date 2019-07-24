@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Accommodationreviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Communication rating</th>
+      <th>Location rating</th>
+      <th>Cleanliness rating</th>
+      <th>Ammenities rating</th>
+      <th>Host rating</th>
+      <th>Comments</th>
+      <th>Created at</th>
+      <th>Stay</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accommodationreviews.each do |accommodationreview| %>
+      <tr>
+        <td><%= accommodationreview.communication_rating %></td>
+        <td><%= accommodationreview.location_rating %></td>
+        <td><%= accommodationreview.cleanliness_rating %></td>
+        <td><%= accommodationreview.ammenities_rating %></td>
+        <td><%= accommodationreview.host_rating %></td>
+        <td><%= accommodationreview.comments %></td>
+        <td><%= accommodationreview.created_at %></td>
+        <td><%= accommodationreview.stay %></td>
+        <td><%= link_to 'Show', accommodationreview %></td>
+        <td><%= link_to 'Edit', edit_accommodationreview_path(accommodationreview) %></td>
+        <td><%= link_to 'Destroy', accommodationreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Accommodationreview', new_accommodationreview_path %>

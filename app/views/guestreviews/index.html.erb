@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Guestreviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Created at</th>
+      <th>Cleanliness rating</th>
+      <th>Communication rating</th>
+      <th>Ease of hosting rating</th>
+      <th>Comments</th>
+      <th>Stay</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guestreviews.each do |guestreview| %>
+      <tr>
+        <td><%= guestreview.created_at %></td>
+        <td><%= guestreview.cleanliness_rating %></td>
+        <td><%= guestreview.communication_rating %></td>
+        <td><%= guestreview.ease_of_hosting_rating %></td>
+        <td><%= guestreview.comments %></td>
+        <td><%= guestreview.stay %></td>
+        <td><%= link_to 'Show', guestreview %></td>
+        <td><%= link_to 'Edit', edit_guestreview_path(guestreview) %></td>
+        <td><%= link_to 'Destroy', guestreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guestreview', new_guestreview_path %>

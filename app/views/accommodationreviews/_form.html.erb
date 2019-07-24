@@ -1,0 +1,57 @@
+<%= form_with(model: accommodationreview, local: true) do |form| %>
+  <% if accommodationreview.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(accommodationreview.errors.count, "error") %> prohibited this accommodationreview from being saved:</h2>
+
+      <ul>
+      <% accommodationreview.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :communication_rating %>
+    <%= form.number_field :communication_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_rating %>
+    <%= form.number_field :location_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cleanliness_rating %>
+    <%= form.number_field :cleanliness_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ammenities_rating %>
+    <%= form.number_field :ammenities_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :host_rating %>
+    <%= form.number_field :host_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created_at %>
+    <%= form.datetime_select :created_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stay_id %>
+    <%= form.text_field :stay_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

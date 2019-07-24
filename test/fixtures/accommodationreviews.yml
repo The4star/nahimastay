@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  communication_rating: 1
+  location_rating: 1
+  cleanliness_rating: 1
+  ammenities_rating: 1
+  host_rating: 1
+  comments: MyText
+  created_at: 2019-07-24 10:33:11
+  stay: one
+
+two:
+  communication_rating: 1
+  location_rating: 1
+  cleanliness_rating: 1
+  ammenities_rating: 1
+  host_rating: 1
+  comments: MyText
+  created_at: 2019-07-24 10:33:11
+  stay: two
