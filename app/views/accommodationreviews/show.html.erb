@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Communication rating:</strong>
+  <%= @accommodationreview.communication_rating %>
+</p>
+
+<p>
+  <strong>Location rating:</strong>
+  <%= @accommodationreview.location_rating %>
+</p>
+
+<p>
+  <strong>Cleanliness rating:</strong>
+  <%= @accommodationreview.cleanliness_rating %>
+</p>
+
+<p>
+  <strong>Ammenities rating:</strong>
+  <%= @accommodationreview.ammenities_rating %>
+</p>
+
+<p>
+  <strong>Host rating:</strong>
+  <%= @accommodationreview.host_rating %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @accommodationreview.comments %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @accommodationreview.created_at %>
+</p>
+
+<p>
+  <strong>Stay:</strong>
+  <%= @accommodationreview.stay %>
+</p>
+
+<%= link_to 'Edit', edit_accommodationreview_path(@accommodationreview) %> |
+<%= link_to 'Back', accommodationreviews_path %>

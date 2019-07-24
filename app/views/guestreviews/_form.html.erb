@@ -1,0 +1,47 @@
+<%= form_with(model: guestreview, local: true) do |form| %>
+  <% if guestreview.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guestreview.errors.count, "error") %> prohibited this guestreview from being saved:</h2>
+
+      <ul>
+      <% guestreview.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :created_at %>
+    <%= form.datetime_select :created_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cleanliness_rating %>
+    <%= form.number_field :cleanliness_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :communication_rating %>
+    <%= form.number_field :communication_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ease_of_hosting_rating %>
+    <%= form.number_field :ease_of_hosting_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stay_id %>
+    <%= form.text_field :stay_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

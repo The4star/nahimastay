@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @guestreview.created_at %>
+</p>
+
+<p>
+  <strong>Cleanliness rating:</strong>
+  <%= @guestreview.cleanliness_rating %>
+</p>
+
+<p>
+  <strong>Communication rating:</strong>
+  <%= @guestreview.communication_rating %>
+</p>
+
+<p>
+  <strong>Ease of hosting rating:</strong>
+  <%= @guestreview.ease_of_hosting_rating %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @guestreview.comments %>
+</p>
+
+<p>
+  <strong>Stay:</strong>
+  <%= @guestreview.stay %>
+</p>
+
+<%= link_to 'Edit', edit_guestreview_path(@guestreview) %> |
+<%= link_to 'Back', guestreviews_path %>

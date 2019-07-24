@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :guestreviews
+  resources :accommodationreviews
+  resources :messages
   resources :stays
   resources :accommodations
   resources :profiles
