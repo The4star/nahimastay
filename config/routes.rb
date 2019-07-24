@@ -14,11 +14,11 @@ Rails.application.routes.draw do
 
   get 'guest/:guest_id/stay/:id' => 'stays#show', as: 'show_guest_stay'
 
-  get 'pages/about' => 'pages#about' as: 'about_page'
+  get 'pages/about' => 'pages#about', as: 'about_page'
 
-  get 'accommodation/:accommodation_id/stays' => 'stays#guest', as: 'accommodation_stays'
+  get 'accommodation/:accommodation_id/stays' => 'stays#index', as: 'accommodation_stays'
 
-  get 'accommodation/:accommodation_id/stay/:id' => 'stays#accom', as: 'show_accommodation_stay'
+  get 'accommodation/:accommodation_id/stay/:id' => 'stays#show', as: 'show_accommodation_stay'
 
 
 
