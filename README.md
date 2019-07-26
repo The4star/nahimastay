@@ -25,7 +25,7 @@ GitHub - https://github.com/nahimastay
 
 Users have the option of a paid "premium" membership which allows them to make unlimited enquires otherwise enquires are limited to 2 per day.
 
-Kalma coins
+Karma coins
 
 ### Functionality / features
 
@@ -82,21 +82,20 @@ This is our sitemap
 
 Screenshots - Front End
 
-[![Screenshot of ‘’’’’’’’’](./docs/fess1.jpeg)] 
-[![Screenshot of ‘’’’’’’’’](./docs/fess2.jpeg)] 
-[![Screenshot of ‘’’’’’’’’](./docs/fess3.jpeg)] 
+[![Screenshot of Log in Page](./docs/fess1.jpeg)] 
 
 Screenshots - Back End
 
-[![Screenshot of ‘’’’’’’’’](./docs/bess1.jpeg)]
-[![Screenshot of ‘’’’’’’’’](./docs/bess2.jpeg)] 
-[![Screenshot of ‘’’’’’’’’](./docs/bess3.jpeg)] 
+[![Screenshot of Backend](./docs/bess1.jpeg)]
+[![Screenshot of Backend](./docs/bess2.jpeg)] 
+[![Screenshot of Backend](./docs/bess3.jpeg)] 
 
 ## SECTION 2 - DESIGN DOCUMENTATION 
 
 ### Design process
 
-[![Color pallet](./docs/colorscheme.jpeg)] 
+[![Color pallet](./docs/colorscheme.jpeg)]
+[![Font combination](./docs/fontcombo.jng)] 
 
 ### A workflow diagram of the user journey/s.
  
@@ -146,6 +145,14 @@ Postgresql
 
 ### 9. Explain the different high-level components (abstractions) in your App.
 
+MODEL - 
+
+VIEW - 
+
+CONTROLLER - 
+
+ACTIVE RECORD - 
+
 ### 10.  Detail any third party services that your App will use.
 
 Key Gems / Modules:
@@ -161,15 +168,15 @@ Stripe: Payment processing Software as a Service (SASS) from Stripe. Allows user
 
 Full List of Dependencies:
 
-### Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+### 11.Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 
 Airbnb
 
-### Discuss the database relations to be implemented.
+### 12. Discuss the database relations to be implemented.
 
 We used the following datatbase relations one role has many Users, User has one profile, one role one accommodation review and one guest review , many stays, many messages and many accommodation types. On the other side of these relationships accommodation has one user, many stays, one accommodation review and many accommodation types with accommodation type having one accommodation. Stay belongs to and has one user, one accommodation review, one guest review and many messages
 
-### Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+### 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 
 User:
     belongs_to_and_has_one :user
@@ -210,14 +217,14 @@ Message:
     has_one :stay
 
 
-### Provide your database schema design.
+### 14. Provide your database schema design.
  
  This is our database schema design
 
 [![Database schema design](./docs/erd.jpeg)]
 
 
-### Provide User stories for your App.
+### 15. Provide User stories for your App.
 
 "As a Guest (User who is not signed in), I should be able to ..."
 
@@ -267,34 +274,35 @@ Message:
 * View all profiles 
 * View financial data
 
-### Provide Wireframes for your App.
+### 16. Provide Wireframes for your App.
 
  These are our wireframes
 
-[![Wireframe for Sign up page](./docs/wireframe.jpeg)] 
-[![Wireframe for Profile page](./docs/wireframe.jpeg)] 
-[![Wireframe for Add Accommodation page](./docs/wireframe.jpeg)] 
-[![Wireframe for Add Stays page](./docs/wireframe.jpeg)] 
-[![Wireframe for Request Stay page](./docs/wireframe.jpeg)] 
-[![Wireframe for Stays Reviews page](./docs/wireframe.jpeg)] 
-[![Wireframe for Accommodation Reviews page](./docs/wireframe.jpeg)] 
+[![Wireframe for Stay and Stay Show pages](./docs/wireframe1.jpeg)] 
+[![Wireframe for Profile and Accommodation pages](./docs/wireframe2.jpeg)]
+[![Wireframe for Home page and Search results](./docs/wireframe3.jpeg)] 
 
 
-### Describe the way tasks are allocated and tracked in your project.
+
+### 17. Describe the way tasks are allocated and tracked in your project.
 
 Trello
 
-### Discuss how Agile methodology is being implemented in your project.
+[![Trello screenshot of Team Git Process](./docs/trelloteams1.jpeg)] 
 
-### Provide an overview and description of your Source control process.
 
-### Provide an overview and description of your Testing process.
 
-### Discuss and analyse requirements related to information system security.
+### 18. Discuss how Agile methodology is being implemented in your project.
 
-### Discuss methods you will use to protect information and data.
+### 19. Provide an overview and description of your Source control process.
 
-### Research what your legal obligations are in relation to handling user data.
+### 20. Provide an overview and description of your Testing process.
+
+### 21. Discuss and analyse requirements related to information system security.
+
+### 22. Discuss methods you will use to protect information and data.
+
+### 23. Research what your legal obligations are in relation to handling user data.
 
 
 
