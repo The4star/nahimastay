@@ -1,10 +1,10 @@
 <div class="hero-container">
     <%= image_tag("/img/hero.jpg",  alt: "looking for accommodation on couch", class: "hero-image") %>
 
-<div class="search-over-hero">
-    <p id="hero-text">Search for a place to stay!</p>
-    <%= render '/shared/searchform', class: 'searchform' %>
-</div>
+    <div class="search-over-hero">
+        <p id="hero-text">Search for a place to stay!</p>
+        <%= render '/shared/searchform', class: 'searchform' %>
+    </div>
 
 </div>
 
@@ -12,7 +12,7 @@
     <div class="flex-wrapper">
         <div class="text-wrapper">
             <h2>Welcome to Nah..ImaStay</h2>
-            <p>A reciprocal platform where travellers host and stay at each others homes in return for Karma Coins.</p><p> Karma coins are earnt by hosting travellers first and can then be saved up and spent on your own stays along your journey.</p>
+            <p>A reciprocal platform where travellers host and stay at each others homes in return for <%= image_tag '/img/kksym.png', class: 'kksym' %>arma Coins.</p><p> <%= image_tag '/img/kksym.png', class: 'kksym' %>arma coins are earnt by hosting travellers first and can then be saved up and spent on your own stays along your journey.</p>
         </div>
         <div class="img-wrapper">
         <%= image_tag("/img/brightdawn.jpg",  alt: "friends ready for adventure", class: "home-image") %>

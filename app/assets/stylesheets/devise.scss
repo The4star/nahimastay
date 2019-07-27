@@ -1,0 +1,89 @@
+.top-text-devise {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.devise {
+    position: absolute;
+    color: #091c38;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Alef', sans-serif;
+    z-index: 2;
+    background: rgba(250, 250, 250, .9);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.devise-field {
+    border-radius: 10px;
+    margin:20px;
+    font-family: 'Alef', sans-serif;
+    color: #091c38;
+    font-size: 30px;
+}
+
+.devise-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 180px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.devise-button-update {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 230px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.devise-bad-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 18px;
+    width: 180px;
+    height: 55px;
+    text-align: center;
+    background: #C03221;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.hero-container-edit-page {
+    position: relative;
+    width: 100%;
+    max-height: 1200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.bio{
+    .text-field-label {
+        vertical-align: middle;
+    }
+    .devise-field {
+        vertical-align: middle;
+    }
+}
