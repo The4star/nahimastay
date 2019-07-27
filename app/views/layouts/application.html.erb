@@ -8,8 +8,46 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+  <nav>
+      <div id="logo">
+      <a href="/"><img id="world" src="/img/logo.png" alt="nahimastay_logo"></a>
+      <a href="/"><h1>Nah..ImaStay</h1></a>
+      </div>
+      <% if current_user %>
+        <ul>
+          <li><%= link_to "About", '/pages/about'  %></li>
+          <li><%= link_to "Find Accommodation", '/accommodation/index'  %></li>
+        </ul>
+        <ul>
+        <li><%= link_to("Profile", profile_path) %></li>
+        <li>|</li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete  %></li>
+        </ul>
+        <% else %>
+         <ul>
+          <li><%= link_to "About", '/pages/about'  %></li>
+          <li><%= link_to "Find Accommodation", accommodations_path  %></li>
+        </ul>
+        <ul>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li>|</li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        </ul>
+        <% end %>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <footer>
+     <ul>
+       <li><%= link_to "Home", '/', class: 'footer-menu'  %></li>
+       <li><%= link_to "About", '/pages/about', class: 'footer-menu'  %></li>
+       <li><%= link_to "Find Accommodation", accommodations_path, class: 'footer-menu'  %></li>
+     </ul>
+     <p class="footer-menu">&#169; Copyright Nah..ImaStay 2019</p>
+    </footer>
   </body>
 </html>
