@@ -1,50 +1,73 @@
 <p id="notice"><%= notice %></p>
+<div class="profile-wrapper">
+  <div class="profile-left">
+    <% if @profile.first_name && @profile.last_name %>
+      <p>
+        <strong>Welcome to your profile <%= @profile.first_name %> <%= @profile.last_name%>!</strong> You've been a member since:
+        <%= @profile.created_at %>
+      </p>
+    <% else %>
+      <p> <strong>Welcome to your profile page! Feel free to browse through accommodation but in order to apply to stay at a location we'll need you to <%= link_to 'Finish editing your profile', edit_profile_path(@profile) %></strong></p>
+    <% end %>
 
-<% if @profile.uploaded_image.attached? %>
-  <%= image_tag @profile.uploaded_image.service_url, class: 'image-size' %>
-<% else %>
-  <p>No image for this profile</p>
-<% end %>
+    <% if @profile.uploaded_image.attached? %>
+      <div class="profile-img-container">
+      <%= image_tag @profile.uploaded_image.service_url, class: 'image-size' %>
+      </div>
+    <% else %>
+      <p>No image for this profile</p>
+    <% end %>
 
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
+      <p>
+      <strong>Name:</strong>
+      <% if @profile.first_name && @profile.last_name %>
+        <%= @profile.first_name %> <%= @profile.last_name %></p>
+      <% else %>
+        <%= link_to 'Finish editing your profile', edit_profile_path(@profile) %></p>
+      <% end %>
+      <p>
+      <strong>Karma balance:</strong><%= image_tag '/img/kksym.png', class: 'kksym' %>
+      <% if @profile.karma_coins %>
+        <%= image_tag '/img/kksym.png', class: 'kksym' %> <%= @profile.karma_coins %>
+      <% else %>
+        <strong>zero</strong> Host your first guest to earn some <%= image_tag '/img/kksym.png', class: 'kksym' %>arma Coins!</p>
+      <% end %>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
+    <p>
+      <strong>Bio:</strong>
+      <% if @profile.bio %>
+        <%= @profile.bio %></p>
+      <% else %>
+        <%= link_to 'Finish editing your profile', edit_profile_path(@profile) %></p>
+      <% end %>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @profile.created_at %>
-</p>
+    <p>
+      <strong>Host rating:</strong>
+      <% if @profile.host_rating %>
+        <%= @profile.host_rating %></p>
+      <% else %>
+        No rating recieved yet</p>
+      <% end %>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @profile.bio %>
-</p>
+    <p>
+      <strong>Guest rating:</strong>
+      <% if @profile.guest_rating %>
+        <%= @profile.guest_rating %>
+      <% else %>
+        No rating recieved yet</p>
+      <% end %>
 
-<p>
-  <strong>Karma coins:</strong>
-  <%= @profile.karma_coins %>
-</p>
-
-<p>
-  <strong>Host rating:</strong>
-  <%= @profile.host_rating %>
-</p>
-
-<p>
-  <strong>Guest rating:</strong>
-  <%= @profile.guest_rating %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+    <p><%= link_to 'Edit Profile', edit_profile_path(@profile) %> | <%= link_to 'Edit Email & Password', edit_user_registration_path(current_user) %></p>
+  </div>
+  <div class="profile-right">
+    <div class="accommodation-section">
+      <div class="prof-button-flex">
+        <%= button_to "View Stays", stays_path, class: "accom-stay-button" %><%= button_to "View Accommodation", stays_path, class: "stay-accom-button" %>
+      </div>
+    </div>
+    <div class="guest-section">
+        <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>
+        <%= button_to "View Stays", stays_path, class: "stay-profile-button" %>
+    </div>
+  </div>
+</div>

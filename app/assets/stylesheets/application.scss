@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Alef|Taviraj&display=swap');
 @import 'pages';
+@import 'devise';
+@import 'profiles';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -155,4 +157,13 @@ footer {
 .footer-menu {
     color: #fafafa;
     margin: 20px;
+}
+
+.text-field-label {
+    vertical-align: middle;
+}
+
+.kksym {
+    width: 25px;
+    height:25px;
 }

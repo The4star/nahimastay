@@ -13,50 +13,25 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class: 'devise-field' %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, class: 'devise-field' %>
+  </div>
+
+  <div class="bio">
+    <%= form.label :bio, 'About Me', class: 'text-field-label' %>
+    <%= form.text_area :bio, class: 'devise-field' %>
   </div>
 
   <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_area :bio %>
-  </div>
-
-  <div class="field">
-    <%= form.label :karma_coins %>
-    <%= form.number_field :karma_coins %>
-  </div>
-
-  <div class="field">
-    <%= form.label :host_rating %>
-    <%= form.text_field :host_rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :guest_rating %>
-    <%= form.text_field :guest_rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-  <%= form.label :uploaded_image %>
+  <%= form.label :uploaded_image, 'Profile Image' %>
   <%= form.file_field :uploaded_image %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'devise-button-update' %>
   </div>
 <% end %>
