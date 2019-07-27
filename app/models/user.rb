@@ -6,7 +6,7 @@ class User < ApplicationRecord
   belongs_to :role
   after_initialize :set_default_role, :if => :new_record?
   after_initialize :create_profile, :if => :new_record?
-  after_initialize :create_accommodation, :if => :new_record?
+  # after_initialize :create_accommodation, :if => :new_record?
   has_many :stays
   has_one :profile
   has_one :accommodation
@@ -19,8 +19,8 @@ class User < ApplicationRecord
     self.profile = Profile.new
   end
 
-  def create_accommodation
-    self.accommodation = Accommodation.new
-  end
+  # def create_accommodation
+  #   self.accommodation = Accommodation.new
+  # end
 
 end
