@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :date_created %>
-    <%= form.datetime_select :date_created %>
-  </div>
-
-  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -27,23 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <%= form.label :city %>
+  <%= form.select :city, options_for_select(city_select())%>
   </div>
 
   <div class="field">
     <%= form.label :address %>
     <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :host_id %>
-    <%= form.text_field :host_id %>
   </div>
 
   <div class="field">

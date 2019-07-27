@@ -24,7 +24,13 @@ class AccommodationsController < ApplicationController
   # POST /accommodations
   # POST /accommodations.json
   def create
+    params[:profile_id] = current_user.id
+
     @accommodation = Accommodation.new(accommodation_params)
+    @accommodation.date_created = Time.now
+    print User.find(params[:profile_id])
+    @accommodation.host = User.find(params[:profile_id])
+    print @accommodation.date_created
 
     respond_to do |format|
       if @accommodation.save

@@ -40,5 +40,6 @@
   <%= @profile.user %>
 </p>
 
+<%= link_to 'Add Accommodation', new_accommodation(@profile) %> |
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
