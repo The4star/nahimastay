@@ -1,10 +1,41 @@
-<h1 id="center-heading">Membership Options</h1>
-<h3 id="center-heading">Upgrade your membership today!</h3>
+<script src="https://kit.fontawesome.com/61da53da41.js"></script>
+<h1 class="center-text">Membership Options</h1>
+<h3 class="center-text">Upgrade your membership today!</h3>
 
 <div class="hero-container">'
   <%= image_tag("/img/upgrade.jpg",  alt: "beers on the couch", class: "hero-image") %>
-  <div class="devise">
-    <h1>Get premium features!</h1>
-
-    <%= link_to 'Back', @profile %>
+  <div class="upgrade-container">
+    <div class="upgrades">
+      <h2>Standard Member</h2>
+      <% if current_user.role_id == 2 %>
+        <p>(This is your current membership)</p>
+      <% end %>
+        <p><strong>Cost:</strong> Free</p>
+        <p><i class="fas fa-check-circle"></i> 1 Stay request per day</p>
+        <hr class="upgrade-hr">
+        <p><i class="fas fa-check-circle"></i> Unlimited messages</p>
+        <hr class="upgrade-hr">
+        <p><i class="fas fa-check-circle"></i> Unlimited reviews</p>      
+    </div>
+    <div class="upgrades">
+      <h2>Premium Member!</h2>
+        <% if current_user.role_id == 3 %>
+        <p>(This is your current membership)</p>
+        <% end %>
+        <p><strong>Cost:</strong> $25 USD per year</p>
+        <p><i class="fas fa-check-circle"></i> Unlimited Stay request per day</p>
+        <hr class="upgrade-hr">
+        <p><i class="fas fa-check-circle"></i> Unlimited messages</p>
+        <hr class="upgrade-hr">
+        <p><i class="fas fa-check-circle"></i> Unlimited reviews</p>
+        <hr class="upgrade-hr">
+        <p><i class="fas fa-check-circle"></i> Certified premium badge in profile</p>
+        <hr class="upgrade-hr">
+        <% if current_user.role_id != 3 %>
+          <p><strong>Upgrade your account today!</strong></p>
+          <p><strong>Link to pay and upgrade with Stripe goes here.</strong></p>
+        <% end %>
+    </div>
+  </div>
 </div>
+<p class="center-text"><%= link_to 'Back to profile', @profile %></p>

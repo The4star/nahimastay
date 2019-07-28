@@ -32,7 +32,6 @@
       <% else %>
         <strong>zero</strong> Host your first guest to earn some <%= image_tag '/img/kksym.png', class: 'kksym' %>arma Coins!</p>
       <% end %>
-
     <p>
       <strong>Bio:</strong>
       <% if @profile.bio %>
@@ -58,7 +57,12 @@
       <% end %>
 
     <p>
-    You are a <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
+    <% if @profile.user.role_id == 2 %>
+      You are a <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
+    <% elsif @profile.user.role_id == 3 %>
+      You are a <%= @profile.user.role.privilege %>. <%= link_to("Change back to free account", upgrade_path) %> 
+    <% end %>
+    
     </p>
 
     <p><%= link_to 'Edit Profile', edit_profile_path(@profile) %> | <%= link_to 'Edit Email & Password', edit_user_registration_path(current_user) %></p>
