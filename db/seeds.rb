@@ -8,13 +8,13 @@
 
 roles = [
     {
-        privilege: "admin"
+        privilege: "Admin"
     },
     {
-        privilege: "standard_user"
+        privilege: "Standard Member"
     },
     {
-        privilege: "premium_user"
+        privilege: "Premium Member"
     }
 ]
 roles.each do |role|

@@ -6,4 +6,7 @@ class PagesController < ApplicationController
     def about
     end
     
+    def upgrade
+        @profile = current_user.profile
+    end
 end
