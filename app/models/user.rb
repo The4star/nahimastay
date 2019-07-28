@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :role
+  belongs_to :role 
   after_initialize :set_default_role, :if => :new_record?
   after_initialize :create_profile, :if => :new_record?
   # after_initialize :create_accommodation, :if => :new_record?
   has_many :stays
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_one :accommodation
 
   def set_default_role

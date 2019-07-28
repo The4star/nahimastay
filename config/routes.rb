@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'guest/:guest_id/stay/:id' => 'stays#show', as: 'show_guest_stay'
 
   get 'pages/about' => 'pages#about', as: 'about_page'
+  get 'pages/upgrade' => 'pages#upgrade', as: 'upgrade'
 
   get 'accommodation/:accommodation_id/stays' => 'stays#index', as: 'accommodation_stays'
 

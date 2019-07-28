@@ -57,6 +57,10 @@
         No rating recieved yet</p>
       <% end %>
 
+    <p>
+    You are a <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
+    </p>
+
     <p><%= link_to 'Edit Profile', edit_profile_path(@profile) %> | <%= link_to 'Edit Email & Password', edit_user_registration_path(current_user) %></p>
   </div>
   <div class="profile-right">
