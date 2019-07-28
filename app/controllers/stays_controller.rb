@@ -12,7 +12,7 @@ class StaysController < ApplicationController
     #   @title = User.profile.name
     # end
 
-    # @stays = Stay.all
+    @stays = Stay.all
   end
 
   def guest
