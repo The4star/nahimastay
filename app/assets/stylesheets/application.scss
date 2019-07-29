@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css?family=Alef|Taviraj&display=swap');
+@import 'pages';
+@import 'devise';
+@import 'profiles';
+@import 'upgrade';
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fafafa
+}
+
+h1 {
+    color: #2d936c;
+    font-family: 'Taviraj', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 50px;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, .75);
+}
+
+h2 {
+    margin: 20px 20px 20px 20px;
+    color: #2d936c;
+    font-family: 'Taviraj', serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45px;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, .75);
+}
+
+h3 {
+    margin: 20px 20px 20px 20px;
+    color: #2d936c;
+    font-family: 'Taviraj', serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, .75);
+}
+
+p {
+    margin: 10px 10px 20px 20px;
+    font-family: 'Alef', sans-serif;
+    font-size: 30px;
+    color: #091C38;
+}
+
+nav {
+    color: #826251;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(250, 250, 250, 0.8);
+    box-shadow: inset 4px 4px 100px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+ul {
+    color: #826251;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+}
+
+li {
+    color: #826251;
+    font-family: 'Alef', sans-serif;
+}
+
+li a:link {
+    text-decoration: none;
+}
+
+a:link, a {
+    text-decoration: none;
+    color: #826251;
+    font-size: 30px;
+    font-family: 'Alef', sans-serif;
+}
+
+#logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+}
+
+#world {
+    width: 80%;
+    height: auto;
+    margin: 20px;
+}
+
+.container {
+    margin: 160px 0px 20px 0px;
+}
+
+.searchform {
+    display: inline;
+}
+.search-field {
+    background-color: #fafafa;
+    border-radius: 10px;
+    font-size: 30px;
+    color: #091c38;
+    opacity: .8;
+    font-family: 'Alef', sans-serif;
+}
+
+.search-submit {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 180px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+footer {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #826251;
+    height: 100px;
+}
+
+.footer-menu {
+    color: #fafafa;
+    margin: 20px;
+}
+
+.text-field-label {
+    vertical-align: middle;
+}
+
+.kksym {
+    width: 25px;
+    height:25px;
+}
+
+.thumb-wrapper {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.image-thumb {
+    width: 100%;
+    height: auto;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+#finish-edit-text {
+    font-size: 18px;
+}

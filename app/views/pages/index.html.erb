@@ -1,9 +1,50 @@
-<h1>Sup man!</h1>
-<% if current_user %>
-    <h2>Welcome to NahImaStay</h1>
-    <br>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "bodylinks"  %>
-<% else %>
-    <%= link_to("Log in", new_user_session_path, :class => "bodylinks") %>
-<% end %>
-<br>
+<div class="hero-container">
+    <%= image_tag("/img/hero.jpg",  alt: "looking for accommodation on couch", class: "hero-image") %>
+
+    <div class="search-over-hero">
+        <p id="hero-text">Search for a place to stay!</p>
+        <%= render '/shared/searchform', class: 'searchform' %>
+    </div>
+
+</div>
+
+<div class="home-content">
+    <div class="flex-wrapper">
+        <div class="text-wrapper">
+            <h2>Welcome to Nah..ImaStay</h2>
+            <p>A reciprocal platform where travellers host and stay at each others homes in return for <%= image_tag '/img/kksym.png', class: 'kksym' %>arma Coins.</p><p> <%= image_tag '/img/kksym.png', class: 'kksym' %>arma coins are earnt by hosting travellers first and can then be saved up and spent on your own stays along your journey.</p>
+            <p>Let us <%= link_to("break it down for you", 'pages/about/#how-does-it-work') %></p>
+        </div>
+        <div class="img-wrapper">
+        <%= image_tag("/img/brightdawn.jpg",  alt: "friends ready for adventure", class: "home-image") %>
+        </div>
+    </div>
+
+    <div class="flex-wrapper">
+        <div class="img-wrapper">
+            <%= image_tag("/img/happyfriends.jpg",  alt: "happy friends", class: "home-image") %>
+        </div>
+        <div class="text-wrapper">
+            <h2>#givealittle</h2>
+            <p>Hosting people first gives you the chance to see if sharing space with a new friend is something you are comfortable with before you start your own travels.</p><p> It also gives the person that stays with you a chance to let everyone else know how great a host you were, making people much more willing to host you and leaving all members of the community feeling secure.</p>
+        </div>
+    </div>
+
+    <div class="flex-wrapper">
+        <div class="text-wrapper">
+            <h2>Karma Coins?</h2>
+            <p>These are a currency exclusive to Nah..ImaStay. They don't cost any money but you do need to earn them to spend them simply by hosting your fellow travellers and making new friends.</p>
+        </div>
+        <div class="kk-wrapper">
+        <%= image_tag("/img/karma_coin.png",  alt: "friends ready for adventure", class: "kk-image") %>
+        </div>
+    </div>
+    <hr>
+    <div class="flex-wrapper">
+        <%= image_tag("/img/logo.png",  alt: "friends ready for adventure", class: "logo-image") %>
+    </div>
+    <div class="flex-wrapper">
+        <h3>#nahmaste</h3>
+    </div>
+</div>
+
