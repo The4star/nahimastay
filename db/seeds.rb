@@ -58,6 +58,7 @@ user_with_accom = User.create! :email => 'userwithaccom@example.com', :password 
 user_without_accom = User.create! :email => 'userwithoutaccom@example.com', :password => '123456', :password_confirmation => '123456'
 admin_user = User.create! :email => 'adminuser@example.com', :password => '123456', :password_confirmation => '123456'
 admin_user.role = Role.find(1)
+
 profiles = [
     {
         first_name: "Roger",
@@ -102,7 +103,9 @@ profiles = [
 ]
 
 profiles.each do |profile|
-    Profile.create(profile)
+    user = User.find(profile[:user_id])
+    user_profile = Profile.where(user_id: user) 
+    user_profile.update(profile)
 end
 
 accommodations = [
@@ -155,8 +158,8 @@ stays = [
     {
         created_at: Time.now,
         accommodation_id: Accommodation.find(1).id,
-        start_date: Time.now,
-        end_date: Time.now,
+        start_date: DateTime.parse("24/06/2019").to_date,
+        end_date: DateTime.parse("27/06/2019").to_date,
         guest_id: admin_user.id,
         confirmed: false,
         rejected: false,
@@ -164,8 +167,8 @@ stays = [
     {
         created_at: Time.now,
         accommodation_id: Accommodation.find(1).id,
-        start_date: Time.now,
-        end_date: Time.now,
+        start_date: DateTime.parse("13/09/2019").to_date,
+        end_date: DateTime.parse("15/09/2019").to_date,
         guest_id: user_without_accom.id,
         confirmed: false,
         rejected: false,
@@ -173,8 +176,8 @@ stays = [
     {
         created_at: Time.now,
         accommodation_id: Accommodation.find(2).id,
-        start_date: Time.now,
-        end_date: Time.now,
+        start_date: DateTime.parse("10/07/2019").to_date,
+        end_date: DateTime.parse("15/07/2019").to_date,
         guest_id: user_with_profile.id,
         confirmed: false,
         rejected: false,
@@ -182,8 +185,8 @@ stays = [
     {
         created_at: Time.now,
         accommodation_id: Accommodation.find(3).id,
-        start_date: Time.now,
-        end_date: Time.now,
+        start_date: DateTime.parse("15/10/2019").to_date,
+        end_date: DateTime.parse("20/10/2019").to_date,
         guest_id: user_with_profile.id,
         confirmed: false,
         rejected: false,
@@ -194,37 +197,119 @@ stays.each do |stay|
     Stay.create!(stay)
 end
 
-# messages = [
-#     {
-#         created_at: Time.now,
-#         content: "Can i bring my dog",
-#         stay_id: Stay.find(1).id
-#     },
-#     {
-#         created_at: Time.now,
-#         content: "Can i bring my dog",
-#         stay_id: Stay.find(2).id
-#     },
-#     {
-#         created_at: Time.now,
-#         accommodation_id: Accommodation.find(2).id,
-#         start_date: Time.now,
-#         end_date: Time.now,
-#         guest_id: user_with_profile.id,
-#         confirmed: false,
-#         rejected: false,
-#     },
-#     {
-#         created_at: Time.now,
-#         accommodation_id: Accommodation.find(3).id,
-#         start_date: Time.now,
-#         end_date: Time.now,
-#         guest_id: user_with_profile.id,
-#         confirmed: false,
-#         rejected: false,
-#     }
-# ]
+messages = [
+    {
+        created_at: Time.now,
+        content: "Can i bring my dog",
+        stay_id: Stay.find(1).id,
+        user_id: User.first.id
+    },
+    {
+        created_at: Time.now,
+        content: "no",
+        stay_id: Stay.find(1).id,
+        user_id: user_with_profile.id
+    },
+    {
+        created_at: Time.now,
+        content: "Can i stay forever",
+        stay_id: Stay.find(2).id,
+        user_id: user_without_accom.id
+    },
+    {
+        created_at: Time.now,
+        content: "no",
+        stay_id: Stay.find(2).id,
+        user_id: user_with_accom.id
+    }
+]
 
-# stays.each do |stay|
-#     Stay.create!(stay)
-# end
+messages.each do |message|
+    Message.create!(message)
+end
+
+accommodation_reviews = [
+    {
+        created_at: Time.now,
+        communication_rating: 0,
+        location_rating: 0,
+        cleanliness_rating: 0,
+        ammenities_rating: 0,
+        host_rating: 0,
+        comments: "much very bad",
+        stay_id: Stay.find(1).id
+    },
+    {
+        created_at: Time.now,
+        communication_rating: 5,
+        location_rating: 5,
+        cleanliness_rating: 5,
+        ammenities_rating: 5,
+        host_rating: 5,
+        comments: "much very good",
+        stay_id: Stay.find(2).id
+    },
+    {
+        created_at: Time.now,
+        communication_rating: 3,
+        location_rating: 3,
+        cleanliness_rating: 3,
+        ammenities_rating: 3,
+        host_rating: 3,
+        comments: "much very good",
+        stay_id: Stay.find(3).id
+    },
+    {
+        created_at: Time.now,
+        communication_rating: 3,
+        location_rating: 5,
+        cleanliness_rating: 2,
+        ammenities_rating: 6,
+        host_rating: 1,
+        comments: "Very average",
+        stay_id: Stay.find(4).id
+    }
+]
+
+accommodation_reviews.each do |accommodation_review|
+    Accommodationreview.create!(accommodation_review)
+end
+
+guest_reviews = [
+    {
+        created_at: Time.now,
+        communication_rating: 0,
+        ease_of_hosting_rating: 0,
+        cleanliness_rating: 0,
+        comments: "rude",
+        stay_id: Stay.find(1).id
+    },
+    {
+        created_at: Time.now,
+        communication_rating: 5,
+        ease_of_hosting_rating: 5,
+        cleanliness_rating: 5,
+        comments: "polite",
+        stay_id: Stay.find(2).id
+    },
+    {
+        created_at: Time.now,
+        communication_rating: 3,
+        ease_of_hosting_rating: 3,
+        cleanliness_rating: 3,
+        comments: "ok guest",
+        stay_id: Stay.find(3).id
+    },
+    {
+        created_at: Time.now,
+        communication_rating: 2,
+        ease_of_hosting_rating: 3,
+        cleanliness_rating: 4,
+        comments: "pretty good",
+        stay_id: Stay.find(4).id
+    }
+]
+
+guest_reviews.each do |guest_review|
+    Guestreview.create!(guest_review)
+end
