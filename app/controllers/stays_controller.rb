@@ -68,16 +68,6 @@ class StaysController < ApplicationController
     end
   end
 
-  # DELETE /stays/1
-  # DELETE /stays/1.json
-  def destroy
-    @stay.destroy
-    respond_to do |format|
-      format.html { redirect_to stays_url, notice: 'Stay was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stay
