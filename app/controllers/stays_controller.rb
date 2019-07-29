@@ -4,15 +4,18 @@ class StaysController < ApplicationController
   # GET /stays
   # GET /stays.json
   def index
-    # if params[:accommodation_id]
-    #   @stays = Accommodation.find(accommodation_id).stays
-    #   @title = Accommodation.name
-    # elsif params[:guest_id]
-    #   @stays = User.find(guest_id).stays
-    #   @title = User.profile.name
-    # end
-
-    @stays = Stay.all
+    if params[:accommodation_id]
+      @accommodation = Accommodation.find(params[:accommodation_id])
+      @stays = @accommodation.stays
+      @title = @accommodation.name
+    elsif params[:guest_id]
+      @guest = User.find(params[:guest_id]).profile
+      @stays = User.find(params[:guest_id]).stays
+      @title = "#{@guest.first_name} #{@guest.last_name}"
+    else
+      @stays = Stay.all
+    end
+    
   end
 
   def guest
