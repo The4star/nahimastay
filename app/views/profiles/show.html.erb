@@ -69,9 +69,16 @@
   </div>
   <div class="profile-right">
     <div class="accommodation-section">
+    <% if @profile.user.accommodation %>
       <div class="prof-button-flex">
         <%= button_to "View Stays", stays_path, class: "accom-stay-button" %><%= button_to "View Accommodation", stays_path, class: "stay-accom-button" %>
       </div>
+    <% else %>
+       <div class="prof-button-flex">
+        <%= button_to "Add Accommodation", new_accommodation_path, class: "accom-stay-button" %>
+      </div>
+    <% end %>
+     
     </div>
     <div class="guest-section">
         <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>
