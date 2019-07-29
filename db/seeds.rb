@@ -202,7 +202,7 @@ messages = [
         created_at: Time.now,
         content: "Can i bring my dog",
         stay_id: Stay.find(1).id,
-        user_id: User.first.id
+        user_id: user_without_accom.id
     },
     {
         created_at: Time.now,
