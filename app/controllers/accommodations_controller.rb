@@ -17,14 +17,20 @@ class AccommodationsController < ApplicationController
     @accommodation = Accommodation.new
   end
 
-  # GET /accommodations/1/edit
+  # GET /accommodations/1/edits
   def edit
   end
 
   # POST /accommodations
   # POST /accommodations.json
   def create
+    params[:profile_id] = current_user.id
+
     @accommodation = Accommodation.new(accommodation_params)
+    @accommodation.date_created = Time.now
+    print User.find(params[:profile_id])
+    @accommodation.host = User.find(params[:profile_id])
+    print @accommodation.date_created
 
     respond_to do |format|
       if @accommodation.save
@@ -69,6 +75,6 @@ class AccommodationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def accommodation_params
-      params.require(:accommodation).permit(:date_created, :name, :description, :country, :city, :address, :host_id, :accommodation_rating, :available_start_date, :available_end_date, :accomtype_id)
+      params.require(:accommodation).permit(:name, :description, :country, :city, :address, :host_id, :available_start_date, :available_end_date, :accomtype_id)
     end
 end
