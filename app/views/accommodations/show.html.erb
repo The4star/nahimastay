@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h1 class="center-text"><%= @accommodation.name %></h1>
+<% if @accommodation.host.id == current_user.id %>
+<p class="center-text">
+<%= link_to 'Edit Your Accommodation', edit_accommodation_path(@accommodation) %>
+</p>
+<% end %>
 <div class="top-container">
   <div class="left-container">
     <p>
@@ -32,38 +37,45 @@
     </p>
 
     <p>
-      <strong>Host:</strong>
-      <%= @accommodation.host.profile.first_name %> <%= @accommodation.host.profile.last_name %>
-    </p>
-
-    <p>
       <strong>Accommodation rating:</strong>
       <%= @accommodation.accommodation_rating %>
     </p>
 
     <p>
       <strong>Available start date:</strong>
-      <%= @accommodation.available_start_date.inspect %>
+      <%= @accommodation.available_start_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_start_date.year %>
     </p>
 
     <p>
       <strong>Available end date:</strong>
-      <%= @accommodation.available_end_date.inspect %>
+      <%= @accommodation.available_end_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_end_date.year %>
     </p>
+
+    <div class="host-container">
+      <% if @accommodation.host.profile.uploaded_image.attached? %>
+        <%= image_tag @accommodation.host.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
+        <div id="host-container-text">
+          <p><strong><%= @accommodation.host.profile.first_name %> <%= @accommodation.host.profile.last_name %> is the host of this property</strong></p>
+          <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
+        </div>
+      <% else %>
+      <div id="host-container-text">
+          <p><strong><%= @accommodation.host.profile.first_name %> <%= @accommodation.host.profile.last_name %> is the host of this property</strong></p>
+          <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
   <div class="right-container">
     <% if @accommodation.hero_image.attached? %>
-      <div class="accom-img-container">
         <%= image_tag @accommodation.hero_image.service_url, class: 'accom-image-size' %>
-      </div>
     <% else %>
       <p>No Hero image for this accommodation has been added</p>
     <% end %>
 
      <% if @accommodation.interior_image.attached? %>
-    <div class="accom-img-container">
       <%= image_tag @accommodation.interior_image.service_url, class: 'accom-image-size' %>
-    </div>
   <% else %>
     <p>No Interior image for this accommodation has been added</p>
   <% end %>
@@ -74,7 +86,7 @@
 <p class="center-text"><%= @accommodation.description %></p>
 <h1 class="center-text">Request a stay here</h1>
 <% if @accommodation.host.id == current_user.id %>
-<p>
-<%= link_to 'Edit Accommodation', edit_accommodation_path(@accommodation) %>
+<p class="center-text">
+<%= link_to 'Edit Your Accommodation', edit_accommodation_path(@accommodation) %>
 </p>
 <% end %>

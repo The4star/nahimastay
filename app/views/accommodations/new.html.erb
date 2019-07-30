@@ -1,5 +1,11 @@
-<h1>New Accommodation</h1>
+<div class="hero-container-edit-page">'
+  <%= image_tag("/img/editprofile.jpg",  alt: "beers on the couch", class: "hero-image") %>
+  <div class="devise">
 
-<%= render 'form', accommodation: @accommodation %>
+    <h1>New Accommodation</h1>
 
-<%= link_to 'Back', accommodations_path %>
+    <%= render 'form', accommodation: @accommodation %>
+
+    <%= link_to 'Back', accommodations_path %>
+  </div>
+</div>

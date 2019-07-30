@@ -11,9 +11,7 @@
     <% end %>
     
     <% if @profile.uploaded_image.attached? %>
-      <div class="profile-img-container">
       <%= image_tag @profile.uploaded_image.service_url, class: 'image-size' %>
-      </div>
     <% else %>
       <p>No image for this profile</p>
     <% end %>

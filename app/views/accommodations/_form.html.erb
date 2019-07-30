@@ -13,37 +13,37 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'devise-field' %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="valign">
+    <%= form.label :description, class: 'text-field-label' %>
+    <%= form.text_area :description, class: 'devise-field' %>
   </div>
 
   <div class="field">
   <%= form.label :city %>
-  <%= form.select :city, options_for_select(city_select())%>
+    <%= form.select :city, options_for_select(city_select()), class: 'devise-field'%>
   </div>
 
   <div class="field">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class: 'devise-field' %>
   </div>
 
   <div class="field">
     <%= form.label :available_start_date %>
-    <%= form.datetime_select :available_start_date %>
+    <%= form.date_select :available_start_date, order: [:day, :month, :year] %>
   </div>
 
   <div class="field">
     <%= form.label :available_end_date %>
-    <%= form.datetime_select :available_end_date %>
+    <%= form.date_select :available_end_date, order: [:day, :month, :year], class: 'devise-field' %>
   </div>
 
   <div class="field">
   <%= form.label :accomtype_id %>
-  <%= form.select :accomtype_id, options_for_select(accomtype_select())%>
+  <%= form.select :accomtype_id, options_for_select(accomtype_select()), class: 'devise-field'%>
   </div>
 
   <div class="field">
@@ -59,6 +59,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'devise-button-update-accom' %>
   </div>
 <% end %>

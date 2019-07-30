@@ -1,6 +1,13 @@
-<h1>Editing Accommodation</h1>
+<div class="hero-container-edit-page">'
+  <%= image_tag("/img/editprofile.jpg",  alt: "beers on the couch", class: "hero-image") %>
+  <div class="devise">
+    <h1>Editing Accommodation</h1>
 
-<%= render 'form', accommodation: @accommodation %>
-
-<%= link_to 'Show', @accommodation %> |
-<%= link_to 'Back', accommodations_path %>
+    <%= render 'form', accommodation: @accommodation %>
+    <p>
+    <%= link_to 'Show', @accommodation %> |
+    <%= link_to 'Back', accommodations_path %>
+    </p>
+    
+  </div>
+</div>
