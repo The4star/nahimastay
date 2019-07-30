@@ -1,59 +1,80 @@
 <p id="notice"><%= notice %></p>
+<h1 class="center-text"><%= @accommodation.name %></h1>
+<div class="top-container">
+  <div class="left-container">
+    <p>
+      <strong>This Accommodation has been bookable since</strong>
+      <%= @accommodation.date_created.inspect %>
+    </p>
+    <p>
+      <strong>Accomtype:</strong>
+      <%= @accommodation.accomtype.name %>
+    </p>
 
+    <p>
+      <strong>Cost Per Night:</strong>
+      <%= image_tag '/img/kksym.png', class: 'kksym' %><%= @accommodation.accomtype.cost %>
+    </p>
+
+    <p>
+      <strong>Country:</strong>
+      <%= @accommodation.country %>
+    </p>
+
+    <p>
+      <strong>City:</strong>
+      <%= @accommodation.city %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= @accommodation.address %>
+    </p>
+
+    <p>
+      <strong>Host:</strong>
+      <%= @accommodation.host.profile.first_name %> <%= @accommodation.host.profile.last_name %>
+    </p>
+
+    <p>
+      <strong>Accommodation rating:</strong>
+      <%= @accommodation.accommodation_rating %>
+    </p>
+
+    <p>
+      <strong>Available start date:</strong>
+      <%= @accommodation.available_start_date.inspect %>
+    </p>
+
+    <p>
+      <strong>Available end date:</strong>
+      <%= @accommodation.available_end_date.inspect %>
+    </p>
+  </div>
+  <div class="right-container">
+    <% if @accommodation.hero_image.attached? %>
+      <div class="accom-img-container">
+        <%= image_tag @accommodation.hero_image.service_url, class: 'accom-image-size' %>
+      </div>
+    <% else %>
+      <p>No Hero image for this accommodation has been added</p>
+    <% end %>
+
+     <% if @accommodation.interior_image.attached? %>
+    <div class="accom-img-container">
+      <%= image_tag @accommodation.interior_image.service_url, class: 'accom-image-size' %>
+    </div>
+  <% else %>
+    <p>No Interior image for this accommodation has been added</p>
+  <% end %>
+  </div>
+</div>
+
+<h1 class="center-text">Description</h1>
+<p class="center-text"><%= @accommodation.description %></p>
+<h1 class="center-text">Request a stay here</h1>
+<% if @accommodation.host.id == current_user.id %>
 <p>
-  <strong>Date created:</strong>
-  <%= @accommodation.date_created %>
+<%= link_to 'Edit Accommodation', edit_accommodation_path(@accommodation) %>
 </p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @accommodation.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @accommodation.description %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @accommodation.country %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @accommodation.city %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @accommodation.address %>
-</p>
-
-<p>
-  <strong>Host:</strong>
-  <%= @accommodation.host %>
-</p>
-
-<p>
-  <strong>Accommodation rating:</strong>
-  <%= @accommodation.accommodation_rating %>
-</p>
-
-<p>
-  <strong>Available start date:</strong>
-  <%= @accommodation.available_start_date %>
-</p>
-
-<p>
-  <strong>Available end date:</strong>
-  <%= @accommodation.available_end_date %>
-</p>
-
-<p>
-  <strong>Accomtype:</strong>
-  <%= @accommodation.accomtype %>
-</p>
-
-<%= link_to 'Edit', edit_accommodation_path(@accommodation) %> |
-<%= link_to 'Back', accommodations_path %>
+<% end %>
