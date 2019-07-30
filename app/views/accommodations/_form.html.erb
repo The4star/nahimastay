@@ -46,6 +46,18 @@
   <%= form.select :accomtype_id, options_for_select(accomtype_select())%>
   </div>
 
+  <div class="field">
+    <%= form.label :hero_image, 'Hero exterior Image' %>
+    <%= form.file_field :hero_image %>
+    <p id="best-results">(For best results image should be larger than 400 x 400 pixels) </p>
+  </div>
+
+  <div class="field">
+    <%= form.label :interior_image, 'Interior Image' %>
+    <%= form.file_field :interior_image %>
+    <p id="best-results">(For best results image should be larger than 400 x 400 pixels) </p>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
