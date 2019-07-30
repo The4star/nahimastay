@@ -15,6 +15,7 @@ class AccommodationsController < ApplicationController
   # GET /accommodations/new
   def new
     @accommodation = Accommodation.new
+    @host = params[:profile_id]
   end
 
   # GET /accommodations/1/edits
