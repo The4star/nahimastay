@@ -4,7 +4,11 @@ class AccommodationsController < ApplicationController
   # GET /accommodations
   # GET /accommodations.json
   def index
-    @accommodations = Accommodation.all
+    if params[:search].present?
+      @accommodations = Accommodation.near(params[:search], 50, :order => :distance)
+    else
+      @accommodations = Accommodation.all
+    end
   end
 
   # GET /accommodations/1
