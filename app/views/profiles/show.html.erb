@@ -79,7 +79,7 @@
       </div>
     <% else %>
        <div class="prof-button-flex">
-        <%= button_to "Add Accommodation", new_accommodation_path, class: "stay-accom-button" %>
+        <%= button_to "Add Accommodation", new_accommodation_path(profile_id: @profile.id), method: :get, class: "stay-accom-button" %>
       </div>
     <% end %>
      
