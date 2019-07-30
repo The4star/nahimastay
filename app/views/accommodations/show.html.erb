@@ -9,7 +9,7 @@
   <div class="left-container">
     <p>
       <strong>This Accommodation has been bookable since</strong>
-      <%= @accommodation.date_created.inspect %>
+      <%= @accommodation.date_created.day %> <%= I18n.l(@accommodation.date_created, format: "%B") %> <%= @accommodation.date_created.year %>
     </p>
     <p>
       <strong>Accomtype:</strong>
