@@ -165,24 +165,25 @@ footer {
     vertical-align: middle;
 }
 
+.valign{
+    .text-field-label {
+        vertical-align: middle;
+    }
+    .devise-field {
+        vertical-align: middle;
+    }
+}
+
 .kksym {
     width: 25px;
     height:25px;
 }
 
-.thumb-wrapper {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 100px;
-    object-fit: cover;
-}
-
 .image-thumb {
-    width: 100%;
+    width: 50px;
     height: auto;
     border-radius: 100px;
-    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #finish-edit-text {

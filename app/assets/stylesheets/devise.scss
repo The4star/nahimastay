@@ -54,6 +54,19 @@
     margin:20px;
 }
 
+.devise-button-update-accom {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 330px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
 .devise-bad-button {
     font-family: 'Alef', sans-serif;
     color: #fafafa;
@@ -77,13 +90,4 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-}
-
-.bio{
-    .text-field-label {
-        vertical-align: middle;
-    }
-    .devise-field {
-        vertical-align: middle;
-    }
 }

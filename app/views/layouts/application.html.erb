@@ -21,9 +21,7 @@
         </ul>
         <ul>
         <% if current_user.profile.uploaded_image.attached? %>
-        <div class="thumb-wrapper">
-        <%= image_tag current_user.profile.uploaded_image.service_url, class: 'image-thumb' %>
-        </div>
+          <%= image_tag current_user.profile.uploaded_image.service_url, class: 'image-thumb' %>
         <% else %>
         <li id="finish-edit-text">Finish editing me >>></li>
         <% end %>
