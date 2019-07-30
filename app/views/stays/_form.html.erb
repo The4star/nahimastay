@@ -12,38 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :accommodation_id %>
-    <%= form.text_field :accommodation_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
+    <%= form.date_select :start_date, order: [:day, :month, :year] %>
   </div>
 
   <div class="field">
     <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :guest_id %>
-    <%= form.text_field :guest_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :confirmed %>
-    <%= form.check_box :confirmed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rejected %>
-    <%= form.check_box :rejected %>
+    <%= form.date_select :end_date, order: [:day, :month, :year] %>
   </div>
 
   <div class="actions">
