@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+<div class="profile-wrapper">
+  <div class="profile-left">
+    <% if @profile.first_name && @profile.last_name %>
+      <h1 class="center-text">
+        <strong> <%= @profile.first_name %> <%= @profile.last_name%>'s Profile</strong>
+      </h1>
+      <p>
+      <strong>member since: <%= @profile.created_at.day %> <%= I18n.l(@profile.created_at, format: "%B") %> <%= @profile.created_at.year %></strong>
+      </p>
+    <% else %>
+      <p class="center-text"> <strong>This User is yet to complete their profile, check back later for more information.</strong></p>
+    <% end %>
+    
+    <% if @profile.uploaded_image.attached? %>
+      <%= image_tag @profile.uploaded_image.service_url, class: 'image-size' %>
+    <% else %>
+      <p>No image has been added to this profile</p>
+    <% end %>
+
+      <p>
+      <strong>Name:</strong>
+      <% if @profile.first_name && @profile.last_name %>
+        <%= @profile.first_name %> <%= @profile.last_name %></p>
+      <% else %>
+       <p>User is yet to add a name to their profile</p>
+      <% end %>
+    <p>
+      <strong>Bio:</strong>
+      <% if @profile.bio %>
+        <%= @profile.bio %></p>
+      <% else %>
+       User is yet to add a bio to their profile</p>
+      <% end %>
+
+    <p>
+      <strong>Host rating:</strong>
+      <% if @profile.host_rating %>
+        <%= @profile.host_rating %></p>
+      <% else %>
+        No rating recieved yet</p>
+      <% end %>
+
+    <p>
+      <strong>Guest rating:</strong>
+      <% if @profile.guest_rating %>
+        <%= @profile.guest_rating %>
+      <% else %>
+        No rating recieved yet</p>
+      <% end %>
+
+  </div>
+  <div class="profile-right">
+    <div class="accommodation-section">
+    <% if @profile.user.accommodation %>
+      <p><strong><%= @profile.first_name %>'s Accommodation: <%= @profile.user.accommodation.name %></strong></p>
+      <% if @profile.user.accommodation.hero_image.attached? %>
+        <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
+      <% end %>
+      <div class="prof-button-flex">
+        <%= button_to "View Accommodation", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
+      </div>
+    <% else %>
+       <div class="prof-button-flex">
+        <p>User does not have accommodation added yet</p>
+      </div>
+    <% end %>
+     
+    </div>
+    <div class="guest-section">
+        <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>
+        <%= button_to "View Guest Reviews", guest_stays_path(guest_id: @profile.user.id ), method: :get, class: "stay-profile-button" %>
+    </div>
+  </div>
+</div>
