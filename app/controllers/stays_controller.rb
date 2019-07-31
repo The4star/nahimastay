@@ -45,9 +45,9 @@ class StaysController < ApplicationController
     @stay.created_at = Time.now
     @stay.confirmed = false
     @stay.rejected = false
-
+  
     respond_to do |format|
-      if @stay.save
+      if @stay.save!
         format.html { redirect_to @stay, notice: "Stay was successfully created." }
         format.json { render :show, status: :created, location: @stay }
       else
