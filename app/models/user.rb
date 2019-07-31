@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def create_profile
-    self.profile = Profile.new
+    self.profile = Profile.create(karma_coins: 0, host_rating:0, guest_rating:0)
   end
 
   # def create_accommodation

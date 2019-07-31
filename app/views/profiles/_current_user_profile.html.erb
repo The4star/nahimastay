@@ -77,6 +77,8 @@
       <p><strong><%= @profile.first_name %>'s Accommodation: <%= @profile.user.accommodation.name %></strong></p>
       <% if @profile.user.accommodation.hero_image.attached? %>
         <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
+      <% else %>
+        <p>No Image has been provided for this Accommodation</p>
       <% end %>
       <div class="prof-button-flex">
         <%= button_to "View Stays", accommodation_stays_path(accommodation_id: @profile.user.accommodation.id), method: :get, class: "accom-stay-button" %><%= button_to "View Accommodation", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
