@@ -6,6 +6,7 @@ gem "pundit"
 gem "stripe"
 gem "aws-sdk-s3", require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'geocoder'
 gem "rails", "~> 5.2.3"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"

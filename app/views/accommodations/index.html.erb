@@ -1,49 +1,42 @@
 <p id="notice"><%= notice %></p>
+<div class="results-wrapper">
+<p><%= render '/shared/searchform', class: 'searchform' %></p>
 
-<h1>Accommodations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Date created</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Country</th>
-      <th>City</th>
-      <th>Address</th>
-      <th>Host</th>
-      <th>Accommodation rating</th>
-      <th>Available start date</th>
-      <th>Available end date</th>
-      <th>Accomtype</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @accommodations.each do |accommodation| %>
-      <tr>
-        <td><%= accommodation.date_created %></td>
-        <td><%= accommodation.name %></td>
-        <td><%= accommodation.description %></td>
-        <td><%= accommodation.country %></td>
-        <td><%= accommodation.city %></td>
-        <td><%= accommodation.address %></td>
-        <td><%= accommodation.host %></td>
-        <td><%= accommodation.accommodation_rating %></td>
-        <td><%= accommodation.available_start_date %></td>
-        <td><%= accommodation.available_end_date %></td>
-        <td><%= accommodation.accomtype %></td>
-        <td><%= link_to 'Show', accommodation %></td>
-        <td><%= link_to 'Edit', edit_accommodation_path(accommodation) %></td>
-        <td><%= link_to 'Destroy', accommodation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <div class="accommodation-wrapper">
+            <div class="accom-img-container">
+                <% if accommodation.hero_image.attached? %>
+                    <%= image_tag accommodation.hero_image.service_url, class: 'accom-img-thumb' %>
+                <% else %>
+                    <p>No Image has been provided for this Accommodation</p>
+                <% end %>
+            </div>
+        <div class="accom-para-flex">
+            <h3>
+                <%= accommodation.name %>
+            </h3>
+            
+            <p>
+                <strong>Bed type:</strong>  <%= accommodation.accomtype.name %>
+                <strong>Cost:</strong> <%= image_tag '/img/kksym.png', class: 'kksym' %> <%= accommodation.accomtype.cost %>
+            </p>
+            
+            <p>
+                <%= accommodation.description %>
+            </p>
+            <p>
+                <strong>Address:</strong> <%= accommodation.address %>
+                <strong>City: </strong><%= accommodation.city %>
+                <strong>Country:<%= accommodation.country %></strong> 
+            </p>
+            
+            <p>
+               <strong>Rating: </strong> <%= accommodation.accommodation_rating %>
+               <strong>Available from: </strong>  <%= accommodation.available_start_date.day %> <%= I18n.l(accommodation.available_start_date, format: "%B") %> <%= accommodation.available_start_date.year %>
+               <strong>Available Until:</strong>  <%= accommodation.available_end_date.day %> <%= I18n.l(accommodation.available_start_date, format: "%B") %> <%= accommodation.available_end_date.year %>
+            </p>
+            <%= button_to "View Accommodation", accommodation, method: :get, class: "view-accom-button" %>
+        </div>
+     </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
- <%= link_to 'New Accommodation', new_accommodation_path %>
-
-
+</div>
