@@ -1,6 +1,6 @@
 <h1>Editing Stay</h1>
 
-<%= render 'form', stay: @stay %>
+<%= render partial: 'form', locals: { stay: @stay, accommodation_id: params[:accommodation_id] }%>
 
 <%= link_to 'Show', @stay %> |
 <%= link_to 'Back', stays_path %>
