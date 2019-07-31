@@ -1,32 +1,48 @@
-diff --git a/app/models/profile.rb b/app/models/profile.rb
-index 645cd0b..e308684 100644
---- a/app/models/profile.rb
-+++ b/app/models/profile.rb
-@@ -1,4 +1,6 @@
- class Profile < ApplicationRecord
-   belongs_to :user
-+  belongs_to :host, :class_name => 'User'
-+  belongs_to :guest, :class_name => 'User'
-   has_one_attached :uploaded_image
- end
-diff --git a/app/views/profiles/show.html.erb b/app/views/profiles/show.html.erb
-index 74dc258..76f243e 100644
---- a/app/views/profiles/show.html.erb
-+++ b/app/views/profiles/show.html.erb
-@@ -69,9 +69,16 @@
-   </div>
-   <div class="profile-right">
-     <div class="accommodation-section">
-+    <% if @profile.host.accommodation %>
-       <div class="prof-button-flex">
-         <%= button_to "View Stays", stays_path, class: "accom-stay-button" %><%= button_to "View Accommodation", stays_path, class: "stay-accom-button" %>
-       </div>
-+    <% else %>
-+       <div class="prof-button-flex">
-+        <%= button_to "Add Accommodation", new_accommodation_path, class: "accom-stay-button" %>
-+      </div>
-+    <% end %>
-+     
-     </div>
-     <div class="guest-section">
-         <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>
+diff --git a/app/views/shared/_searchform.html.erb b/app/views/shared/_searchform.html.erb
+index a227f5e..57e5abb 100644
+--- a/app/views/shared/_searchform.html.erb
++++ b/app/views/shared/_searchform.html.erb
+@@ -1,4 +1,4 @@
+ <%= form_tag(accommodations_path, method: :get) do %>
+-    <%= text_field_tag :city, params[:city], value: "Enter a city here", class: 'search-field' %>
++    <%= text_field_tag :search, params[:search], value: "Enter a city here", class: 'search-field' %>
+     <%= submit_tag 'Search', class: 'search-submit' %>
+ <% end %>
+\ No newline at end of file
+diff --git a/file b/file
+index 44f2f9a..e69de29 100644
+--- a/file
++++ b/file
+@@ -1,32 +0,0 @@
+-diff --git a/app/models/profile.rb b/app/models/profile.rb
+-index 645cd0b..e308684 100644
+---- a/app/models/profile.rb
+-+++ b/app/models/profile.rb
+-@@ -1,4 +1,6 @@
+- class Profile < ApplicationRecord
+-   belongs_to :user
+-+  belongs_to :host, :class_name => 'User'
+-+  belongs_to :guest, :class_name => 'User'
+-   has_one_attached :uploaded_image
+- end
+-diff --git a/app/views/profiles/show.html.erb b/app/views/profiles/show.html.erb
+-index 74dc258..76f243e 100644
+---- a/app/views/profiles/show.html.erb
+-+++ b/app/views/profiles/show.html.erb
+-@@ -69,9 +69,16 @@
+-   </div>
+-   <div class="profile-right">
+-     <div class="accommodation-section">
+-+    <% if @profile.host.accommodation %>
+-       <div class="prof-button-flex">
+-         <%= button_to "View Stays", stays_path, class: "accom-stay-button" %><%= button_to "View Accommodation", stays_path, class: "stay-accom-button" %>
+-       </div>
+-+    <% else %>
+-+       <div class="prof-button-flex">
+-+        <%= button_to "Add Accommodation", new_accommodation_path, class: "accom-stay-button" %>
+-+      </div>
+-+    <% end %>
+-+     
+-     </div>
+-     <div class="guest-section">
+-         <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>

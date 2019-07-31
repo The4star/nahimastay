@@ -74,22 +74,32 @@
   <div class="profile-right">
     <div class="accommodation-section">
     <% if @profile.user.accommodation %>
-      <p><strong><%= @profile.first_name %>'s Accommodation: <%= @profile.user.accommodation.name %></strong></p>
+      <% if @profile.first_name && @profile.last_name %>
+        <p><strong><%= @profile.first_name %>'s Accommodation: <%= @profile.user.accommodation.name %></strong></p>
+      <% else %>
+        <p><strong>Accommodation: <%= @profile.user.accommodation.name %></strong></p>
+      <% end %>
       <% if @profile.user.accommodation.hero_image.attached? %>
         <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
+      <% else %>
+        <p>No Image has been provided for this Accommodation</p>
       <% end %>
       <div class="prof-button-flex">
         <%= button_to "View Stays", accommodation_stays_path(accommodation_id: @profile.user.accommodation.id), method: :get, class: "accom-stay-button" %><%= button_to "View Accommodation", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
       </div>
     <% else %>
        <div class="prof-button-flex">
-        <%= link_to "Add Accommodation", new_accommodation_path(:profile_id => @profile.user.id), class: "add-accom-button" %>
+        <%= button_to "Add Accommodation", new_accommodation_path, params: {:profile_id => @profile.user.id}, method: :get, class: "add-accom-button" %>
       </div>
     <% end %>
      
     </div>
     <div class="guest-section">
+      <% if @profile.first_name && @profile.last_name %>
         <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>
+      <% else %>
+        <p><strong>Guest Profile</strong></p>
+      <% end %>
         <%= button_to "View Stays", guest_stays_path(guest_id: @profile.user.id ), method: :get, class: "stay-profile-button" %>
     </div>
   </div>

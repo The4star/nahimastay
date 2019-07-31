@@ -15,7 +15,6 @@ class StaysController < ApplicationController
     else
       @stays = Stay.all
     end
-    
   end
 
   def guest
@@ -41,11 +40,19 @@ class StaysController < ApplicationController
   # POST /stays
   # POST /stays.json
   def create
+    params[:accom_id] = 1
     @stay = Stay.new(stay_params)
+    @stay.guest = User.find(current_user.id)
+    @stay.created_at = Time.now
+    @stay.confirmed = false
+    @stay.rejected = false
+
+    @stay.accommodation = Accommodation.find(params[:accom_id])
+    print @stay.accommodation.name
 
     respond_to do |format|
       if @stay.save
-        format.html { redirect_to @stay, notice: 'Stay was successfully created.' }
+        format.html { redirect_to @stay, notice: "Stay was successfully created." }
         format.json { render :show, status: :created, location: @stay }
       else
         format.html { render :new }
@@ -59,7 +66,7 @@ class StaysController < ApplicationController
   def update
     respond_to do |format|
       if @stay.update(stay_params)
-        format.html { redirect_to @stay, notice: 'Stay was successfully updated.' }
+        format.html { redirect_to @stay, notice: "Stay was successfully updated." }
         format.json { render :show, status: :ok, location: @stay }
       else
         format.html { render :edit }
@@ -69,13 +76,15 @@ class StaysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stay
-      @stay = Stay.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def stay_params
-      params.require(:stay).permit(:accommodation_id, :start_date, :end_date, :guest_id, :created_at, :confirmed, :rejected)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_stay
+    print params
+    @stay = Stay.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def stay_params
+    params.require(:stay).permit(:accommodation_id, :start_date, :end_date, :created_at, :accommodation_name)
+  end
 end

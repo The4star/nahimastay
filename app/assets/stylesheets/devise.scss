@@ -39,6 +39,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .devise-button-update {
@@ -52,6 +53,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .devise-button-update-accom {
@@ -65,6 +67,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .devise-bad-button {
@@ -78,12 +81,13 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .hero-container-edit-page {
     position: relative;
     width: 100%;
-    max-height: 1200px;
+    max-height: 1500px;
     overflow: hidden;
     display: flex;
     flex-direction: row;

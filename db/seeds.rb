@@ -25,22 +25,27 @@ accommodation_types = [
     {
         name: "Single Bed Private Room",
         description: "Single Bed in a private room",
-        cost: 50
+        cost: 200
     },
     {
         name: "Double Bed Private Room",
         description: "Double Bed in a private room",
-        cost: 50
+        cost: 225
     },
     {
         name: "Single Bed Shared Room",
         description: "Single Bed in a room with others",
-        cost: 50
+        cost: 150
     },
     {
         name: "Double Bed Shared Room",
         description: "Single Bed in a room with others",
-        cost: 50
+        cost: 175
+    },
+    {
+        name: "Fold Cut Couch",
+        description: "Fold out couch in a room with others",
+        cost: 100
     },
     {
         name: "Sofa",
@@ -113,9 +118,9 @@ accommodations = [
         date_created: Time.now,
         name: "Rancho Relaxo",
         description: "Very relaxing",
-        country: "",
-        city: "Melbourne, Australia",
-        address: "123 Fake Street",
+        country: "Australia",
+        city: "Melbourne",
+        address: "8 Boondara Grove",
         host_id: user_with_profile.id,
         accommodation_rating: 0,
         available_start_date: Time.now,
@@ -126,9 +131,9 @@ accommodations = [
         date_created: Time.now,
         name: "House of Pain",
         description: "Very painful",
-        country: "",
-        city: "Sydney, Australia",
-        address: "235 Fake Street",
+        country: "Australia",
+        city: "Sydney",
+        address: "99 York St",
         host_id: user_with_accom.id,
         accommodation_rating: 0,
         available_start_date: Time.now,
@@ -139,9 +144,9 @@ accommodations = [
         date_created: Time.now,
         name: "House of fun",
         description: "Very fun",
-        country: "",
-        city: "London, UK",
-        address: "237 Real Street",
+        country: "United Kingdom",
+        city: "London",
+        address: "32 Cumming Street",
         host_id: admin_user.id,
         accommodation_rating: 0,
         available_start_date: Time.now,
