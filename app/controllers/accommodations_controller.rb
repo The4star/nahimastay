@@ -14,6 +14,7 @@ class AccommodationsController < ApplicationController
   # GET /accommodations/1
   # GET /accommodations/1.json
   def show
+    @stay = Stay.new
   end
 
   # GET /accommodations/new

@@ -13,15 +13,14 @@
 
   <div class="field">
     <%= form.label :start_date %>
-    <%= form.date_select :start_date, order: [:day, :month, :year] %>
+    <%= form.date_select :start_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
   </div>
 
   <div class="field">
     <%= form.label :end_date %>
-    <%= form.date_select :end_date, order: [:day, :month, :year] %>
+    <%= form.date_select :end_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Request Stay!", class: 'stay-button' %>
-  </div>
+  <input type="hidden" value="<%= @accommodation.id %>" name="accommodation_id">
+  
+  <%= form.submit "Request Stay!", class: 'stay-button' %>
 <% end %>
