@@ -1,36 +1,20 @@
 <p id="notice"><%= notice %></p>
 <h1>Stays for <%= @title %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Accommodation</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>User</th>
-      <th>Created at</th>
-      <th>Confirmed</th>
-      <th>Rejected</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+  
     <% @stays.each do |stay| %>
-      <tr>
-        <td><%= stay.accommodation %></td>
-        <td><%= stay.start_date %></td>
-        <td><%= stay.end_date %></td>
-        <td><%= stay.guest %></td>
-        <td><%= stay.created_at %></td>
-        <td><%= stay.confirmed %></td>
-        <td><%= stay.rejected %></td>
-        <td><%= link_to 'Show', stay %></td>
-        <td><%= link_to 'Edit', edit_stay_path(stay) %></td>
-      </tr>
+  
+        <%= stay.accommodation %>
+        <%= stay.start_date %>
+        <%= stay.end_date %>
+        <%= stay.guest %>
+        <%= stay.created_at %>
+        <%= stay.confirmed %>
+        <%= stay.rejected %>
+        <%= link_to 'Show', stay %>
+        <%= link_to 'Edit', edit_stay_path(stay) %>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
