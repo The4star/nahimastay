@@ -71,7 +71,6 @@ class StaysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stay
-      print params
       @stay = Stay.find(params[:id])
     end
 
