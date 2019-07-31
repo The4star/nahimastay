@@ -7,8 +7,45 @@
 
 .accommodation-wrapper {
     width:80%;
+    max-height:600px;
     border: 1px solid black;
     margin: 20px;
     border-radius: 10px;
-    // display:flex
+    display:flex
+}
+
+.accom-img-container {
+    width: 400px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.accom-img-thumb{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.accom-para-flex {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.view-accom-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 330px;
+    height: 46px;
+    text-align: center;
+    background: #2d936c;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+    cursor: pointer;
 }
