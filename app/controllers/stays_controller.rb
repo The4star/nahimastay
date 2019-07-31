@@ -40,15 +40,11 @@ class StaysController < ApplicationController
   # POST /stays
   # POST /stays.json
   def create
-    params[:accom_id] = 1
     @stay = Stay.new(stay_params)
     @stay.guest = User.find(current_user.id)
     @stay.created_at = Time.now
     @stay.confirmed = false
     @stay.rejected = false
-
-    @stay.accommodation = Accommodation.find(params[:accom_id])
-    print @stay.accommodation.name
 
     respond_to do |format|
       if @stay.save

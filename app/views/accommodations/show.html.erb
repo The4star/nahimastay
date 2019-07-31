@@ -81,11 +81,13 @@
 
 <h1 class="center-text">Description</h1>
 <p class="center-text"><%= @accommodation.description %></p>
-<% if @accommodation.host.id != current_user.id %>
-  <p class="center-text">
-    <%= link_to "Request to stay at #{@accommodation.name}", new_accommodation_stay_path(@accommodation.id) %>
-  </p>
-<% end %>
+
+<div class="stay-flex">
+  <% if @accommodation.host.id != current_user.id %>
+    <h1>Request to stay at this Property</h1>
+    <%= render '/stays/form', stay: @stay %>
+  <% end %>
+</div>
 
 <% if @accommodation.host.id == current_user.id %>
 <p class="center-text">
