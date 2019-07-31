@@ -1,26 +1,26 @@
-<%= form_with(model: stay, local: true) do |form| %>
-  <% if stay.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(stay.errors.count, "error") %> prohibited this stay from being saved:</h2>
+  <%= form_with(model: stay, local: true) do |form| %>
+    <% if stay.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(stay.errors.count, "error") %> prohibited this stay from being saved:</h2>
 
-      <ul>
-      <% stay.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% stay.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :start_date %>
+      <%= form.date_select :start_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
     </div>
+
+    <div class="field">
+      <%= form.label :end_date %>
+      <%= form.date_select :end_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
+    </div>
+    <%= form.hidden_field :accommodation_id, value: accommodation_id %>
+    
+    <%= form.submit "Request Stay!", class: 'stay-button' %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
-  </div>
-  <input type="hidden" value="<%= @accommodation.id %>" name="accommodation_id">
-  
-  <%= form.submit "Request Stay!", class: 'stay-button' %>
-<% end %>

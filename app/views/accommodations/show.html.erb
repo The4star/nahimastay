@@ -11,58 +11,56 @@
       <strong>This Accommodation has been bookable since</strong>
       <%= @accommodation.date_created.day %> <%= I18n.l(@accommodation.date_created, format: "%B") %> <%= @accommodation.date_created.year %>
     </p>
-    <p>
-      <strong>Accomtype:</strong>
-      <%= @accommodation.accomtype.name %>
-    </p>
+      <p>
+        <strong>Accomtype:</strong>
+        <%= @accommodation.accomtype.name %>
+      </p>
 
-    <p>
-      <strong>Cost Per Night:</strong>
-      <%= image_tag '/img/kksym.png', class: 'kksym' %><%= @accommodation.accomtype.cost %>
-    </p>
+      <p>
+        <strong>Cost Per Night:</strong>
+        <%= image_tag '/img/kksym.png', class: 'kksym' %><%= @accommodation.accomtype.cost %>
+      </p>
 
-    <p>
-      <strong>Address:</strong>
-      <%= @accommodation.address %>
-      <strong>City:</strong>
-      <%= @accommodation.city %>
-      <strong>Country:</strong>
-      <%= @accommodation.country %>
-    </p>
+      <p>
+        <strong>Address:</strong>
+        <%= @accommodation.address %>
+        <strong>City:</strong>
+        <%= @accommodation.city %>
+        <strong>Country:</strong>
+        <%= @accommodation.country %>
+      </p>
 
-    <p>
-      <strong>Accommodation rating:</strong>
-      <%= @accommodation.accommodation_rating %>
-    </p>
+      <p>
+        <strong>Accommodation rating:</strong>
+        <%= @accommodation.accommodation_rating %>
+      </p>
 
-    <p>
-      <strong>Available start date:</strong>
-      <%= @accommodation.available_start_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_start_date.year %>
-    </p>
+      <p>
+        <strong>Available start date:</strong>
+        <%= @accommodation.available_start_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_start_date.year %>
+      </p>
+      <p>
+        <strong>Available end date:</strong>
+        <%= @accommodation.available_end_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_end_date.year %>
+      </p>
 
-    <p>
-      <strong>Available end date:</strong>
-      <%= @accommodation.available_end_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_end_date.year %>
-    </p>
 
-    <div class="host-container">
-      <% if @accommodation.host.profile.uploaded_image.attached? %>
-        <%= image_tag @accommodation.host.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
-        <div id="host-container-text">
-      <% end %>
-      <% if @accommodation.host.id == current_user.id %>
-        <div id="host-container-text">
-            <p><strong><%= link_to "You", profile_path(current_user.id) %> are the host of this property</strong></p>
-            <%= button_to "View Your Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
-        </div>
-      <% else  %>
-        <div id="host-container-text">
-            <p><strong><%= link_to "#{@accommodation.host.profile.first_name} #{@accommodation.host.profile.last_name}", profile_path(@accommodation.host.id) %>  is the host of this property</strong></p>
-            <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
-        </div>
-      <% end %>
-    </div>
-
+      <div class="host-container">
+        <% if @accommodation.host.profile.uploaded_image.attached? %>
+          <%= image_tag @accommodation.host.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
+        <% end %>
+        <% if @accommodation.host.id == current_user.id %>
+          <div id="host-container-text">
+              <p><strong><%= link_to "You", profile_path(current_user.id) %> are the host of this property</strong></p>
+              <%= button_to "View Your Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
+          </div>
+        <% else  %>
+          <div id="host-container-text">
+              <p><strong><%= link_to "#{@accommodation.host.profile.first_name} #{@accommodation.host.profile.last_name}", profile_path(@accommodation.host.id) %>  is the host of this property</strong></p>
+              <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
+          </div>
+        <% end %>
+      </div>
   </div>
   <div class="right-container">
     <% if @accommodation.hero_image.attached? %>
@@ -82,12 +80,12 @@
 <h1 class="center-text">Description</h1>
 <p class="center-text"><%= @accommodation.description %></p>
 
-<div class="stay-flex">
   <% if @accommodation.host.id != current_user.id %>
-    <h1>Request to stay at this Property</h1>
-    <%= render '/stays/form', stay: @stay %>
+    <div class="stay-flex">
+      <h1>Request to stay at this Property</h1>
+      <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id} %>
+    </div>
   <% end %>
-</div>
 
 <% if @accommodation.host.id == current_user.id %>
 <p class="center-text">
