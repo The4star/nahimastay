@@ -28,7 +28,7 @@
 .accommodation-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin: 20px;
     width: 90%;
@@ -62,8 +62,8 @@
 .stay-profile-button {
     font-family: 'Alef', sans-serif;
     color: #fafafa;
-    font-size: 30px;
-    width: 180px;
+    font-size: 20px;
+    width: 300px;
     height: 46px;
     text-align: center;
     background: #64a6bd;
@@ -75,28 +75,28 @@
 .accom-stay-button {
     font-family: 'Alef', sans-serif;
     color: #fafafa;
-    font-size: 30px;
-    width: 180px;
+    font-size: 20px;
+    width: 300px;
     height: 46px;
     text-align: center;
     background: #826251;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    margin:20px;
+    margin: 5px;
     cursor: pointer;
 }
 
 .stay-accom-button {
     font-family: 'Alef', sans-serif;
     color: #fafafa;
-    font-size: 30px;
-    width: 330px;
+    font-size: 20px;
+    width: 230px;
     height: 46px;
     text-align: center;
     background: #826251;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    margin:20px;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -117,6 +117,8 @@
 
 .prof-button-flex {
     display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 #best-results {
@@ -129,4 +131,21 @@
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.accom-title {
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.accom-title p:first-of-type {
+    font-size: 20px;
+    color: #fafafa;
+    opacity: 0.8;
+    margin: 0px;
+}
+
+#accom-name {
+    margin: 0px;
 }

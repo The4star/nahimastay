@@ -2,7 +2,7 @@
 <h1 class="center-text"><%= @accommodation.name %></h1>
 <% if @accommodation.host.id == current_user.id %>
 <p class="center-text">
-<%= link_to 'Edit Your Accommodation', edit_accommodation_path(@accommodation) %>
+<%= link_to 'Edit Your Property Listing', edit_accommodation_path(@accommodation) %>
 </p>
 <% end %>
 <div class="top-container">
@@ -49,21 +49,17 @@
       <% if @accommodation.host.profile.uploaded_image.attached? %>
         <%= image_tag @accommodation.host.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
         <div id="host-container-text">
-          <p><strong><%= @accommodation.host.profile.first_name %> <%= @accommodation.host.profile.last_name %> is the host of this property</strong></p>
-          <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
+      <% end %>
+      <% if @accommodation.host.id == current_user.id %>
+        <div id="host-container-text">
+            <p><strong><%= link_to "You", profile_path(current_user.id) %> are the host of this property</strong></p>
+            <%= button_to "View Your Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
         </div>
-      <% else %>
-        <% if @accommodation.host.id == current_user.id %>
-          <div id="host-container-text">
-              <p><strong><%= link_to "You", profile_path(current_user.id) %> are the host of this property</strong></p>
-              <%= button_to "View Your Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
-          </div>
-        <% else  %>
-          <div id="host-container-text">
-              <p><strong><%= @accommodation.host.profile.first_name %> <%= @accommodation.host.profile.last_name %> is the host of this property</strong></p>
-              <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
-          </div>
-        <% end %>
+      <% else  %>
+        <div id="host-container-text">
+            <p><strong><%= link_to "#{@accommodation.host.profile.first_name} #{@accommodation.host.profile.last_name}", profile_path(@accommodation.host.id) %>  is the host of this property</strong></p>
+            <%= button_to "View Host Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
+        </div>
       <% end %>
     </div>
 
@@ -93,6 +89,6 @@
 
 <% if @accommodation.host.id == current_user.id %>
 <p class="center-text">
-<%= link_to 'Edit Your Accommodation', edit_accommodation_path(@accommodation) %>
+<%= link_to 'Edit Your Property Listing', edit_accommodation_path(@accommodation) %>
 </p>
 <% end %>
