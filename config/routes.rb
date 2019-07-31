@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'accommodation/:accommodation_id/stay/:id' => 'stays#show', as: 'show_accommodation_stay'
 
+  get 'accommodation/:accommodation_id/new/stay' => 'stays#new', as: 'new_accommodation_stay'
 
 
 end
