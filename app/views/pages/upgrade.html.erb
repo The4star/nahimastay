@@ -33,7 +33,9 @@
         <hr class="upgrade-hr">
         <% if current_user.role_id != 3 %>
           <p><strong>Upgrade your account today!</strong></p>
-          <p><strong>Link to pay and upgrade with Stripe goes here.</strong></p>
+          <p>       
+           <%= render "layouts/shared/stripe_form" %>
+          </p>
         <% end %>
     </div>
   </div>
