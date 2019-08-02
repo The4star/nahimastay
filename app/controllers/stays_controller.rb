@@ -26,6 +26,26 @@ class StaysController < ApplicationController
   # GET /stays/1
   # GET /stays/1.json
   def show
+    if params[:accommodation_id]
+      @accommodation = Accommodation.find(params[:accommodation_id])
+      @title = @accommodation.name
+    elsif params[:guest_id]
+      @guest = User.find(params[:guest_id]).profile
+      @title = "#{@guest.first_name} #{@guest.last_name}"
+    end
+
+    @stay_length = @stay.end_date.day - @stay.start_date.day
+    @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+
+    if params[:confirmed]
+      @stay.update(confirmed: params[:confirmed], rejected: false)
+      @stay.save!
+    elsif params[:rejected]
+      @stay.update(rejected: params[:rejected], confirmed: false)
+      @stay.save!
+    # elsif params [:cancelled]
+    #   @stay.update(cancelled: params[:cancelled])
+    end
   end
 
   # GET /stays/new
@@ -35,6 +55,7 @@ class StaysController < ApplicationController
 
   # GET /stays/1/edit
   def edit
+    @stay = Stay.find(params[:id])
   end
 
   # POST /stays
@@ -45,6 +66,7 @@ class StaysController < ApplicationController
     @stay.created_at = Time.now
     @stay.confirmed = false
     @stay.rejected = false
+
     respond_to do |format|
       if @stay.save
         format.html { redirect_to @stay, notice: "Stay was successfully created." }
@@ -80,6 +102,6 @@ class StaysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def stay_params
-    params.require(:stay).permit(:accommodation_id, :start_date, :end_date, :created_at, :accommodation_name)
+    params.require(:stay).permit(:accommodation_id, :start_date, :end_date, :created_at)
   end
 end

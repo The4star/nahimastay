@@ -35,9 +35,9 @@ class AccommodationsController < ApplicationController
     @accommodation = Accommodation.new(accommodation_params)
     @accommodation.date_created = Time.now
     @accommodation.host = User.find(params[:profile_id])
-
+    @accommodation.accommodation_rating = 0
     respond_to do |format|
-      if @accommodation.save
+      if @accommodation.save!
         format.html { redirect_to @accommodation, notice: "Accommodation was successfully created." }
         format.json { render :show, status: :created, location: @accommodation }
       else
@@ -80,6 +80,6 @@ class AccommodationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def accommodation_params
-    params.require(:accommodation).permit(:name, :description, :country, :city, :address, :host_id, :available_start_date, :available_end_date, :accomtype_id, :hero_image, :interior_image)
+    params.require(:accommodation).permit(:name, :description, :country, :city, :address, :host_id, :available_start_date, :available_end_date, :accomtype_id, :hero_image, :interior_image, :accommodation_rating)
   end
 end

@@ -6,29 +6,29 @@ class AccommodationPolicy < ApplicationPolicy
     @accommodation = accommodation
   end
 
-  def index?
-    false
-  end
+  # def index?
+  #   false
+  # end
 
-  def show?
-    false
-  end
+  # def show?
+  #   false
+  # end
 
-  def create?
-    false
-  end
+  # def create?
+  #   false
+  # end
 
-  def new?
-    false
-  end
+  # def new?
+  #   false
+  # end
 
-  def update?
-    false
-  end
+  # def update?
+  #   false
+  # end
 
-  def edit?
-    update?
-  end
+  # def edit?
+  #   update?
+  # end
 
   def destroy?
     false

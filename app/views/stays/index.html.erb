@@ -27,21 +27,29 @@
         <strong>End Date: </strong><%= stay.end_date.day %> <%= I18n.l(stay.end_date, format: "%B") %> <%= stay.end_date.year %>
         </p>
         
-        <% if stay.confirmed == false && stay.rejected == false %>
-          <p>
-            <strong>Request Status: </strong> Stay not yet approved
+           <p>
+            <strong>Request Status:
+            <% if !stay.confirmed && !stay.rejected %>
+              <span class="pending">Stay request is pending</span>
+            <% elsif stay.rejected %>
+              <span class="rejected">Stay Declined</span>
+            <% elsif stay.confirmed%>
+              <span class="confirmed">Stay Accepted</span>
+            <% end %>
+            </strong>
           </p>
-        <% elsif stay.confirmed == true && stay.rejected == false %>
-          <strong>Request Status: </strong> Stay has been approved by <%= stay.host.profile.first_name  %> <%= stay.host.profile.last_name  %>
-        <% elsif stay.confirmed == false && stay.rejected == true%>
-          <strong>Request Status: </strong> Stay has been disapproved by <%= stay.host.profile.first_name  %> <%= stay.host.profile.last_name  %>
-        <% end %>
 
         <div class="prof-button-flex">
           <% if stay.confirmed == false && stay.rejected == false %>  
-            <%= button_to 'Edit Stay', edit_stay_path(stay), method: :get, class: 'view-stay-button' %>
+            <% if params[:guest_id] %>
+              <%= button_to 'Edit Stay', edit_stay_path(stay), params: {:accommodation_id => stay.accommodation.id}, method: :get, class: 'view-stay-button' %>
+            <% end %>
           <% end %>
-          <%= button_to 'View Stay', stay, method: :get, class: 'view-stay-button' %>
+          <% if params[:accommodation_id] %>
+            <%= button_to 'View Stay', stay, params: {:accommodation_id => @accommodation.id}, method: :get, class: 'view-stay-button' %>
+          <% elsif params[:guest_id] %>
+            <%= button_to 'View Stay', stay, params: {:guest_id => @guest.id}, method: :get, class: 'view-stay-button' %>
+          <% end %>
         </div>
       </div>
     </div>

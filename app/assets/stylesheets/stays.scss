@@ -15,3 +15,67 @@
     margin:20px;
     cursor: pointer;
 }
+
+.review-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 400px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.view-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    max-width: 450px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.approve-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 220px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.reject-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 220px;
+    height: 46px;
+    text-align: center;
+    background: rgba(192, 50, 33, 0.8);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+}
+
+.pending {
+    color: rgb(207, 207, 140)
+}
+
+.confirmed {
+    color: #2d936c
+}
+
+.rejected {
+    color: rgba(192, 50, 33, 0.8)
+}

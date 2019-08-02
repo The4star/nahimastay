@@ -1,68 +1,128 @@
 <p id="notice"><%= notice %></p>
 
-<% if (current_user.id == @stay.guest.id) or (current_user.id == @stay.accommodation.host.id) %>
-  <p>
-    Your Reservation Details
-  </p>
-  <p>
-    <strong>Accommodation:</strong>
-    <%= link_to(@stay.accommodation.name, accommodation_path(@stay.accommodation)) %> 
-  </p>
+<h1 class="center-text">
+  Stay for <%= @stay.guest.profile.first_name %> <%= @stay.guest.profile.last_name %> at <%= @stay.accommodation.name %>
+</h1>
+<div class ="top-container">
+  <div class="left-container">
 
-  <p>
-    <strong>Stay start date:</strong>
-    <%= @stay.start_date %>
-  </p>
+    <p>
+      <strong>Stay Requested On:</strong>
+      <%= @stay.created_at.day %> <%= I18n.l(@stay.created_at, format: "%B") %> <%= @stay.created_at.year %>
+    </p>
 
-  <p>
-    <strong>Stay end date:</strong>
-    <%= @stay.end_date %>
-  </p>
+    <p>
+      <strong>Start date:</strong>
+      <%= @stay.start_date.day %> <%= I18n.l(@stay.start_date, format: "%B") %> <%= @stay.start_date.year %>
+    </p>
 
-  <p>
-  <strong>Guest:</strong>
-    <%= link_to(@stay.guest.profile.first_name, profile_path(@stay.guest)) %> 
-  </p>
+    <p>
+      <strong>End date:</strong>
+      <%= @stay.end_date.day %> <%= I18n.l(@stay.end_date, format: "%B") %> <%= @stay.end_date.year %>
+    </p>
 
-  <p>
-    <strong>Stay Requested On:</strong>
-    <%= @stay.created_at %>
-  </p>
+    <p>
+      <strong>Length:</strong>
+        <% if @stay_length == 1 %>
+          <%= @stay_length %> Night
+        <% else %>
+          <%= @stay_length %> Nights
+        <% end %>
+    </p>
 
-  <p>
-    <strong>Request Status:</strong>
-    <% if !@stay.confirmed && !@stay.rejected %>
-      Stay request is pending
-    <% elsif @stay.rejected %>
-      Stay Declined
-    <% elsif @stay.confirmed%>
-      Stay Accepted
+    <p>
+      <strong>Cost:</strong>
+      <%= image_tag '/img/kksym.png', class: 'kksym' %><%= @stay_cost %>
+    </p>
+
+    <div class="host-container">
+      <% if params[:accommodation_id] %>
+        <% if @stay.guest.profile.uploaded_image.attached? %>
+          <%= image_tag @stay.guest.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
+        <% end %>
+        <div class = "host-container-text">
+          <p> Your Guest is <%= link_to("#{@stay.guest.profile.first_name} #{@stay.guest.profile.last_name}", profile_path(@stay.guest)) %></p>
+          <%= button_to "View Profile", profile_path(@stay.guest), method: :get, class: 'host-button'   %>
+        </div>
+      <% elsif params[:guest_id] %>
+        <% if @stay.accommodation.host.profile.uploaded_image.attached? %>
+          <%= image_tag @stay.accommodation.host.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
+        <% end %>
+        <div class = "host-container-text">
+          <p> Your Host is <%= link_to("#{@stay.accommodation.host.profile.first_name} #{@stay.accommodation.host.profile.last_name}", profile_path(@stay.accommodation.host)) %></p>
+          <%= button_to "View Profile", profile_path(@stay.accommodation.host), method: :get, class: 'host-button'   %>
+        </div>
+      <% end %>
+    </div>
+
+    <p>
+      <strong>Request Status:
+      <% if !@stay.confirmed && !@stay.rejected %>
+        <span class="pending">Stay request is pending</span></p>
+        <div class="prof-button-flex">
+          <%= button_to "Approve Stay", stay_path(@stay), method: :get, params: {confirmed: true}, class: 'approve-button' %>
+          <%= button_to "Reject Stay", stay_path(@stay), method: :get, params: {rejected: true}, class: 'reject-button' %>
+        </div>
+      <% elsif @stay.rejected %>
+        <span class="rejected">Stay Declined</span></p>
+        <p>Had a change of Heart? <%= button_to "Reset Status", stay_path(@stay), method: :get, params: {rejected: false}, class: 'approve-button' %></p>
+      <% elsif @stay.confirmed%>
+        <span class="confirmed">Stay Accepted</span></p>
+        <p>Unable to host this stay anymore?</p><%= button_to "Reject Stay", stay_path(@stay), method: :get, params: {rejected: true}, class: 'reject-button' %>
+      <% end %>
+      </strong>
+
+    <% if @stay.end_date < Time.now %>
+      <% if current_user == @stay.guest %>
+        <% if !@stay.accommodationreview %>
+          <%= button_to 'Leave a review for this stay', new_accommodationreview_path({:stay_id => @stay.id}), method: :get, class: 'review-button' %>
+        <% end %>
+      <% elsif current_user == @stay.accommodation.host %>
+        <% if !@stay.guestreview %>
+          <%= button_to 'Leave a review for this Guest', new_guestreview_path({:stay_id => @stay.id}), method: :get, class: 'review-button' %>
+        <% end %>
+      <% end %>
     <% end %>
-  </p>
+    <div class="prof-button-flex">
+      <% if @stay.accommodationreview %>
+        <%= button_to 'View Accommodation review', accommodationreview_path(@stay), method: :get, class: 'view-button' %>
+      <% end %>
 
-<% if @stay.end_date < Time.now %>
-  <% if current_user == @stay.guest %>
-    <% path = new_accommodationreview_path({:stay_id => @stay.id}) %>
-  <% else %>
-    <% path = guestreview_path({:stay_id => @stay_id}) %>
-  <% end %>
-  <%= link_to 'Leave a review for this stay', path %> |
-<% end %>
+      <% if @stay.guestreview %>
+        <%= button_to 'View Guest review', guestreview_path(@stay), method: :get, class: 'view-button' %>
+      <% end %>
+    </div>
+    <p>
+      <% if current_user == @stay.guest %>
+        <% if !@stay.confirmed && !@stay.rejected %>
+          <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %>
+        <% end %>
+      <% end %>
 
-<% if current_user == @stay.guest %>
-  <%= link_to 'Edit', edit_stay_path(@stay) %> |
-<% end %>
-  <%= link_to 'Back', stays_path %>
+      <% if params[:accommodation_id] %>
+        <%= link_to 'Back', stays_path({accommodation_id: @accommodation.id}) %>    
+      <% elsif params[:guest_id] %>
+        <%= link_to 'Back', stays_path({guest_id: @guest.id}) %>
+      <% end %>
+    </p>
+  </div>
+  <div class="right-container">
+      <% if @stay.accommodation.hero_image.attached? %>
+        <%= image_tag @stay.accommodation.hero_image.service_url, class: 'accom-image-size' %>
+    <% else %>
+      <p>No Hero image for this accommodation has been added</p>
+    <% end %>
 
+    <%= link_to(@stay.accommodation.name, accommodation_path(@stay.accommodation)) %> 
+
+  </div>
+</div>
 <p>
   Messages:
 </p>
 <% @stay.messages.each do |message| %>
-<p>
-  <%= User.find(message.user_id).profile.first_name %> :
-  <%= message.content %>
-</p>
+  <p>
+    <%= User.find(message.user_id).profile.first_name %> :
+    <%= message.content %>
+  </p>
 <% end %>
-
-<% end %>
-
