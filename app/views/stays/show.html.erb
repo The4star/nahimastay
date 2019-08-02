@@ -59,18 +59,25 @@
       <strong>Request Status:
       <% if !@stay.confirmed && !@stay.rejected %>
         <span class="pending">Stay request is pending</span></p>
-        <div class="prof-button-flex">
-          <%= button_to "Approve Stay", stay_path(@stay), method: :get, params: {confirmed: true}, class: 'approve-button' %>
-          <%= button_to "Reject Stay", stay_path(@stay), method: :get, params: {rejected: true}, class: 'reject-button' %>
-        </div>
+        <% if current_user == @stay.accommodation.host %>
+          <div class="prof-button-flex">
+            <%= button_to "Approve Stay", stay_path(@stay), method: :get, params: {confirmed: true}, class: 'approve-button' %>
+            <%= button_to "Decline Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {rejected: true}, class: 'reject-button' %>
+          </div>
+        <% end %>
       <% elsif @stay.rejected %>
         <span class="rejected">Stay Declined</span></p>
-        <p>Had a change of Heart? <%= button_to "Reset Status", stay_path(@stay), method: :get, params: {rejected: false}, class: 'approve-button' %></p>
       <% elsif @stay.confirmed%>
         <span class="confirmed">Stay Accepted</span></p>
-        <p>Unable to host this stay anymore?</p><%= button_to "Reject Stay", stay_path(@stay), method: :get, params: {rejected: true}, class: 'reject-button' %>
+        <% if current_user == @stay.accommodation.host %>
+          <p>Unable to host this stay anymore?</p><%= button_to "Decline Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {rejected: true}, class: 'reject-button' %>
+        <% end %>
       <% end %>
       </strong>
+
+    <% if current_user == @stay.guest && @stay.confirmed%>
+          <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {cancelled: true}, class: 'reject-button' %>
+    <% end %>
 
     <% if @stay.end_date < Time.now %>
       <% if current_user == @stay.guest %>
@@ -95,7 +102,7 @@
     <p>
       <% if current_user == @stay.guest %>
         <% if !@stay.confirmed && !@stay.rejected %>
-          <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %>
+          <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %> |
         <% end %>
       <% end %>
 

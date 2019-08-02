@@ -1,6 +1,5 @@
 class StaysController < ApplicationController
   before_action :set_stay, only: [:show, :edit, :update, :destroy]
-
   # GET /stays
   # GET /stays.json
   def index
@@ -38,7 +37,12 @@ class StaysController < ApplicationController
     @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
 
     if params[:confirmed]
+      
       @stay.update(confirmed: params[:confirmed], rejected: false)
+      @stay.accommodation.host.profile.increment!(:karma_coins, @stay_cost) 
+      @stay.accommodation.host.save! 
+      @stay.guest.profile.decrement!(:karma_coins, @stay_cost) 
+      @stay.guest.profile.save!
       @stay.save!
     elsif params[:rejected]
       @stay.update(rejected: params[:rejected], confirmed: false)
