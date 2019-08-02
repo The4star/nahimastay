@@ -39,11 +39,11 @@
         <strong>Available start date:</strong>
         <%= @accommodation.available_start_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_start_date.year %>
       </p>
-
       <p>
         <strong>Available end date:</strong>
         <%= @accommodation.available_end_date.day %> <%= I18n.l(@accommodation.available_start_date, format: "%B") %> <%= @accommodation.available_end_date.year %>
       </p>
+
 
       <div class="host-container">
         <% if @accommodation.host.profile.uploaded_image.attached? %>
@@ -80,14 +80,12 @@
 <h1 class="center-text">Description</h1>
 <p class="center-text"><%= @accommodation.description %></p>
 
-
   <% if @accommodation.host.id != current_user.id %>
     <div class="stay-flex">
       <h1>Request to stay at this Property</h1>
       <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id} %>
     </div>
   <% end %>
-
 
 <% if @accommodation.host.id == current_user.id %>
 <p class="center-text">
