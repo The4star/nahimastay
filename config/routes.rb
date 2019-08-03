@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :guestreviews
   resources :accommodationreviews
+  resources :stays 
   resources :messages
-  resources :stays
   resources :accommodations
   resources :profiles
   devise_for :users
@@ -12,17 +12,8 @@ Rails.application.routes.draw do
   root to: "pages#index"
 
   get "guest/:guest_id/stays" => "stays#index", as: "guest_stays"
-
-  get "guest/:guest_id/stay/:id" => "stays#show", as: "show_guest_stay"
-
-
+  get "accommodation/:accommodation_id/stays" => "stays#index", as: "accommodation_stays"
   get "pages/about" => "pages#about", as: "about_page"
   get "pages/upgrade" => "pages#upgrade", as: "upgrade"
-
-  get 'accommodation/:accommodation_id/new/stay' => 'stays#new', as: 'new_accommodation_stay'
-
-
-  get "accommodation/:accommodation_id/stays" => "stays#index", as: "accommodation_stays"
-
-  get "accommodation/:accommodation_id/stay/:id" => "stays#show", as: "show_accommodation_stay"
+  get "stay/update-status" => "stays#update_status", as: "update_status"
 end

@@ -36,20 +36,6 @@ class StaysController < ApplicationController
     @stay_length = @stay.end_date.day - @stay.start_date.day
     @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
 
-    if params[:confirmed]
-      
-      @stay.update(confirmed: params[:confirmed], rejected: false)
-      @stay.accommodation.host.profile.increment!(:karma_coins, @stay_cost) 
-      @stay.accommodation.host.save! 
-      @stay.guest.profile.decrement!(:karma_coins, @stay_cost) 
-      @stay.guest.profile.save!
-      @stay.save!
-    elsif params[:rejected]
-      @stay.update(rejected: params[:rejected], confirmed: false)
-      @stay.save!
-    # elsif params [:cancelled]
-    #   @stay.update(cancelled: params[:cancelled])
-    end
   end
 
   # GET /stays/new
@@ -95,6 +81,30 @@ class StaysController < ApplicationController
       end
     end
   end
+
+  def update_status
+    @stay = Stay.find(params[:stay])
+    @stay_length = @stay.end_date.day - @stay.start_date.day
+    @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+    if params[:confirmed]
+      @stay.update(confirmed: params[:confirmed], rejected: false)
+      @stay.accommodation.host.profile.increment!(:karma_coins, @stay_cost) 
+      @stay.accommodation.host.save! 
+      @stay.guest.profile.decrement!(:karma_coins, @stay_cost) 
+      @stay.guest.profile.save!
+      @stay.save!
+    elsif params[:rejected]
+      @stay.update(rejected: params[:rejected], confirmed: false)
+      @stay.save!
+    elsif params[:cancelled]
+      @stay.update(cancelled: params[:cancelled], confirmed: false, rejected: true)
+      @stay.save!
+    end
+
+    redirect_to @stay
+
+  end 
+
 
   private
 

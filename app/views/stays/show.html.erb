@@ -61,22 +61,24 @@
         <span class="pending">Stay request is pending</span></p>
         <% if current_user == @stay.accommodation.host %>
           <div class="prof-button-flex">
-            <%= button_to "Approve Stay", stay_path(@stay), method: :get, params: {confirmed: true}, class: 'approve-button' %>
-            <%= button_to "Decline Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {rejected: true}, class: 'reject-button' %>
+            <%= button_to "Approve Stay", update_status_path, method: :get, params: {stay: @stay, accommodation_id: @stay.accommodation.id, confirmed: true}, class: 'approve-button' %>
+            <%= button_to "Decline Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, accommodation_id: @stay.accommodation.id, rejected: true}, class: 'reject-button' %>
           </div>
         <% end %>
-      <% elsif @stay.rejected %>
+      <% elsif @stay.rejected && !@stay.cancelled %>
         <span class="rejected">Stay Declined</span></p>
       <% elsif @stay.confirmed%>
         <span class="confirmed">Stay Accepted</span></p>
         <% if current_user == @stay.accommodation.host %>
-          <p>Unable to host this stay anymore?</p><%= button_to "Decline Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {rejected: true}, class: 'reject-button' %>
+          <p>Unable to host this stay anymore?</p><%= button_to "Decline Stay", update_status_path, method: :get, data: {accommodation_id: @stay.accommodation.id, confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, rejected: true}, class: 'reject-button' %>
         <% end %>
+      <% elsif @stay.cancelled && @stay.rejected%>
+      <span class="rejected">Stay Cancelled by Guest</span></p>
       <% end %>
       </strong>
 
     <% if current_user == @stay.guest && @stay.confirmed%>
-          <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {cancelled: true}, class: 'reject-button' %>
+          <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, guest_id: @stay.guest.id,cancelled: true}, class: 'reject-button' %>
     <% end %>
 
     <% if @stay.end_date < Time.now %>
@@ -124,12 +126,29 @@
 
   </div>
 </div>
-<p>
-  Messages:
-</p>
-<% @stay.messages.each do |message| %>
+<div class="message-container">
   <p>
-    <%= User.find(message.user_id).profile.first_name %> :
-    <%= message.content %>
+  <strong>Create a New Message</strong>
+  <% if params[:accommodation_id] %>
+    <%= render partial: '/messages/form', locals: {message: Message.new, user_id: @accommodation.host.id, accommodation_id: @accommodation.id, stay_id: @stay.id} %>
+  <% elsif params[:guest_id] %>
+    <%= render partial: '/messages/guest_form', locals: {message: Message.new, user_id: @guest.id, guest_id: @guest.id, stay_id: @stay.id} %>
+  <% end %>
+  
   </p>
-<% end %>
+  <p>
+    <strong>Messages</strong>
+  </p>
+  <div id="messages">
+    <% @stay.messages.reverse.each do |message| %>
+      <p>
+        <% if User.find(message.user_id).profile.uploaded_image.attached? %>
+          <%= image_tag User.find(message.user_id).profile.uploaded_image.service_url, class: 'image-thumb' %>
+        <% end %>
+        <%= User.find(message.user_id).profile.first_name %> :
+        <%= message.content %>
+        <%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+    <% end %>
+  </div>
+</div>
