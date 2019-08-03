@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 <h1 class="center-text"><%= @accommodation.name %></h1>
+
+<p class="center-text">
+<%= link_to "Request to Stay at this Property", "/accommodations/#{@accommodation.id}/#request" %>
+</p>
 <% if @accommodation.host.id == current_user.id %>
 <p class="center-text">
 <%= link_to 'Edit Your Property Listing', edit_accommodation_path(@accommodation) %>
@@ -82,8 +86,9 @@
 
   <% if @accommodation.host.id != current_user.id %>
     <div class="stay-flex">
-      <h1>Request to stay at this Property</h1>
-      <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id} %>
+      <h1 id="request">Request to stay at this Property</h1>
+      <p><strong>Your Karma Coin Balance:</strong> <%= image_tag '/img/kksym.png', class: 'kksym' %><%= current_user.profile.karma_coins %> </p>
+      <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id}, class: 'form-inline' %>
     </div>
   <% end %>
 

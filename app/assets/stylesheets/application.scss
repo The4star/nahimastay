@@ -7,6 +7,7 @@
 @import 'accom-results';
 @import 'stays';
 @import 'stay-results';
+@import 'messages';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -210,4 +211,26 @@ footer {
 
 .center-text {
     text-align: center;
+}
+
+.form-inline {
+    font-size: 30px;
+    font-family: 'Alef', sans-serif;
+    .field {
+    display: inline-block;
+    }
+}
+
+.message-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 240px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+    cursor: pointer;
 }

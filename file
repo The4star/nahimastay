@@ -1,48 +1,184 @@
-diff --git a/app/views/shared/_searchform.html.erb b/app/views/shared/_searchform.html.erb
-index a227f5e..57e5abb 100644
---- a/app/views/shared/_searchform.html.erb
-+++ b/app/views/shared/_searchform.html.erb
-@@ -1,4 +1,4 @@
- <%= form_tag(accommodations_path, method: :get) do %>
--    <%= text_field_tag :city, params[:city], value: "Enter a city here", class: 'search-field' %>
-+    <%= text_field_tag :search, params[:search], value: "Enter a city here", class: 'search-field' %>
-     <%= submit_tag 'Search', class: 'search-submit' %>
- <% end %>
+diff --git a/app/controllers/stays_controller.rb b/app/controllers/stays_controller.rb
+index f146378..018910a 100644
+--- a/app/controllers/stays_controller.rb
++++ b/app/controllers/stays_controller.rb
+@@ -1,6 +1,5 @@
+ class StaysController < ApplicationController
+   before_action :set_stay, only: [:show, :edit, :update, :destroy]
+-
+   # GET /stays
+   # GET /stays.json
+   def index
+@@ -38,7 +37,12 @@ class StaysController < ApplicationController
+     @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+ 
+     if params[:confirmed]
++      
+       @stay.update(confirmed: params[:confirmed], rejected: false)
++      @stay.accommodation.host.profile.increment!(:karma_coins, @stay_cost) 
++      @stay.accommodation.host.save! 
++      @stay.guest.profile.decrement!(:karma_coins, @stay_cost) 
++      @stay.guest.profile.save!
+       @stay.save!
+     elsif params[:rejected]
+       @stay.update(rejected: params[:rejected], confirmed: false)
+diff --git a/app/helpers/application_helper.rb b/app/helpers/application_helper.rb
+index 9055b48..8cbafe9 100644
+--- a/app/helpers/application_helper.rb
++++ b/app/helpers/application_helper.rb
+@@ -42,4 +42,7 @@ module ApplicationHelper
+         # raise
+         return options
+     end
++
++   
++
+ end
 \ No newline at end of file
+diff --git a/app/helpers/profiles_helper.rb b/app/helpers/profiles_helper.rb
+index 4e43050..b050170 100644
+--- a/app/helpers/profiles_helper.rb
++++ b/app/helpers/profiles_helper.rb
+@@ -1,2 +1,9 @@
+ module ProfilesHelper
++    def increase_karma(coins)
++        update_attributes(:karma_coins => karma_coins += coins)
++    end
++  
++    def decrease_karma(coins)
++        update_attributes(:karma_coins => karma_coins -= coins)
++    end
+ end
+diff --git a/app/views/profiles/_other_user_profile.html.erb b/app/views/profiles/_other_user_profile.html.erb
+index 7b967f9..8d42424 100644
+--- a/app/views/profiles/_other_user_profile.html.erb
++++ b/app/views/profiles/_other_user_profile.html.erb
+@@ -62,7 +62,7 @@
+         <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
+       <% end %>
+       <div class="prof-button-flex">
+-        <%= button_to "View Accommodation", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
++        <%= button_to "View Property Listing", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
+       </div>
+     <% else %>
+        <div class="prof-button-flex">
+diff --git a/app/views/stays/show.html.erb b/app/views/stays/show.html.erb
+index 46513c0..1be59c9 100644
+--- a/app/views/stays/show.html.erb
++++ b/app/views/stays/show.html.erb
+@@ -59,19 +59,26 @@
+       <strong>Request Status:
+       <% if !@stay.confirmed && !@stay.rejected %>
+         <span class="pending">Stay request is pending</span></p>
+-        <div class="prof-button-flex">
+-          <%= button_to "Approve Stay", stay_path(@stay), method: :get, params: {confirmed: true}, class: 'approve-button' %>
+-          <%= button_to "Reject Stay", stay_path(@stay), method: :get, params: {rejected: true}, class: 'reject-button' %>
+-        </div>
++        <% if current_user == @stay.accommodation.host %>
++          <div class="prof-button-flex">
++            <%= button_to "Approve Stay", stay_path(@stay), method: :get, params: {confirmed: true}, class: 'approve-button' %>
++            <%= button_to "Decline Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {rejected: true}, class: 'reject-button' %>
++          </div>
++        <% end %>
+       <% elsif @stay.rejected %>
+         <span class="rejected">Stay Declined</span></p>
+-        <p>Had a change of Heart? <%= button_to "Reset Status", stay_path(@stay), method: :get, params: {rejected: false}, class: 'approve-button' %></p>
+       <% elsif @stay.confirmed%>
+         <span class="confirmed">Stay Accepted</span></p>
+-        <p>Unable to host this stay anymore?</p><%= button_to "Reject Stay", stay_path(@stay), method: :get, params: {rejected: true}, class: 'reject-button' %>
++        <% if current_user == @stay.accommodation.host %>
++          <p>Unable to host this stay anymore?</p><%= button_to "Decline Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {rejected: true}, class: 'reject-button' %>
++        <% end %>
+       <% end %>
+       </strong>
+ 
++    <% if current_user == @stay.guest && @stay.confirmed%>
++          <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", stay_path(@stay), method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {cancelled: true}, class: 'reject-button' %>
++    <% end %>
++
+     <% if @stay.end_date < Time.now %>
+       <% if current_user == @stay.guest %>
+         <% if !@stay.accommodationreview %>
+@@ -95,7 +102,7 @@
+     <p>
+       <% if current_user == @stay.guest %>
+         <% if !@stay.confirmed && !@stay.rejected %>
+-          <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %>
++          <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %> |
+         <% end %>
+       <% end %>
+ 
+diff --git a/db/schema.rb b/db/schema.rb
+index e9a0980..5e39305 100644
+--- a/db/schema.rb
++++ b/db/schema.rb
+@@ -10,7 +10,7 @@
+ #
+ # It's strongly recommended that you check this file into your version control system.
+ 
+-ActiveRecord::Schema.define(version: 2019_07_30_065047) do
++ActiveRecord::Schema.define(version: 2019_08_02_233830) do
+ 
+   # These are extensions that must be enabled in order to support this database
+   enable_extension "plpgsql"
+@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_065047) do
+     t.boolean "confirmed"
+     t.boolean "rejected"
+     t.datetime "updated_at", null: false
++    t.boolean "cancelled"
+     t.index ["accommodation_id"], name: "index_stays_on_accommodation_id"
+     t.index ["guest_id"], name: "index_stays_on_guest_id"
+   end
 diff --git a/file b/file
-index 44f2f9a..e69de29 100644
+index 1a85e0f..588249d 100644
 --- a/file
 +++ b/file
-@@ -1,32 +0,0 @@
--diff --git a/app/models/profile.rb b/app/models/profile.rb
--index 645cd0b..e308684 100644
----- a/app/models/profile.rb
--+++ b/app/models/profile.rb
--@@ -1,4 +1,6 @@
-- class Profile < ApplicationRecord
--   belongs_to :user
--+  belongs_to :host, :class_name => 'User'
--+  belongs_to :guest, :class_name => 'User'
--   has_one_attached :uploaded_image
-- end
--diff --git a/app/views/profiles/show.html.erb b/app/views/profiles/show.html.erb
--index 74dc258..76f243e 100644
----- a/app/views/profiles/show.html.erb
--+++ b/app/views/profiles/show.html.erb
--@@ -69,9 +69,16 @@
--   </div>
--   <div class="profile-right">
--     <div class="accommodation-section">
--+    <% if @profile.host.accommodation %>
--       <div class="prof-button-flex">
--         <%= button_to "View Stays", stays_path, class: "accom-stay-button" %><%= button_to "View Accommodation", stays_path, class: "stay-accom-button" %>
--       </div>
--+    <% else %>
--+       <div class="prof-button-flex">
--+        <%= button_to "Add Accommodation", new_accommodation_path, class: "accom-stay-button" %>
--+      </div>
--+    <% end %>
--+     
--     </div>
--     <div class="guest-section">
--         <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>
+@@ -1,48 +0,0 @@
+-diff --git a/app/views/shared/_searchform.html.erb b/app/views/shared/_searchform.html.erb
+-index a227f5e..57e5abb 100644
+---- a/app/views/shared/_searchform.html.erb
+-+++ b/app/views/shared/_searchform.html.erb
+-@@ -1,4 +1,4 @@
+- <%= form_tag(accommodations_path, method: :get) do %>
+--    <%= text_field_tag :city, params[:city], value: "Enter a city here", class: 'search-field' %>
+-+    <%= text_field_tag :search, params[:search], value: "Enter a city here", class: 'search-field' %>
+-     <%= submit_tag 'Search', class: 'search-submit' %>
+- <% end %>
+-\ No newline at end of file
+-diff --git a/file b/file
+-index 44f2f9a..e69de29 100644
+---- a/file
+-+++ b/file
+-@@ -1,32 +0,0 @@
+--diff --git a/app/models/profile.rb b/app/models/profile.rb
+--index 645cd0b..e308684 100644
+----- a/app/models/profile.rb
+--+++ b/app/models/profile.rb
+--@@ -1,4 +1,6 @@
+-- class Profile < ApplicationRecord
+--   belongs_to :user
+--+  belongs_to :host, :class_name => 'User'
+--+  belongs_to :guest, :class_name => 'User'
+--   has_one_attached :uploaded_image
+-- end
+--diff --git a/app/views/profiles/show.html.erb b/app/views/profiles/show.html.erb
+--index 74dc258..76f243e 100644
+----- a/app/views/profiles/show.html.erb
+--+++ b/app/views/profiles/show.html.erb
+--@@ -69,9 +69,16 @@
+--   </div>
+--   <div class="profile-right">
+--     <div class="accommodation-section">
+--+    <% if @profile.host.accommodation %>
+--       <div class="prof-button-flex">
+--         <%= button_to "View Stays", stays_path, class: "accom-stay-button" %><%= button_to "View Accommodation", stays_path, class: "stay-accom-button" %>
+--       </div>
+--+    <% else %>
+--+       <div class="prof-button-flex">
+--+        <%= button_to "Add Accommodation", new_accommodation_path, class: "accom-stay-button" %>
+--+      </div>
+--+    <% end %>
+--+     
+--     </div>
+--     <div class="guest-section">
+--         <p> <strong><%= @profile.first_name %> <%= @profile.last_name  %>'s Guest Profile</strong> </p>

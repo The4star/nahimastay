@@ -6,7 +6,7 @@
 <% end %>
 
 <div class="results-wrapper">
-  <% @stays.each do |stay| %>
+  <% @stays.reverse.each do |stay| %>
     <div class="stay-wrapper">
       <div class="accom-img-container">
           <% if stay.accommodation.hero_image.attached? %>
@@ -31,10 +31,12 @@
             <strong>Request Status:
             <% if !stay.confirmed && !stay.rejected %>
               <span class="pending">Stay request is pending</span>
-            <% elsif stay.rejected %>
+            <% elsif stay.rejected && !stay.cancelled %>
               <span class="rejected">Stay Declined</span>
             <% elsif stay.confirmed%>
               <span class="confirmed">Stay Accepted</span>
+            <% elsif stay.cancelled && stay.rejected %>
+            <span class="rejected">Stay Cancelled by guest</span></p>
             <% end %>
             </strong>
           </p>

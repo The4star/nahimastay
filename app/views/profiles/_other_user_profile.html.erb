@@ -62,7 +62,7 @@
         <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
       <% end %>
       <div class="prof-button-flex">
-        <%= button_to "View Accommodation", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
+        <%= button_to "View Property Listing", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
       </div>
     <% else %>
        <div class="prof-button-flex">
