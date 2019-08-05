@@ -106,6 +106,10 @@ class StaysController < ApplicationController
       @stay.save!
     elsif params[:cancelled]
       @stay.update(cancelled: params[:cancelled], confirmed: false, rejected: true)
+      @stay.accommodation.host.profile.decrement!(:karma_coins, @stay_cost) 
+      @stay.accommodation.host.save! 
+      @stay.guest.profile.increment!(:karma_coins, @stay_cost) 
+      @stay.guest.profile.save!  
       @stay.save!
     end
 
