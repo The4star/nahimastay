@@ -95,7 +95,7 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
+    width: 28%;
 }
 
 #main-menu {
@@ -104,7 +104,12 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
+    width: 28%;
+    margin: 5px;
+}
+
+#footer-menu {
+    width:50%
 }
 
 li {
@@ -134,7 +139,7 @@ a:link, a {
 #world {
     width: 150px;
     height: auto;
-    margin: 20px;
+    margin: 20px 0px 0px 20px;
 }
 
 .container {
@@ -233,4 +238,41 @@ footer {
     border-radius: 10px;
     margin:20px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1400px) {
+    h1 {
+        font-size: 38px;
+        
+    }
+    
+    h2 {
+        font-size: 35px;
+    }
+    
+    h3 {
+        font-size: 30px;
+    }
+    
+    p {
+        font-size: 25px;
+    }
+    
+    a {
+        font-size: 25px;
+    }
+
+    li {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    li a:link {
+        font-size: 20px;
+    }
+    
+    a:link, a {
+        font-size: 25px;
+        text-align: center;
+    }
 }

@@ -153,7 +153,7 @@
         <% if current_user == @stay.accommodation.host && current_user == User.find(message.user_id) %>
           <%= link_to 'Delete', message_path(message, accommodation_id: @stay.accommodation.id, stay_id: @stay.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone' }, params: {accommodation_id: @stay.accommodation.id, stay_id: @stay.id} %>
         <% elsif current_user == @stay.guest && current_user == User.find(message.user_id) %>
-          <%= link_to 'Delete', message_path(message, guest_id: @stay.accommodation.id, stay_id: @stay.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone' } %>
+          <%= link_to 'Delete', message_path(message, guest_id: @stay.guest.id, stay_id: @stay.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone' } %>
         <% end %>
       </p>
     <% end %>
