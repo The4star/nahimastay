@@ -1,23 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<h1> Review for your stay at <%= @guestreview.stay.accommodation.name %>
+
 <p>
-  <strong>Created at:</strong>
-  <%= @guestreview.created_at %>
+<%= link_to 'view stay', stay_path(@guestreview.stay.id) %>
 </p>
 
 <p>
   <strong>Cleanliness rating:</strong>
-  <%= @guestreview.cleanliness_rating %>
+  <%= @guestreview.cleanliness_rating %>/5
 </p>
 
 <p>
   <strong>Communication rating:</strong>
-  <%= @guestreview.communication_rating %>
+  <%= @guestreview.communication_rating %>/5
 </p>
 
 <p>
   <strong>Ease of hosting rating:</strong>
-  <%= @guestreview.ease_of_hosting_rating %>
+  <%= @guestreview.ease_of_hosting_rating %>/5
 </p>
 
 <p>
@@ -26,9 +27,9 @@
 </p>
 
 <p>
-  <strong>Stay:</strong>
-  <%= @guestreview.stay %>
+  <strong>Review submitted on:</strong>
+  <%= @guestreview.created_at.day %> <%= I18n.l(@guestreview.created_at, format: "%B") %> <%= @guestreview.created_at.year %></strong>
+      </p>
 </p>
 
-<%= link_to 'Edit', edit_guestreview_path(@guestreview) %> |
-<%= link_to 'Back', guestreviews_path %>
+<%= link_to 'Back', stay_path(@guestreview.stay.id) %>

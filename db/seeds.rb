@@ -57,11 +57,11 @@ accommodation_types.each do |accom|
     Accomtype.create(accom)
 end
 
-user_with_profile = User.create! :email => 'userwithprofile@example.com', :password => '123456', :password_confirmation => '123456'
+user_with_profile = User.create! :email => 'rogerryanuserwithprofile@example.com', :password => '123456', :password_confirmation => '123456'
 user_without_profile = User.create! :email => 'userwithoutprofile@example.com', :password => '123456', :password_confirmation => '123456'
-user_with_accom = User.create! :email => 'userwithaccom@example.com', :password => '123456', :password_confirmation => '123456'
-user_without_accom = User.create! :email => 'userwithoutaccom@example.com', :password => '123456', :password_confirmation => '123456'
-admin_user = User.create! :email => 'adminuser@example.com', :password => '123456', :password_confirmation => '123456'
+user_with_accom = User.create! :email => 'johnsmithuserwithaccom@example.com', :password => '123456', :password_confirmation => '123456'
+user_without_accom = User.create! :email => 'lucyjonesuserwithoutaccom@example.com', :password => '123456', :password_confirmation => '123456'
+admin_user = User.create! :email => 'adminhaleypuppet@example.com', :password => '123456', :password_confirmation => '123456'
 admin_user.role = Role.find(1)
 
 profiles = [
@@ -269,7 +269,7 @@ accommodation_reviews = [
         communication_rating: 3,
         location_rating: 5,
         cleanliness_rating: 2,
-        ammenities_rating: 6,
+        ammenities_rating: 1,
         host_rating: 1,
         comments: "Very average",
         stay_id: Stay.find(4).id
@@ -278,6 +278,11 @@ accommodation_reviews = [
 
 accommodation_reviews.each do |accommodation_review|
     Accommodationreview.create!(accommodation_review)
+    Stay.find(accommodation_review[:stay_id]).accommodation.host.profile.update_host_rating(accommodation_review[:host_rating])
+    Stay.find(accommodation_review[:stay_id]).accommodation.update_accommodation_rating(accommodation_review[:communication_rating],
+    accommodation_review[:location_rating],
+    accommodation_review[:cleanliness_rating],
+    accommodation_review[:ammenities_rating])
 end
 
 guest_reviews = [
