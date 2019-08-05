@@ -14,6 +14,7 @@ class GuestreviewsController < ApplicationController
 
   # GET /guestreviews/new
   def new
+    @stay_id = params[:stay_id]
     @guestreview = Guestreview.new
   end
 
@@ -25,6 +26,16 @@ class GuestreviewsController < ApplicationController
   # POST /guestreviews.json
   def create
     @guestreview = Guestreview.new(guestreview_params)
+    @guestreview.stay_id = params[:stay_id]
+    @guestreview.created_at = Time.now
+
+
+
+
+    # Update Guest Rating
+    Stay.find(params[:stay_id]).guest.profile.update_guest_rating(params[:guestreview][:cleanliness_rating],
+      params[:guestreview][:communication_rating],
+      params[:guestreview][:ease_of_hosting_rating])
 
     respond_to do |format|
       if @guestreview.save

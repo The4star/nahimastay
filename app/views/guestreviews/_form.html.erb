@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
-
-  <div class="field">
     <%= form.label :cleanliness_rating %>
     <%= form.number_field :cleanliness_rating %>
   </div>
@@ -36,10 +31,7 @@
     <%= form.text_area :comments %>
   </div>
 
-  <div class="field">
-    <%= form.label :stay_id %>
-    <%= form.text_field :stay_id %>
-  </div>
+  <input type="hidden" value="<%= @stay_id %>" name="stay_id">
 
   <div class="actions">
     <%= form.submit %>
