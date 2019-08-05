@@ -52,18 +52,26 @@ class StaysController < ApplicationController
   # POST /stays.json
   def create
     @stay = Stay.new(stay_params)
-    @stay.guest = User.find(current_user.id)
-    @stay.created_at = Time.now
-    @stay.confirmed = false
-    @stay.rejected = false
+    @stay_length = @stay.end_date.day - @stay.start_date.day
+    @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+    if current_user.profile.karma_coins < @stay_cost
+      respond_to do |format|
+        format.html { redirect_to accommodation_path(@stay.accommodation, guest_id: current_user.id), notice: "You do not have enough Karma Coins to request this stay." }
+      end
+    else
+      @stay.guest = User.find(current_user.id)
+      @stay.created_at = Time.now
+      @stay.confirmed = false
+      @stay.rejected = false
 
-    respond_to do |format|
-      if @stay.save
-        format.html { redirect_to @stay, notice: "Stay was successfully created." }
-        format.json { render :show, status: :created, location: @stay }
-      else
-        format.html { render :new }
-        format.json { render json: @stay.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @stay.save
+          format.html { redirect_to @stay, notice: "Stay was successfully created." }
+          format.json { render :show, status: :created, location: @stay }
+        else
+          format.html { render :new }
+          format.json { render json: @stay.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
