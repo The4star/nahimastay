@@ -88,7 +88,7 @@
         <% end %>
       <% elsif current_user == @stay.accommodation.host %>
         <% if !@stay.guestreview %>
-          <%= button_to 'Leave a review for this Guest', new_guestreview_path({:stay_id => @stay.id}), method: :get, class: 'review-button' %>
+          <%= button_to 'Leave a review for this Guest', new_guestreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
         <% end %>
       <% end %>
     <% end %>
