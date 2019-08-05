@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @stay = Stay.find(params[:message][:stay_id] )
+    @stay = Stay.find(params[:message][:stay_id])
     if params[:message][:guest_id]
       @guest = User.find(params[:message][:guest_id])
     elsif params[:message][:accommodation_id]
@@ -65,10 +65,22 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    @stay = Stay.find(params[:stay_id])
+    if params[:guest_id]
+      @guest = User.find(params[:guest_id])
+    elsif params[:accommodation_id]
+      @accommodation = Accommodation.find(params[:accommodation_id])
+    end
+
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to profile_path(current_user.profile), notice: 'Message was successfully destroyed.' }
-      format.json { head :no_content }
+      if params[:accommodation_id]
+        format.html { redirect_to stay_path(@stay, accommodation_id: @accommodation.id), notice: 'Message was successfully destroyed.' }
+        format.json { head :no_content }
+      elsif params[:accommodation_id]
+        format.html { redirect_to stay_path(@stay, guest_id: @guest.id), notice: 'Message was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
