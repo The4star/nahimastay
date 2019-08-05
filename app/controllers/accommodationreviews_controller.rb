@@ -14,6 +14,9 @@ class AccommodationreviewsController < ApplicationController
 
   # GET /accommodationreviews/new
   def new
+    print params
+    # authorize(AccommodationReview)
+    @stay_id = params[:stay_id]
     @accommodationreview = Accommodationreview.new
   end
 
@@ -25,6 +28,17 @@ class AccommodationreviewsController < ApplicationController
   # POST /accommodationreviews.json
   def create
     @accommodationreview = Accommodationreview.new(accommodationreview_params)
+    @accommodationreview.stay_id = params[:stay_id]
+    @accommodationreview.created_at = Time.now
+
+    # Update Host Rating
+    Stay.find(params[:stay_id]).accommodation.host.profile.update_host_rating(params[:accommodationreview][:host_rating])
+
+    # Update Accommodation Rating
+    Stay.find(params[:stay_id]).accommodation.update_accommodation_rating(params[:accommodationreview][:communication_rating],
+      params[:accommodationreview][:ammenities_rating],
+      params[:accommodationreview][:location_rating],
+      params[:accommodationreview][:cleanliness_rating])
 
     respond_to do |format|
       if @accommodationreview.save
