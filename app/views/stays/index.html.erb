@@ -19,7 +19,7 @@
         <% if params[:accommodation_id] %>
           <p><strong>Guest:</strong> <%= stay.guest.profile.first_name %> <%= stay.guest.profile.last_name %></p>
         <% else %>
-          <h3><%= stay.accommodation.name %></h3>
+          <%= link_to("#{stay.accommodation.name}", accommodation_path(stay.accommodation.id), class: 'h3-link') %>
         <% end %>  
 
         <p>

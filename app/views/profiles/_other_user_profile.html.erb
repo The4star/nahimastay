@@ -36,7 +36,7 @@
     <p>
       <strong>Host rating:</strong>
       <% if @profile.host_rating %>
-        <%= @profile.host_rating %></p>
+        <%= @profile.get_host_rating %></p>
       <% else %>
         No rating recieved yet</p>
       <% end %>

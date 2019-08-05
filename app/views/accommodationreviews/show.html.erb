@@ -1,28 +1,34 @@
 <p id="notice"><%= notice %></p>
 
+<h1> Review for <%= Profile.find(@accommodationreview.stay.guest.id).first_name %>'s stay at <%= @accommodationreview.stay.accommodation.name %>
+
+<p>
+<%= link_to 'view stay', stay_path(@accommodationreview.stay.id) %>
+</p>
+
 <p>
   <strong>Communication rating:</strong>
-  <%= @accommodationreview.communication_rating %>
+  <%= @accommodationreview.communication_rating %>/5
 </p>
 
 <p>
   <strong>Location rating:</strong>
-  <%= @accommodationreview.location_rating %>
+  <%= @accommodationreview.location_rating %>/5
 </p>
 
 <p>
   <strong>Cleanliness rating:</strong>
-  <%= @accommodationreview.cleanliness_rating %>
+  <%= @accommodationreview.cleanliness_rating %>/5
 </p>
 
 <p>
   <strong>Ammenities rating:</strong>
-  <%= @accommodationreview.ammenities_rating %>
+  <%= @accommodationreview.ammenities_rating %>/5
 </p>
 
 <p>
   <strong>Host rating:</strong>
-  <%= @accommodationreview.host_rating %>
+  <%= @accommodationreview.host_rating %>/5
 </p>
 
 <p>
@@ -31,14 +37,9 @@
 </p>
 
 <p>
-  <strong>Created at:</strong>
-  <%= @accommodationreview.created_at %>
+  <strong>Review submitted on:</strong>
+  <%= @accommodationreview.created_at.day %> <%= I18n.l(@accommodationreview.created_at, format: "%B") %> <%= @accommodationreview.created_at.year %></strong>
+      </p>
 </p>
 
-<p>
-  <strong>Stay:</strong>
-  <%= @accommodationreview.stay %>
-</p>
-
-<%= link_to 'Edit', edit_accommodationreview_path(@accommodationreview) %> |
-<%= link_to 'Back', accommodationreviews_path %>
+<%= link_to 'Back', stay_path(@accommodationreview.id) %>
