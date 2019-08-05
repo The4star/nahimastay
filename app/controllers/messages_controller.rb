@@ -77,7 +77,7 @@ class MessagesController < ApplicationController
       if params[:accommodation_id]
         format.html { redirect_to stay_path(@stay, accommodation_id: @accommodation.id), notice: 'Message was successfully destroyed.' }
         format.json { head :no_content }
-      elsif params[:accommodation_id]
+      elsif params[:guest_id]
         format.html { redirect_to stay_path(@stay, guest_id: @guest.id), notice: 'Message was successfully destroyed.' }
         format.json { head :no_content }
       end
