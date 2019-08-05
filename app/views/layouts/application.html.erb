@@ -12,18 +12,16 @@
   <nav>
       <div id="logo">
       <a href="/"><img id="world" src="/img/logo.png" alt="nahimastay_logo"></a>
-      <a href="/"><h1>Nah..ImaStay</h1></a>
+      <a href="/"><h1 id="nav-title">Nah..ImaStay</h1></a>
       </div>
       <% if current_user %>
-        <ul>
+        <ul id="main-menu">
           <li><%= link_to "About", '/pages/about'  %></li>
           <li><%= link_to "Find Accommodation", accommodations_path  %></li>
         </ul>
         <ul>
         <% if current_user.profile.uploaded_image.attached? %>
-        <div class="thumb-wrapper">
-        <%= image_tag current_user.profile.uploaded_image.service_url, class: 'image-thumb' %>
-        </div>
+          <%= image_tag current_user.profile.uploaded_image.service_url, class: 'image-thumb' %>
         <% else %>
         <li id="finish-edit-text">Finish editing me >>></li>
         <% end %>

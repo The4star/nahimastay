@@ -39,6 +39,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .devise-button-update {
@@ -52,6 +53,21 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
+}
+
+.devise-button-update-accom {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 330px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+    cursor: pointer;
 }
 
 .devise-bad-button {
@@ -65,25 +81,17 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .hero-container-edit-page {
     position: relative;
     width: 100%;
-    max-height: 1200px;
+    max-height: 1500px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     z-index: 1;
-}
-
-.bio{
-    .text-field-label {
-        vertical-align: middle;
-    }
-    .devise-field {
-        vertical-align: middle;
-    }
 }

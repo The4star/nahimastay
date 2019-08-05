@@ -1,39 +1,68 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Accommodation:</strong>
-  <%= @stay.accommodation %>
-</p>
+<% if (current_user.id == @stay.guest.id) or (current_user.id == @stay.accommodation.host.id) %>
+  <p>
+    Your Reservation Details
+  </p>
+  <p>
+    <strong>Accommodation:</strong>
+    <%= link_to(@stay.accommodation.name, accommodation_path(@stay.accommodation)) %> 
+  </p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @stay.start_date %>
-</p>
+  <p>
+    <strong>Stay start date:</strong>
+    <%= @stay.start_date %>
+  </p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @stay.end_date %>
-</p>
+  <p>
+    <strong>Stay end date:</strong>
+    <%= @stay.end_date %>
+  </p>
 
-<p>
+  <p>
   <strong>Guest:</strong>
-  <%= @stay.guest %>
-</p>
+    <%= link_to(@stay.guest.profile.first_name, profile_path(@stay.guest)) %> 
+  </p>
+
+  <p>
+    <strong>Stay Requested On:</strong>
+    <%= @stay.created_at %>
+  </p>
+
+  <p>
+    <strong>Request Status:</strong>
+    <% if !@stay.confirmed && !@stay.rejected %>
+      Stay request is pending
+    <% elsif @stay.rejected %>
+      Stay Declined
+    <% elsif @stay.confirmed%>
+      Stay Accepted
+    <% end %>
+  </p>
+
+<% if @stay.end_date < Time.now %>
+  <% if current_user == @stay.guest %>
+    <% path = new_accommodationreview_path({:stay_id => @stay.id}) %>
+  <% else %>
+    <% path = guestreview_path({:stay_id => @stay_id}) %>
+  <% end %>
+  <%= link_to 'Leave a review for this stay', path %> |
+<% end %>
+
+<% if current_user == @stay.guest %>
+  <%= link_to 'Edit', edit_stay_path(@stay) %> |
+<% end %>
+  <%= link_to 'Back', stays_path %>
 
 <p>
-  <strong>Created at:</strong>
-  <%= @stay.created_at %>
+  Messages:
 </p>
-
+<% @stay.messages.each do |message| %>
 <p>
-  <strong>Confirmed:</strong>
-  <%= @stay.confirmed %>
+  <%= User.find(message.user_id).profile.first_name %> :
+  <%= message.content %>
 </p>
+<% end %>
 
-<p>
-  <strong>Rejected:</strong>
-  <%= @stay.rejected %>
-</p>
+<% end %>
 
-<%= link_to 'Edit', edit_stay_path(@stay) %> |
-<%= link_to 'Back', stays_path %>

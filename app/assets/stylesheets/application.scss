@@ -3,6 +3,10 @@
 @import 'devise';
 @import 'profiles';
 @import 'upgrade';
+@import 'accommodations';
+@import 'accom-results';
+@import 'stays';
+@import 'stay-results';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -30,12 +34,17 @@ body {
 }
 
 h1 {
+    margin: 20px;
     color: #2d936c;
     font-family: 'Taviraj', serif;
     font-weight: bold;
     font-style: normal;
     font-size: 50px;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, .75);
+}
+
+#nav-title {
+    margin:0px;
 }
 
 h2 {
@@ -88,6 +97,15 @@ ul {
     width: 30%;
 }
 
+#main-menu {
+    color: #826251;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+}
+
 li {
     color: #826251;
     font-family: 'Alef', sans-serif;
@@ -108,12 +126,12 @@ a:link, a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 25%;
+    justify-content: space-around;
+    width: 35%;
 }
 
 #world {
-    width: 80%;
+    width: 150px;
     height: auto;
     margin: 20px;
 }
@@ -125,6 +143,7 @@ a:link, a {
 .searchform {
     display: inline;
 }
+
 .search-field {
     background-color: #fafafa;
     border-radius: 10px;
@@ -164,26 +183,31 @@ footer {
     vertical-align: middle;
 }
 
+.valign{
+    .text-field-label {
+        vertical-align: middle;
+    }
+    .devise-field {
+        vertical-align: middle;
+    }
+}
+
 .kksym {
     width: 25px;
     height:25px;
 }
 
-.thumb-wrapper {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 100px;
-    object-fit: cover;
-}
-
 .image-thumb {
-    width: 100%;
+    width: 50px;
     height: auto;
     border-radius: 100px;
-    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #finish-edit-text {
     font-size: 18px;
+}
+
+.center-text {
+    text-align: center;
 }

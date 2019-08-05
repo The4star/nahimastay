@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <h1> Create New Stay at  <%= @accommodation %> </h1>
+=======
+<h1> Request a stay at <%=Accommodation.find(params[:accommodation_id]).name%> <h1>    
+>>>>>>> 9565c4b8657567ed7faaa862a802eebc3a5e9c08
 
-<%= render 'form', stay: @stay %>
+<%= render partial: 'form', locals: { stay: @stay, accommodation_id: params[:accommodation_id] }%>
 
 <%= link_to 'Back', stays_path %>
