@@ -126,7 +126,7 @@
 
   </div>
 </div>
-<div class="message-container">
+<div class="message-section">
   <p>
   <strong>Create a New Message</strong>
   <% if params[:accommodation_id] %>
@@ -139,7 +139,10 @@
   <p>
     <strong>Messages</strong>
   </p>
-  <div id="messages">
+  <p>
+    (recent messages displayed at top)
+  </p>
+  <div id="messages-container">
     <% @stay.messages.reverse.each do |message| %>
       <p>
         <% if User.find(message.user_id).profile.uploaded_image.attached? %>
