@@ -91,3 +91,4 @@ production:
   database: nahimastay_production
   username: nahimastay
   password: <%= ENV['NAHIMASTAY_DATABASE_PASSWORD'] %>
+ 
