@@ -90,17 +90,23 @@
       < if time passed make add review available >
       <%# else make cancel available %>
       <span class="confirmed">Stay Accepted</span></p>
-       <% if @stay.end_date < Time.now %>
-        <% if current_user == @stay.guest %>
-          <% if !@stay.accommodationreview %>
-             <%= button_to 'Leave a review for this stay', new_accommodationreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
+      <% if current_user == @stay.guest %>
+          <% if @stay.end_date < Time.now %>
+            <% if !@stay.accommodationreview %>
+              <%= button_to 'Leave a review for this stay', new_accommodationreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
+            <% end %>
           <% else %>
             <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, guest_id: @stay.guest.id,cancelled: true}, class: 'reject-button' %>
           <% end %>
-        <% elsif current_user == @stay.accommodation.host %>
-          <p>Unable to host this stay anymore?</p><%= button_to "Cancel Stay", update_status_path, method: :get, data: {confirm: "Are you sure? This cannot be undone." }, params: {accommodation_id: @stay.accommodation.id, stay: @stay, cancelled: true}, class: 'reject-button' %>
-        <% end %> %>
-      <% end %>
+      <% elsif current_user == @stay.accommodation.host %>
+            <% if @stay.end_date < Time.now %>
+              <% if !@stay.guestreview %>
+                <%= button_to 'Leave a review for this Guest', new_guestreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
+              <% end %>
+            <% else %>
+              <p>Unable to host this stay anymore?</p><%= button_to "Cancel Stay", update_status_path, method: :get, data: {confirm: "Are you sure? This cannot be undone." }, params: {accommodation_id: @stay.accommodation.id, stay: @stay, cancelled: true}, class: 'reject-button' %>
+            <% end %>
+        <% end %>
     <% elsif @stay.state_rejected? %>
       <%# if state is rejected, pritn rejected %>
       <span class="rejected">Stay Declined</span></p>
