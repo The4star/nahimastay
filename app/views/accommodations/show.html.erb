@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 <h1 class="center-text"><%= @accommodation.name %></h1>
 
-  <% if current_user && @accommodation != current_user.accommodation %>
+  <% if current_user && @accommodation != current_user.accommodation && profile_complete(current_user.profile) %>
     <p class="center-text">
       <%= link_to "Request to Stay at this Property", "/accommodations/#{@accommodation.id}/#request" %>
+    </p>
+  <% else %>
+    <p class="center-text">
+      <strong>
+        <%= link_to 'To Request a Stay you must Finish editing your profile', edit_profile_path(current_user.profile) %></p>
+      </strong>
     </p>
   <% end %>
 
@@ -87,7 +93,7 @@
 <h1 class="center-text">Description</h1>
 <p class="center-text"><%= @accommodation.description %></p>
 
-  <% if current_user && @accommodation.host.id != current_user.id %>
+  <% if current_user && @accommodation.host.id != current_user.id && profile_complete(current_user.profile) %>
     <div class="stay-flex">
       <h1 id="request">Request to stay at this Property</h1>
       <p id="notice"><%= notice %></p>
@@ -98,6 +104,12 @@
       </p>
       <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id}, class: 'form-inline' %>
     </div>
+  <% else %>
+    <p class="center-text">
+      <strong>
+        <%= link_to 'To Request a Stay you must Finish editing your profile', edit_profile_path(current_user.profile) %></p>
+      </strong>
+    </p>
   <% end %>
 
 <% if current_user && @accommodation.host.id == current_user.id %>

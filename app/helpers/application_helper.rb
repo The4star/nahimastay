@@ -55,4 +55,8 @@ module ApplicationHelper
 
         return new_num
     end
+
+    def profile_complete(profile)
+        profile.first_name && profile.last_name && profile.bio && profile.uploaded_image.attached?
+    end    
 end
