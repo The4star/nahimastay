@@ -62,11 +62,15 @@
 
     <p>
     <% if @profile.user.role_id == 2 %>
-      You are a <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
+      <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
     <% elsif @profile.user.role_id == 3 %>
-      You are a <%= @profile.user.role.privilege %>. %> 
+      <%= @profile.user.role.privilege %> 
     <% end %>
     
+    <% if @profile.user.role_id == 3 %>
+      <%= image_tag '/img/premium_badge.png', class: 'premium' %>
+    <% end %>
+
     </p>
 
     <p><%= link_to 'Edit Profile', edit_profile_path(@profile) %> | <%= link_to 'Edit Email & Password', edit_user_registration_path(current_user) %></p>
