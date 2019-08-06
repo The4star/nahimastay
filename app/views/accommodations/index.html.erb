@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 <div class="results-wrapper">
 <p><%= render '/shared/searchform', class: 'searchform' %></p>
+
+<% if params[:search].present? && @accommodations.length == 0 %>
+    <%= render 'no_results'%>
+<% end %>
+
+<% if params[:search].present? %>
     <% @accommodations.each do |accommodation| %>
         <div class="accommodation-wrapper">
             <div class="accom-img-container">
@@ -38,4 +44,7 @@
         </div>
      </div>
     <% end %>
+<% else %>
+    <%= render 'no_search' %>
+<% end %>
 </div>
