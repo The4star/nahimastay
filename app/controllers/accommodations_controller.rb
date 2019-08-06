@@ -35,6 +35,7 @@ class AccommodationsController < ApplicationController
     @accommodation = Accommodation.new(accommodation_params)
     @accommodation.date_created = Time.now
     @accommodation.host = User.find(params[:profile_id])
+    authorize(@accommodation)
     @accommodation.accommodation_rating = 0
     respond_to do |format|
       if @accommodation.save!
@@ -50,6 +51,7 @@ class AccommodationsController < ApplicationController
   # PATCH/PUT /accommodations/1
   # PATCH/PUT /accommodations/1.json
   def update
+    authorize(@accommodation)
     respond_to do |format|
       if @accommodation.update(accommodation_params)
         format.html { redirect_to @accommodation, notice: "Accommodation was successfully updated." }
@@ -64,6 +66,7 @@ class AccommodationsController < ApplicationController
   # DELETE /accommodations/1
   # DELETE /accommodations/1.json
   def destroy
+    authorize(@accommodation)
     @accommodation.destroy
     respond_to do |format|
       format.html { redirect_to accommodations_url, notice: "Accommodation was successfully destroyed." }

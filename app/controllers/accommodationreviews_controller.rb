@@ -4,24 +4,20 @@ class AccommodationreviewsController < ApplicationController
   # GET /accommodationreviews
   # GET /accommodationreviews.json
   def index
+    authorize(@accommodationreview)
     @accommodationreviews = Accommodationreview.all
   end
 
   # GET /accommodationreviews/1
   # GET /accommodationreviews/1.json
   def show
+    authorize(@accommodationreview)
   end
 
   # GET /accommodationreviews/new
   def new
-    print params
-    # authorize(AccommodationReview)
     @stay_id = params[:stay_id]
     @accommodationreview = Accommodationreview.new
-  end
-
-  # GET /accommodationreviews/1/edit
-  def edit
   end
 
   # POST /accommodationreviews
@@ -30,6 +26,8 @@ class AccommodationreviewsController < ApplicationController
     @accommodationreview = Accommodationreview.new(accommodationreview_params)
     @accommodationreview.stay_id = params[:stay_id]
     @accommodationreview.created_at = Time.now
+
+    authorize(@accommodationreview)
 
     # Update Host Rating
     Stay.find(params[:stay_id]).accommodation.host.profile.update_host_rating(params[:accommodationreview][:host_rating])

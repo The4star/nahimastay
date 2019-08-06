@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :guestreviews
   resources :accommodationreviews
   resources :stays 
-  resources :messages
+  resources :messages, only: [:create, :destroy]
   resources :accommodations
   resources :profiles
   devise_for :users

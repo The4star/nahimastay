@@ -3,6 +3,7 @@ class StaysController < ApplicationController
   # GET /stays
   # GET /stays.json
   def index
+
     if params[:accommodation_id]
       @accommodation = Accommodation.find(params[:accommodation_id])
       @stays = @accommodation.stays
@@ -11,8 +12,9 @@ class StaysController < ApplicationController
       @guest = User.find(params[:guest_id]).profile
       @stays = User.find(params[:guest_id]).stays
       @title = "#{@guest.first_name} #{@guest.last_name}"
-    else
-      @stays = Stay.all
+    end
+    if @stays.first
+      authorize(@stays.first)
     end
   end
 
@@ -25,6 +27,7 @@ class StaysController < ApplicationController
   # GET /stays/1
   # GET /stays/1.json
   def show
+    authorize(@stay)
     if params[:accommodation_id]
       @accommodation = Accommodation.find(params[:accommodation_id])
       @title = @accommodation.name
@@ -46,6 +49,7 @@ class StaysController < ApplicationController
   # GET /stays/1/edit
   def edit
     @stay = Stay.find(params[:id])
+    authorize(@stay)
   end
 
   # POST /stays
@@ -92,6 +96,7 @@ class StaysController < ApplicationController
 
   def update_status
     @stay = Stay.find(params[:stay])
+    authorize(@stay)
     @stay_length = @stay.end_date.day - @stay.start_date.day
     @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
     if params[:confirmed]
