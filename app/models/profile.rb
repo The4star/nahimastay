@@ -49,7 +49,7 @@ class Profile < ApplicationRecord
     end
 
     # Get average of this user's ratings
-    users_average_rating = (cleanliness_rating.to_i + communication_rating.to_i + ease_of_hosting_rating.to_i) / 4.0
+    users_average_rating = calculate_average([cleanliness_rating.to_i, communication_rating.to_i, ease_of_hosting_rating.to_i])
 
     # add new rating to current guest rating
     self.guest_rating = self.guest_rating + users_average_rating

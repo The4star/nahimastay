@@ -11,7 +11,6 @@ class Accommodation < ApplicationRecord
 
     # calculate total reviews by counting stay reviews
     accom_review_count = 0
-
     self.stays.each do |stay|
       if stay.accommodationreview
         accom_review_count =  accom_review_count + 1
@@ -19,7 +18,8 @@ class Accommodation < ApplicationRecord
     end
 
     # Get average of this user's ratings
-    users_average_rating = (communication_rating.to_i + ammenities_rating.to_i + location_rating.to_i + cleanliness_rating.to_i) / 5.0
+    users_average_rating = calculate_average([communication_rating.to_i, ammenities_rating.to_i, location_rating.to_i, cleanliness_rating.to_i])
+    # users_average_rating = (communication_rating.to_i + ammenities_rating.to_i + location_rating.to_i + cleanliness_rating.to_i) / 5.0
 
     # add new rating to current accommodation rating
     self.accommodation_rating = self.accommodation_rating + users_average_rating
