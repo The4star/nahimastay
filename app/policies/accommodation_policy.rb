@@ -10,21 +10,21 @@ class AccommodationPolicy < ApplicationPolicy
   #   false
   # end
 
-  # def show?
-  #   false
-  # end
+  def show?
+    @accommodation.host.id == @user.id
+  end
 
-  # def create?
-  #   false
-  # end
+  def create?
+    @accommodation.host.id == @user.id
+  end
 
   # def new?
   #   false
   # end
 
-  # def update?
-  #   false
-  # end
+  def update?
+    @accommodation.host.id == @user.id
+  end
 
   # def edit?
   #   update?

@@ -4,12 +4,14 @@ class GuestreviewsController < ApplicationController
   # GET /guestreviews
   # GET /guestreviews.json
   def index
+    authorize(@accommodationreview)
     @guestreviews = Guestreview.all
   end
 
   # GET /guestreviews/1
   # GET /guestreviews/1.json
   def show
+    authorize(@accommodationreview)
   end
 
   # GET /guestreviews/new
@@ -29,7 +31,7 @@ class GuestreviewsController < ApplicationController
     @guestreview.stay_id = params[:stay_id]
     @guestreview.created_at = Time.now
 
-
+    authorize(@guestreview)
 
 
     # Update Guest Rating
