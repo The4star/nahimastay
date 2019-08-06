@@ -7,61 +7,61 @@
 # #   Character.create(name: 'Luke', movie: movies.first)
 Guestreview.delete_all
 Accommodationreview.delete_all
-Messages.delete_all
+Message.delete_all
 Stay.delete_all
 Accommodation.delete_all
 Profile.delete_all
 User.delete_all
-roles = [
-    {
-        privilege: "Admin"
-    },
-    {
-        privilege: "Standard Member"
-    },
-    {
-        privilege: "Premium Member"
-    }
-]
-roles.each do |role|
-    Role.create(role)
-end
+# roles = [
+#     {
+#         privilege: "Admin"
+#     },
+#     {
+#         privilege: "Standard Member"
+#     },
+#     {
+#         privilege: "Premium Member"
+#     }
+# ]
+# roles.each do |role|
+#     Role.create(role)
+# end
 
-accommodation_types = [
-    {
-        name: "Single Bed Private Room",
-        description: "Single Bed in a private room",
-        cost: 200
-    },
-    {
-        name: "Double Bed Private Room",
-        description: "Double Bed in a private room",
-        cost: 225
-    },
-    {
-        name: "Single Bed Shared Room",
-        description: "Single Bed in a room with others",
-        cost: 150
-    },
-    {
-        name: "Double Bed Shared Room",
-        description: "Single Bed in a room with others",
-        cost: 175
-    },
-    {
-        name: "Fold Cut Couch",
-        description: "Fold out couch in a room with others",
-        cost: 100
-    },
-    {
-        name: "Sofa",
-        description: "Sleep space available on a sofa in a shared space",
-        cost: 50
-    }
-]
-accommodation_types.each do |accom|
-    Accomtype.create(accom)
-end
+# accommodation_types = [
+#     {
+#         name: "Single Bed Private Room",
+#         description: "Single Bed in a private room",
+#         cost: 200
+#     },
+#     {
+#         name: "Double Bed Private Room",
+#         description: "Double Bed in a private room",
+#         cost: 225
+#     },
+#     {
+#         name: "Single Bed Shared Room",
+#         description: "Single Bed in a room with others",
+#         cost: 150
+#     },
+#     {
+#         name: "Double Bed Shared Room",
+#         description: "Single Bed in a room with others",
+#         cost: 175
+#     },
+#     {
+#         name: "Fold Cut Couch",
+#         description: "Fold out couch in a room with others",
+#         cost: 100
+#     },
+#     {
+#         name: "Sofa",
+#         description: "Sleep space available on a sofa in a shared space",
+#         cost: 50
+#     }
+# ]
+# accommodation_types.each do |accom|
+#     Accomtype.create(accom)
+# end
 
 # user_with_profile = User.create! :email => 'rogerryanuserwithprofile@example.com', :password => '123456', :password_confirmation => '123456'
 # user_without_profile = User.create! :email => 'userwithoutprofile@example.com', :password => '123456', :password_confirmation => '123456'
