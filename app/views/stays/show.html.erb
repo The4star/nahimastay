@@ -69,44 +69,48 @@
         </div>
       <% end %>
     </div>
-
     <p>
-      <strong>Request Status:
-      <% if !@stay.confirmed && !@stay.rejected %>
-        <span class="pending">Stay request is pending</span></p>
-        <% if current_user == @stay.accommodation.host %>
-          <div class="prof-button-flex">
-            <%= button_to "Approve Stay", update_status_path, method: :get, params: {stay: @stay, accommodation_id: @stay.accommodation.id, confirmed: true}, class: 'approve-button' %>
-            <%= button_to "Decline Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, accommodation_id: @stay.accommodation.id, rejected: true}, class: 'reject-button' %>
-          </div>
-        <% end %>
-      <% elsif @stay.rejected && !@stay.cancelled %>
-        <span class="rejected">Stay Declined</span></p>
-      <% elsif @stay.confirmed%>
-        <span class="confirmed">Stay Accepted</span></p>
-        <% if current_user == @stay.accommodation.host %>
+
+  <p>
+    <strong>Request Status:
+    <% if @stay.state_pending? and @stay.end_date < Time.now %>
+      <%# if state is expired, print expired %>
+      <span class="rejected">Stay Request Expired</span></p>
+    <% elsif @stay.state_pending? %>
+      <%# if state is pending, print pending and make approve and reject buttons available %>
+      <span class="pending">Stay request is pending</span>
+      <% if current_user == @stay.accommodation.host %>
+        <div class="prof-button-flex">
+          <%= button_to "Approve Stay", update_status_path, method: :get, params: {stay: @stay, accommodation_id: @stay.accommodation.id, confirmed: true}, class: 'approve-button' %>
+          <%= button_to "Decline Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, accommodation_id: @stay.accommodation.id, rejected: true}, class: 'reject-button' %>
+        </div>
+      <% end %>
+    <% elsif @stay.state_confirmed?  %>
+      <%# if state is approved, print approved and 
+      < if time passed make add review available >
+      <%# else make cancel available %>
+      <span class="confirmed">Stay Accepted</span></p>
+       <% if @stay.end_date < Time.now %>
+        <% if current_user == @stay.guest %>
+          <% if !@stay.accommodationreview %>
+             <%= button_to 'Leave a review for this stay', new_accommodationreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
+          <% else %>
+            <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, guest_id: @stay.guest.id,cancelled: true}, class: 'reject-button' %>
+          <% end %>
+        <% elsif current_user == @stay.accommodation.host %>
           <p>Unable to host this stay anymore?</p><%= button_to "Cancel Stay", update_status_path, method: :get, data: {confirm: "Are you sure? This cannot be undone." }, params: {accommodation_id: @stay.accommodation.id, stay: @stay, cancelled: true}, class: 'reject-button' %>
-        <% end %>
-      <% elsif @stay.cancelled && @stay.rejected%>
+        <% end %> %>
+      <% end %>
+    <% elsif @stay.state_rejected? %>
+      <%# if state is rejected, pritn rejected %>
+      <span class="rejected">Stay Declined</span></p>
+    <% elsif @stay.state_cancelled? %>
+      <%# if state is cancelled, print cancelled %>
       <span class="rejected">Stay Cancelled</span></p>
-      <% end %>
-      </strong>
-
-    <% if current_user == @stay.guest && @stay.confirmed%>
-          <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, guest_id: @stay.guest.id,cancelled: true}, class: 'reject-button' %>
     <% end %>
+  </p>
 
-    <% if @stay.end_date < Time.now %>
-      <% if current_user == @stay.guest %>
-        <% if !@stay.accommodationreview %>
-          <%= button_to 'Leave a review for this stay', new_accommodationreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
-        <% end %>
-      <% elsif current_user == @stay.accommodation.host %>
-        <% if !@stay.guestreview %>
-          <%= button_to 'Leave a review for this Guest', new_guestreview_path, method: :get, params: {stay_id: @stay.id}, class: 'review-button' %>
-        <% end %>
-      <% end %>
-    <% end %>
+
     <p>
       <% if current_user == @stay.guest %>
         <% if !@stay.confirmed && !@stay.rejected %>

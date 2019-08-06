@@ -29,13 +29,15 @@
         
            <p>
             <strong>Request Status:
-            <% if !stay.confirmed && !stay.rejected %>
+            <% if stay.state_pending? and stay.end_date < Time.now %>
+              <span class="pending">Stay request is expired </span>
+            <% elsif stay.state_pending? %>
               <span class="pending">Stay request is pending</span>
-            <% elsif stay.rejected && !stay.cancelled %>
+            <% elsif stay.rejected? %>
               <span class="rejected">Stay Declined</span>
-            <% elsif stay.confirmed%>
+            <% elsif stay.confirmed? %>
               <span class="confirmed">Stay Accepted</span>
-            <% elsif stay.cancelled && stay.rejected %>
+            <% elsif stay.cancelled? %>
             <span class="rejected">Stay Cancelled by guest</span></p>
             <% end %>
             </strong>
