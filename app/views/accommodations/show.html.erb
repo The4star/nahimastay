@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 <h1 class="center-text"><%= @accommodation.name %></h1>
 
-<% if @accommodation != current_user.accommodation %>
-  <p class="center-text">
-    <%= link_to "Request to Stay at this Property", "/accommodations/#{@accommodation.id}/#request" %>
-  </p>
-<% end %>
+  <% if current_user && @accommodation != current_user.accommodation %>
+    <p class="center-text">
+      <%= link_to "Request to Stay at this Property", "/accommodations/#{@accommodation.id}/#request" %>
+    </p>
+  <% end %>
 
-<% if @accommodation.host.id == current_user.id %>
+<% if current_user && @accommodation.host.id == current_user.id %>
 <p class="center-text">
 <%= link_to 'Edit Your Property Listing', edit_accommodation_path(@accommodation) %>
 </p>
@@ -56,7 +56,7 @@
         <% if @accommodation.host.profile.uploaded_image.attached? %>
           <%= image_tag @accommodation.host.profile.uploaded_image.service_url, class: 'accom-prof-img-size' %>
         <% end %>
-        <% if @accommodation.host.id == current_user.id %>
+        <% if current_user && @accommodation.host.id == current_user.id %>
           <div id="host-container-text">
               <p><strong><%= link_to "You", profile_path(current_user.id) %> are the host of this property</strong></p>
               <%= button_to "View Your Profile", profile_path(@accommodation.host.id), method: :get, class: "host-button" %>
@@ -87,7 +87,7 @@
 <h1 class="center-text">Description</h1>
 <p class="center-text"><%= @accommodation.description %></p>
 
-  <% if @accommodation.host.id != current_user.id %>
+  <% if current_user && @accommodation.host.id != current_user.id %>
     <div class="stay-flex">
       <h1 id="request">Request to stay at this Property</h1>
       <p id="notice"><%= notice %></p>
@@ -100,7 +100,7 @@
     </div>
   <% end %>
 
-<% if @accommodation.host.id == current_user.id %>
+<% if current_user && @accommodation.host.id == current_user.id %>
 <p class="center-text">
 <%= link_to 'Edit Your Property Listing', edit_accommodation_path(@accommodation) %>
 </p>
