@@ -12,36 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
-
-  <div class="field">
     <%= form.label :cleanliness_rating %>
-    <%= form.number_field :cleanliness_rating %>
+    <%= form.select :cleanliness_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
   <div class="field">
     <%= form.label :communication_rating %>
-    <%= form.number_field :communication_rating %>
+    <%= form.select :communication_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
   <div class="field">
     <%= form.label :ease_of_hosting_rating %>
-    <%= form.number_field :ease_of_hosting_rating %>
+    <%= form.select :ease_of_hosting_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
-  <div class="field">
+  <div class="valign">
     <%= form.label :comments %>
-    <%= form.text_area :comments %>
+    <%= form.text_area :comments, class: 'devise-field' %>
   </div>
 
-  <div class="field">
-    <%= form.label :stay_id %>
-    <%= form.text_field :stay_id %>
-  </div>
+  <input type="hidden" value="<%= @stay_id %>" name="stay_id">
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Guest Review", class: 'rating-button'%>
   </div>
 <% end %>

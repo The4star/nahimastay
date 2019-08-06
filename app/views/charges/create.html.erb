@@ -1,1 +1,7 @@
- <h2>Thanks, you paid <strong>$5.00</strong>!</h2>
+<div class="hero-container">'
+    <%= image_tag("/img/editprofile.jpg",  alt: "beers on the couch", class: "hero-image") %>
+    <div class="devise">
+        <h2>Thanks For becoming a premium member!</h2>
+        <%= link_to 'Back to Profile', profile_path(current_user) %>
+    </div>
+</div>

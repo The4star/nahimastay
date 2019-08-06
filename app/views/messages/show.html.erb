@@ -15,5 +15,5 @@
   <%= @message.stay %>
 </p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Edit', edit_message_path(@message, stay_id: @message.stay.id) %> |
 <%= link_to 'Back', messages_path %>
