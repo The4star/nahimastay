@@ -100,17 +100,17 @@ class StaysController < ApplicationController
     @stay_length = @stay.end_date.day - @stay.start_date.day
     @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
     if params[:confirmed]
-      @stay.update(confirmed: params[:confirmed], rejected: false)
+      @stay.set_state_confirmed
       @stay.accommodation.host.profile.increment!(:karma_coins, @stay_cost) 
       @stay.accommodation.host.save! 
       @stay.guest.profile.decrement!(:karma_coins, @stay_cost) 
       @stay.guest.profile.save!
       @stay.save!
     elsif params[:rejected]
-      @stay.update(rejected: params[:rejected], confirmed: false)
+      @stay.set_state_rejected
       @stay.save!
     elsif params[:cancelled]
-      @stay.update(cancelled: params[:cancelled], confirmed: false, rejected: true)
+      @stay.set_state_cancelled
       @stay.accommodation.host.profile.decrement!(:karma_coins, @stay_cost) 
       @stay.accommodation.host.save! 
       @stay.guest.profile.increment!(:karma_coins, @stay_cost) 

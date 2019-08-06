@@ -17,7 +17,7 @@ class StayPolicy < ApplicationPolicy
         @user.id == @stay.guest.id
     end
 
-    def update_status
+    def update_status?
         @user.id == @stay.accommodation.host.id or @user.id == @stay.guest.id
     end
 end
