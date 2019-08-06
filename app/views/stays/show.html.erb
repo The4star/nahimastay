@@ -7,6 +7,21 @@
   <div class="left-container">
 
     <p>
+      <strong>Guest:</strong>
+      <%= link_to "#{@stay.guest.profile.first_name} #{@stay.guest.profile.last_name}", profile_path(@stay.guest.id) %>
+    </p>
+
+    <p>
+      <strong>Host:</strong>
+      <%= link_to "#{@stay.accommodation.host.profile.first_name} #{@stay.accommodation.host.profile.last_name}", profile_path(@stay.accommodation.host.id) %>
+    </p>
+
+    <p>
+      <strong>Accommodation:</strong>
+      <%= link_to "#{@stay.accommodation.name}", accommodation_path(@stay.accommodation.id) %>
+    </p>
+
+    <p>
       <strong>Stay Requested On:</strong>
       <%= @stay.created_at.day %> <%= I18n.l(@stay.created_at, format: "%B") %> <%= @stay.created_at.year %>
     </p>
