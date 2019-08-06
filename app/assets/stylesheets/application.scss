@@ -8,6 +8,7 @@
 @import 'stays';
 @import 'stay-results';
 @import 'messages';
+@import 'accommodationreviews';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -80,7 +81,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 160px;
+    height: 180px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -123,11 +124,14 @@ li {
 
 li a:link {
     text-decoration: none;
+    font-family: 'Alef', sans-serif;
 }
 
 a:link, a {
     text-decoration: none;
     color: #826251;
+    font-size: 30px;
+    font-family: 'Alef', sans-serif;
 }
 
 
@@ -146,7 +150,7 @@ a:link, a {
 }
 
 .container {
-    margin: 160px 0px 20px 0px;
+    margin: 180px 0px 20px 0px;
 }
 
 .searchform {
@@ -186,6 +190,10 @@ footer {
 .footer-menu {
     color: #fafafa;
     margin: 20px;
+    font-size: 30px;
+    li:link a:link {
+        color: #fafafa;
+    }
 }
 
 .text-field-label {
@@ -278,4 +286,5 @@ footer {
         font-size: 25px;
         text-align: center;
     }
+
 }

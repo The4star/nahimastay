@@ -107,15 +107,6 @@
         <% end %>
       <% end %>
     <% end %>
-    <div class="prof-button-flex">
-      <% if @stay.accommodationreview %>
-        <%= button_to 'View Accommodation review', accommodationreview_path(@stay.accommodationreview), method: :get, class: 'view-button' %>
-      <% end %>
-
-      <% if @stay.guestreview %>
-        <%= button_to 'View Guest review', guestreview_path(@stay), method: :get, class: 'view-button' %>
-      <% end %>
-    </div>
     <p>
       <% if current_user == @stay.guest %>
         <% if !@stay.confirmed && !@stay.rejected %>
@@ -140,6 +131,61 @@
     <%= link_to(@stay.accommodation.name, accommodation_path(@stay.accommodation)) %> 
 
   </div>
+</div>
+<div id="review-section">
+  
+    <% if @stay.accommodationreview %>
+      <div id="accom-review">
+      <div class="review-title">
+     <p> <strong><%= @stay.guest.profile.first_name %>'s</strong></p>
+      <% if @stay.guest.profile.uploaded_image.attached? %>
+          <%= image_tag @stay.guest.profile.uploaded_image.service_url, class: 'review-image-thumb' %>
+        <% end %>
+      <p><strong>Accommodation Review</strong></p>
+      </div>
+        <p>
+          Communication: <%= @stay.accommodationreview.communication_rating %> | 
+          Location: <%= @stay.accommodationreview.location_rating %> | 
+          Cleanliness: <%= @stay.accommodationreview.cleanliness_rating %> |
+          Ammenities: <%= @stay.accommodationreview.ammenities_rating %> | 
+          Host: <%= @stay.accommodationreview.host_rating %> 
+        </p>
+
+        <div id="comments">
+          <p><strong>Comments</strong></p>
+          <p>  
+            <%= @stay.accommodationreview.comments %>
+          </p>
+        </div>  
+
+      </div>
+    <% end %>
+
+    <% if @stay.guestreview %>
+      <div id="guest-review">
+        <div class="review-title">
+          <p> <strong><%= @stay.accommodation.host.profile.first_name %>'s</strong></p>
+          <% if @stay.accommodation.host.profile.uploaded_image.attached? %>
+            <%= image_tag @stay.accommodation.host.profile.uploaded_image.service_url, class: 'review-image-thumb' %>
+          <% end %>
+        <p><strong>Review of Guest</strong></p>
+        </div>
+        <p>
+          Communication: <%= @stay.guestreview.communication_rating %> | 
+          Cleanliness: <%= @stay.guestreview.cleanliness_rating %> |
+          Easy to host: <%= @stay.guestreview.ease_of_hosting_rating %> 
+        </p>
+
+        <div id="comments">
+          <p><strong>Comments</strong></p> 
+          <p>  
+           <%= @stay.guestreview.comments %>
+          </p>
+        </div> 
+        
+      </div>
+    <% end %>
+
 </div>
 <div class="message-section">
   <p>
