@@ -22,15 +22,19 @@ class Profile < ApplicationRecord
   def get_host_rating()
     # calculate total reviews by counting stay reviews
     host_review_count = 0
-
-    self.user.accommodation.stays.each do |stay|
-      if stay.accommodationreview
-        host_review_count =  host_review_count + 1
-      end
-    end
+    average_rating = 0 
     
-    # divide rating by total stays
-    average_rating = self.host_rating / host_review_count
+    if self.user.accommodation
+      self.user.accommodation.stays.each do |stay|
+        if stay.accommodationreview
+          host_review_count =  host_review_count + 1
+        end
+      end
+      
+      # divide rating by total stays
+      average_rating = self.host_rating / host_review_count
+    end
+
     return average_rating
   end
 
@@ -59,11 +63,13 @@ class Profile < ApplicationRecord
   end
 
   def get_guest_rating()
+    guest_stays = Stay.where(guest_id: self.user.id)
+
     # calculate total reviews by counting stay reviews
     guest_review_count = 0
 
-    self.user.accommodation.stays.each do |stay|
-      if stay.accommodationreview
+    guest_stays.each do |stay|
+      if stay.guestreview
         guest_review_count =  guest_review_count + 1
       end
     end
