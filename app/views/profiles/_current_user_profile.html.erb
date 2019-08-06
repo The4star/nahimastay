@@ -64,7 +64,7 @@
     <% if @profile.user.role_id == 2 %>
       You are a <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
     <% elsif @profile.user.role_id == 3 %>
-      You are a <%= @profile.user.role.privilege %>. <%= link_to("Change back to free account", upgrade_path) %> 
+      You are a <%= @profile.user.role.privilege %>. %> 
     <% end %>
     
     </p>

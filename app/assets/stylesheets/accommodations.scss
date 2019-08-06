@@ -69,6 +69,13 @@
     // justify-content: center;
 }
 
+.flag {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 @media only screen and (max-width: 1400px) {
     .host-container {
         flex-direction: column;
@@ -77,11 +84,4 @@
     .stay-flex {
         margin:40px;
     }
-}
-
-.flag {
-    width: 100px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
