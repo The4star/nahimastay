@@ -35,7 +35,7 @@
 
     <p>
       <strong>Host rating:</strong>
-      <% if @profile.host_rating > 0 %>
+      <% if @profile.host_rating > 0%>
         <%= convert_float_to_1sf(@profile.get_host_rating) %></p>
       <% else %>
         No rating recieved yet</p>
