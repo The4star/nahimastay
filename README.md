@@ -114,29 +114,51 @@ ___________________________________________________________________
 ### Site Map
 
 
-This is our sitemap 
+##### This is our sitemap 
 
-[![Site Map for Nah..ImaStay](./docs/sitemap.jpeg)] 
+![Site Map for Nah..ImaStay](./docs/sitemap.jpeg)
 
 ___________________________________________________________________
 ### Screenshots
 
-Screenshots - Front End
+##### Screenshots - Front End
 
-[![Screenshot Home Page](./docs/hometop.png)] 
-[![Screenshot Home Page](./docs/homebtm.png)]
-[![Screenshot About Page](./docs/abouttop.png)]
- [![Screenshot About Page ](./docs/aboutbtm.png)]
-[![Screenshot Sign Up Page](./docs/signup.png)] 
-[![Screenshot Login Page](./docs/login.png)]
-[![Screenshot Profile Page](./docs/profile.png)] 
-[![Screenshot Edit Profile Page](./docs/editprofile.png)]
-[![Screenshot Membership Page](./docs/membership.png)]
+###### Home and About Us
+![Screenshot Home Page](./docs/home1.png)
+![Screenshot About Page](./docs/about1.png)
+![Screenshot About Page ](./docs/about2.png)
 
-Screenshots - Back End
+###### Sign up and Sign in Pages
+![Screenshot Home Page](./docs/home1.png)
+![Screenshot Login Page](./docs/login.png)
+![Screenshot Sign Up Page](./docs/signup.png) 
 
-[![Screenshot of Backend](./docs/bess1.jpeg)] 
-[![Screenshot of Backend](./docs/bess2.jpeg)] 
+###### Profile Pages
+![Screenshot Initial Profile Page](./docs/initialprofile.png)
+![Screenshot Profile Show](./docs/profileshow.png)
+![Screenshot Edit Profile Page](./docs/editprofie.png)
+
+###### Membership Pages
+![Screenshot Membership Options Page](./docs/membership.png)
+![Screenshot Membership Payment](./docs/payment.png)
+![Screenshot Membership Upgrade Success](./docs/membersucc.png)
+
+###### Accommodation Pages
+![Screenshot Accommodation Search](./docs/accsearch.png)
+![Screenshot Accommodation Show](./docs/accshow.png)
+![Screenshot All the stays Host](./docs/allstayshost.png)
+![Screenshot Accommodation Review](./docs/accreview.png)
+![Screenshot Accommodation Review Show](./docs/accreviewshow.png)
+
+###### Stay Pages
+![Screenshot Stay Book](./docs/staybooked.png)
+![Screenshot Stay Show](./docs/staysshow.png)
+![Screenshot All the Stays Guest](./docs/allstaysguest.png)
+
+##### Screenshots - Back End
+
+![Screenshot of Backend](./docs/bess1.png)
+![Screenshot of Backend](./docs/bess2.png) 
 ___________________________________________________________________
 
 ## SECTION 2 - DESIGN DOCUMENTATION 
@@ -144,28 +166,30 @@ ___________________________________________________________________
 
 ### Design process
 
-MockUps
+##### MockUps Figma -  
+https://www.figma.com/file/fglPB5H0edn2CTdPFMvXS3/Nah..ImaStay?node-id=0%3A1
 
-Figma -  https://www.figma.com/file/fglPB5H0edn2CTdPFMvXS3/Nah..ImaStay?node-id=0%3A1
-
-[![Screenshoot  Figma mockup](./docs/figma1.png)] [![Screenshoot  Figma mockup](./docs/figma2.png)]
-[![Screenshoot  Figma mockup](./docs/figma3.png)] [![Screenshoot  Figma mockup](./docs/figma4.png)]
-[![Screenshoot  Figma mockup](./docs/figma5.png)] [![Screenshoot  Figma mockup](./docs/figma6.png)]
-[![Screenshoot  Figma mockup](./docs/figma7.png)] 
+![Screenshot  Figma mockup](./docs/figma1.png) 
+![Screenshoot  Figma mockup](./docs/figma2.png)
+![Screenshot  Figma mockup](./docs/figma3.png) 
+![Screenshoot  Figma mockup](./docs/figma4.png)
+![Screenshot  Figma mockup](./docs/figma5.png) 
+![Screenshot  Figma mockup](./docs/figma6.png)
+![Screenshot  Figma mockup](./docs/figma7.png) 
 ___________________________________________________________________
 
 ### A workflow diagram of the user journey/s.
  
- This is our workflow diagram of the users journey
+ ##### Workflow diagram of users journey
 
-[![Workflow diagram of the user journey](./docs/sitemap.jpeg)] 
+![Workflow diagram of the user journey](./docs/sitemap.jpeg)
 ___________________________________________________________________
 
 ### Database Entity Relationship Diagrams
  
- This is our database entity relationship diagram
+ ###### Database ERD
 
-[![Database entity relationship diagram](./docs/erd.jpeg)] 
+![Database entity relationship diagram](./docs/erd.png) 
 ___________________________________________________________________
 ## SECTION 3 - PLANNING PROCESS 
 ___________________________________________________________________
@@ -173,18 +197,18 @@ ___________________________________________________________________
 
 ##### Project Plan
 
-[![Project Plan](./docs/projectplan.png)] 
+![Project Plan](./docs/projectplan.png)
 
 #####  Initial Planning
 
-[![Planning Doc](./docs/designdoc1.png)] 
-[![Planning Doc](./docs/designdoc2.png)] 
+![Planning Doc](./docs/designdoc1.jpeg) 
+![Planning Doc](./docs/designdoc2.jpeg) 
 
 ##### Slack
 
-[![Project Planning](./docs/planning1.png)] 
-[![Project Planning](./docs/planning2.png)]
-[![Project Planning](./docs/planning3.png)]
+![Project Planning](./docs/planning1.png)
+![Project Planning](./docs/planning2.png)
+![Project Planning](./docs/planning3.png)
 
 
 
@@ -192,9 +216,11 @@ ___________________________________________________________________
 
 ##### Trello board
 
-[![Trello Board Screenshot](./docs/trello1.png)] [![Trello Board Screenshot](./docs/trello2.png)] 
-[![Trello Board Screenshot](./docs/trello3.png)] [![Trello Board Screen Shot](./docs/trello4.png)] 
-[![Trello Board Screenshot](./docs/trello5.png)] [![Trello Board Screen Shot](./docs/trello6.png)] 
+![Trello Board Screenshot](./docs/trello1.png)       ![Trello Board Screenshot](./docs/trello2.png) 
+![Trello Board Screenshot](./docs/trello3.png) 
+![Trello Board Screen Shot](./docs/trello4.png)
+![Trello Board Screenshot](./docs/trello5.png)
+![Trello Board Screen Shot](./docs/trello6.png) 
 ___________________________________________________________________
 ## SECTION 4 - Short Answer Questions (Section 2.2)
 ___________________________________________________________________
@@ -269,7 +295,7 @@ For Production, the Migrations and Schema of our Development Database are pushed
 
 ##### Architecture Diagram
 
-[![Architecture Diagram](./docs/architecturediagram.png)] 
+![Architecture Diagram ](./docs/architecturediagram.png)
 
 Client - Sends and receives HTTP requests to and from the web server 
 
@@ -408,9 +434,9 @@ has_one :stays
 
 #### 14. Provide your database schema design.
  
- This is our database schema design
+##### Database Schema Design
 
-[![Database schema design](./docs/erd.jpeg)]
+![Database schema design](./docs/erd.png)
 
 #### 15. Provide User stories for your App.
 
@@ -469,9 +495,9 @@ has_one :stays
 
 ##### These are our wireframes
 
-[![Wireframe for Stay and Stay Show pages](./docs/wireframe1.jpeg)] 
-[![Wireframe for Profile and Accommodation pages](./docs/wireframe2.jpeg)]
-[![Wireframe for Home page and Search results](./docs/wireframe3.jpeg)] 
+![Wireframe for Stay and Stay Show pages](./docs/wireframe1.jpeg)
+![Wireframe for Profile and Accommodation pages](./docs/wireframe2.jpeg)
+![Wireframe for Home page and Search results](./docs/wireframe3.jpeg)
 
 #### 17. Describe the way tasks are allocated and tracked in your project.
 
@@ -481,7 +507,7 @@ The team member completing the task assigns it to them self and moves the trello
 
 This system made it easy for everyone to know what the everyone else was working on reducing conflict with pulling and pushing to github.
 
-[![Trello screenshot of Team Git Process](./docs/trelloteams1.jpeg)] 
+![Trello screenshot of Team Git Process](./docs/trellloteams1.png)
 
 
 #### 18. Discuss how Agile methodology is being implemented in your project.
@@ -509,21 +535,21 @@ We created a new respiratory on GitHub and then created a new branch separate fr
 
 ##### Heroku
 
-[![Heroku Screenshot](./docs/heroku1.png)] 
+![Heroku Screenshot](./docs/heroku1.png)
 
 ##### GitHub
 
-[![GitHub Screenshot](./docs/git4.png)] 
-[![GitHub Screenshot](./docs/git3.png)] 
-[![GitHub Screenshot](./docs/git2.png)] 
-[![GitHub Screenshot](./docs/git1.png)] 
+![GitHub Screenshot](./docs/git4.png) 
+![GitHub Screenshot](./docs/git3.png) 
+![GitHub Screenshot](./docs/git2.png)
+![GitHub Screenshot](./docs/git1.png)
 
 #### 20. Provide an overview and description of your Testing process.
 
 ##### Testing record
 
-[![Testing Spreadsheet](./docs/testing2.png)] 
-[![Testing Spreadsheet](./docs/testing3.png)] 
+![Testing Spreadsheet](./docs/testing1.png)
+![Testing Spreadsheet](./docs/testing2.png) 
 
 
 #### 21. Discuss and analyze requirements related to information system security.
@@ -548,8 +574,8 @@ In the instance of a data breach business must comply with the Notifiable Data B
 
 It is a legal obligations to consider the safety of personal information about users from hackers, cyber thefts, data loss and in the event of a disaster. 
 
-[![Nah..ImaStay Privacy Policy screenshot](./docs/ppscreenshot.png)]
-[![Nah..ImaStay Privacy Policy PDF](./docs/privacypolicy.pdf)]
+![Nah..ImaStay Privacy Policy screenshot](./docs/ppscreenshot.png)
+![Nah..ImaStay Privacy Policy PDF](./docs/privacypolicy.pdf)
 
 
 
