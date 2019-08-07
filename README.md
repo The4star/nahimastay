@@ -171,13 +171,26 @@ ___________________________________________________________________
 ___________________________________________________________________
 ### Project plan & timeline
 
-This is our initial project plan 
+##### Project Plan
 
 [![Project Plan](./docs/projectplan.png)] 
 
+#####  Initial Planning
+
+[![Planning Doc](./docs/designdoc1.png)] 
+[![Planning Doc](./docs/designdoc2.png)] 
+
+##### Slack
+
+[![Project Planning](./docs/planning1.png)] 
+[![Project Planning](./docs/planning2.png)]
+[![Project Planning](./docs/planning3.png)]
+
+
+
 ### Screenshots of Trello board(s)
 
-Trello board
+##### Trello board
 
 [![Trello Board Screenshot](./docs/trello1.png)] [![Trello Board Screenshot](./docs/trello2.png)] 
 [![Trello Board Screenshot](./docs/trello3.png)] [![Trello Board Screen Shot](./docs/trello4.png)] 
@@ -500,12 +513,18 @@ We created a new respiratory on GitHub and then created a new branch separate fr
 
 ##### GitHub
 
-[![GitHub Screenshot](./docs/git4.png)] [![GitHub Screenshot](./docs/git3.png)] 
-[![GitHub Screenshot](./docs/git2.png)] [![GitHub Screenshot](./docs/git1.png)] 
+[![GitHub Screenshot](./docs/git4.png)] 
+[![GitHub Screenshot](./docs/git3.png)] 
+[![GitHub Screenshot](./docs/git2.png)] 
+[![GitHub Screenshot](./docs/git1.png)] 
 
 #### 20. Provide an overview and description of your Testing process.
 
-**********  SCREENSHOTS OF TESTING SPREADSHEET
+##### Testing record
+
+[![Testing Spreadsheet](./docs/testing2.png)] 
+[![Testing Spreadsheet](./docs/testing3.png)] 
+
 
 #### 21. Discuss and analyze requirements related to information system security.
 
