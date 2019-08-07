@@ -1,7 +1,7 @@
 <div class="review-form-page">'
   <%= image_tag("/img/editprofile.jpg",  alt: "beers on the couch", class: "hero-image") %>
   <div class="devise">
-    <h1>Accommodation review</h1>
+    <h1>Accommodation review for <%= @stay.accommodation.name %></h1>
 
     <%= render 'form', accommodationreview: @accommodationreview %>
 
