@@ -16,6 +16,7 @@ class GuestreviewsController < ApplicationController
 
   # GET /guestreviews/new
   def new
+    @stay = Stay.find(params[:stay_id])
     @stay_id = params[:stay_id]
     @guestreview = Guestreview.new
   end
