@@ -91,9 +91,12 @@
       <%= button_to "View stays hosted at property", accommodation_stays_path(accommodation_id: @profile.user.accommodation.id), method: :get, class: "accom-stay-button" %><%= button_to "View property listing", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
     </div>
     <% else %>
-       <div class="prof-button-flex">
-        <%= button_to "Add Accommodation", new_accommodation_path, params: {:profile_id => @profile.user.id}, method: :get, class: "add-accom-button" %>
-      </div>
+      <p> 
+        <strong>
+          You need to add a property so that you can host guests.
+        </strong>
+      </p>
+      <%= button_to "Add Property", new_accommodation_path, params: {:profile_id => @profile.user.id}, method: :get, class: "add-accom-button" %>
     <% end %>
      
     </div>
