@@ -3,7 +3,7 @@
 <h1> Review for your stay at <%= @guestreview.stay.accommodation.name %>
 
 <p>
-<%= link_to 'view stay', stay_path(@guestreview.stay.id) %>
+<%= link_to 'view stay', stay_path(@guestreview.stay.id, accommodation_id: @guestreview.stay.accommodation.id) %>
 </p>
 
 <p>
@@ -32,4 +32,4 @@
       </p>
 </p>
 
-<%= link_to 'Back', stay_path(@guestreview.stay.id) %>
+<%= link_to 'Back', stay_path(@guestreview.stay.id, accommodation_id: @guestreview.stay.accommodation.id)) %>

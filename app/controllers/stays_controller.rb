@@ -106,9 +106,11 @@ class StaysController < ApplicationController
       @stay.guest.profile.decrement!(:karma_coins, @stay_cost) 
       @stay.guest.profile.save!
       @stay.save!
+      redirect_to stay_path(@stay, accommodation_id: params[:accommodation_id])
     elsif params[:rejected]
       @stay.set_state_rejected
       @stay.save!
+      redirect_to stay_path(@stay, accommodation_id: params[:accommodation_id])
     elsif params[:cancelled]
       @stay.set_state_cancelled
       @stay.accommodation.host.profile.decrement!(:karma_coins, @stay_cost) 
@@ -116,10 +118,12 @@ class StaysController < ApplicationController
       @stay.guest.profile.increment!(:karma_coins, @stay_cost) 
       @stay.guest.profile.save!  
       @stay.save!
+      if params[:accommodation_id]
+        redirect_to stay_path(@stay, accommodation_id: params[:accommodation_id])
+      elsif params[:guest_id]
+        redirect_to stay_path(@stay, accommodation_id: params[:guest_id])
+      end    
     end
-
-    redirect_to @stay
-
   end 
 
 
