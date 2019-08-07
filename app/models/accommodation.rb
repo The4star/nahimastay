@@ -45,7 +45,6 @@ class Accommodation < ApplicationRecord
     else
       average_rating = 0
     end
-
     return average_rating
   end
 end
