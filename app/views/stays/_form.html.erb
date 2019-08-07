@@ -22,7 +22,6 @@
       <%= form.date_select :end_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
     </div>
     <%= form.hidden_field :accommodation_id, value: accommodation_id %>
-    <%= form.hidden_field :guest_id, value: current_user.id %>
     <%= form.submit "Request Stay!", class: 'stay-button' %>
   <% end %>
 </div>
