@@ -15,8 +15,6 @@ class Profile < ApplicationRecord
 
     # add new rating to current rating
     self.host_rating = self.host_rating + rating.to_i
-    # divide rating by total stays
-    average_rating = self.host_rating / host_review_count
     self.save!
   end
 
@@ -62,8 +60,6 @@ class Profile < ApplicationRecord
 
     # add new rating to current guest rating
     self.guest_rating = self.guest_rating + users_average_rating
-    # divide rating by total stays
-    average_rating = self.guest_rating / guest_review_count
     self.save!
   end
 
@@ -83,9 +79,8 @@ class Profile < ApplicationRecord
     if guest_review_count != 0
       average_rating = self.guest_rating / guest_review_count
     else 
-      averge_rating = 0
+      average_rating = 0
     end
-
     return average_rating
   end
 end
