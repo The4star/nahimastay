@@ -56,7 +56,7 @@ module ApplicationHelper
         else
             new_num = 0
         end
-
+        raise
         return new_num
     end
 
