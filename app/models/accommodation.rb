@@ -31,7 +31,7 @@ class Accommodation < ApplicationRecord
   def get_accommodation_rating()
     # calculate total reviews by counting stay reviews
     # calculate total reviews by counting stay reviews
-    accom_review_count = 0
+    accom_review_count = 1
 
     self.stays.each do |stay|
       if stay.accommodationreview
@@ -40,7 +40,7 @@ class Accommodation < ApplicationRecord
     end
 
     # divide rating by total stays
-    average_rating = self.accommodation_rating / accom_review_count
+    average_rating = self.accommodation_rating / (accom_review_count - 1)
     return average_rating
   end
 end
