@@ -2,6 +2,7 @@ class GuestreviewPolicy < ApplicationPolicy
     attr_reader :user, :guestreview
   
     def initialize(user, guestreview)
+      @guestreview = guestreview
       @user = user
       @accommodationreview = guestreview
     end
