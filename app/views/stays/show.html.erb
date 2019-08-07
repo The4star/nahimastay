@@ -95,9 +95,13 @@
             <% if !@stay.accommodationreview %>
               <%= button_to 'Leave a review for this stay', new_accommodationreview_path, method: :get, params: {stay_id: @stay.id, guest_id: @guest.id}, class: 'review-button' %>
             <% end %>
-          <% else %>
-            <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, guest_id: @stay.guest.id,cancelled: true}, class: 'reject-button' %>
-          <% end %>
+        <% else %>
+            <% if params[:accommodation_id] %>
+              <p>Unable to Host this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, accommodation_id: @stay.accommodation.id, cancelled: true}, class: 'reject-button' %>
+            <% elsif params[:guest_id] %>
+              <p>Unable to attend this stay anymore? </p><%= button_to "Cancel Stay", update_status_path, method: :get, data: { confirm: "Are you sure? This cannot be undone." }, params: {stay: @stay, guest_id: @stay.guest.id, cancelled: true}, class: 'reject-button' %>
+            <% end %>
+        <% end %>
       <% elsif current_user == @stay.accommodation.host %>
             <% if @stay.end_date < Time.now %>
               <% if !@stay.guestreview %>

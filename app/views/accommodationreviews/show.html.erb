@@ -3,7 +3,7 @@
 <h1> Review for <%= Profile.find(@accommodationreview.stay.guest.id).first_name %>'s stay at <%= @accommodationreview.stay.accommodation.name %>
 
 <p>
-<%= link_to 'view stay', stay_path(@accommodationreview.stay.id) %>
+<%= link_to 'view stay', stay_path(@accommodationreview.stay.id, guest_id: @accommodationreview.stay.guest.id) %>
 </p>
 
 <p>
@@ -42,4 +42,4 @@
       </p>
 </p>
 
-<%= link_to 'Back', stay_path(@accommodationreview.id) %>
+<%= link_to 'Back', stay_path(@accommodationreview.stay.id, guest_id: @accommodationreview.stay.guest.id) %>
