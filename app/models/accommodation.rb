@@ -5,6 +5,7 @@ class Accommodation < ApplicationRecord
   has_one_attached :hero_image
   has_one_attached :interior_image
   geocoded_by :city
+  validates :description, length: { maximum: 200 }
   after_validation :geocode, :if => :city_changed?
 
   def update_accommodation_rating(communication_rating, ammenities_rating, location_rating, cleanliness_rating)

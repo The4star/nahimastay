@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
+  validates :bio, length: { maximum: 200 }
   has_one_attached :uploaded_image
 
   def update_host_rating(rating)
