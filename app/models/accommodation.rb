@@ -43,9 +43,9 @@ class Accommodation < ApplicationRecord
     if accom_review_count != 0
       average_rating = self.accommodation_rating / accom_review_count
     else
-      average_rating = 1
+      average_rating = 0
     end
-    
+
     return average_rating
   end
 end

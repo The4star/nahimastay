@@ -31,10 +31,10 @@ class Profile < ApplicationRecord
       end
       
       # divide rating by total stays
-      if average_rating != 0
+      if host_review_count != 0
         average_rating = self.host_rating / host_review_count
       else
-        average_rating = 1
+        average_rating = 0
       end
 
     end
@@ -79,10 +79,10 @@ class Profile < ApplicationRecord
     end
 
     # divide rating by total stays
-    if guest_review_rating != 0
+    if guest_review_count != 0
       average_rating = self.guest_rating / guest_review_count
     else 
-      averge_rating = 1
+      averge_rating = 0
     end
 
     return average_rating
