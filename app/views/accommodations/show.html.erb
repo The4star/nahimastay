@@ -6,7 +6,7 @@
     <p class="center-text">
       <%= link_to "Request to Stay at this Property", "/accommodations/#{@accommodation.id}/#request" %>
     </p>
-  <% else %>
+  <% elsif @accommodation != current_user.accommodation %>
     <p class="center-text">
       <strong>
         <%= link_to 'To Request a Stay you must Finish editing your profile', edit_profile_path(current_user.profile) %></p>
@@ -108,7 +108,7 @@
       </p>
       <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id}, class: 'form-inline' %>
     </div>
-  <% else %>
+  <% elsif @accommodation != current_user.accommodation %>
     <p class="center-text">
       <strong>
         <%= link_to 'To Request a Stay you must Finish editing your profile', edit_profile_path(current_user.profile) %></p>

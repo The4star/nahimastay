@@ -72,7 +72,7 @@
     <p>
 
   <p>
-    <strong>Request Status:
+    <strong>Request Status:</strong>
     <% if @stay.state_pending? and @stay.end_date < Time.now %>
       <%# if state is expired, print expired %>
       <span class="rejected">Stay Request Expired</span></p>
@@ -116,30 +116,27 @@
     <% end %>
   </p>
 
+      <p>
+        <% if current_user == @stay.guest %>
+          <%# <% if !@stay.confirmed && !@stay.rejected %> 
+            <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %> |
+          <%# <% end %>
+        <% end %>
 
-    <p>
-      <% if current_user == @stay.guest %>
-        <%# <% if !@stay.confirmed && !@stay.rejected %> %>
-          <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %> |
-        <%# <% end %> %>
-      <% end %>
-
-      <% if params[:accommodation_id] %>
-        <%= link_to 'Back', stays_path({accommodation_id: @accommodation.id}) %>    
-      <% elsif params[:guest_id] %>
-        <%= link_to 'Back', stays_path({guest_id: @guest.id}) %>
-      <% end %>
-    </p>
-  </div>
+        <% if params[:accommodation_id] %>
+          <%= link_to 'Back', stays_path({accommodation_id: @accommodation.id}) %>    
+        <% elsif params[:guest_id] %>
+          <%= link_to 'Back', stays_path({guest_id: @guest.id}) %>
+        <% end %>
+      </p>
+  </div>  
   <div class="right-container">
-      <% if @stay.accommodation.hero_image.attached? %>
+    <% if @stay.accommodation.hero_image.attached? %>
         <%= image_tag @stay.accommodation.hero_image.service_url, class: 'accom-image-size' %>
     <% else %>
       <p>No Hero image for this accommodation has been added</p>
     <% end %>
-
     <%= link_to(@stay.accommodation.name, accommodation_path(@stay.accommodation)) %> 
-
   </div>
 </div>
 <div id="review-section">

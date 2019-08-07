@@ -70,7 +70,7 @@ class StaysController < ApplicationController
 
       respond_to do |format|
         if @stay.save
-          format.html { redirect_to @stay, notice: "Stay was successfully created." }
+          format.html { redirect_to stay_path(@stay, guest_id: @stay.guest.id), notice: "Stay was successfully created." }
           format.json { render :show, status: :created, location: @stay }
         else
           format.html { render :new }
@@ -85,7 +85,7 @@ class StaysController < ApplicationController
   def update
     respond_to do |format|
       if @stay.update(stay_params)
-        format.html { redirect_to @stay, notice: "Stay was successfully updated." }
+        format.html { redirect_to stay_path(@stay, guest_id: @stay.guest.id), notice: "Stay was successfully updated." }
         format.json { render :show, status: :ok, location: @stay }
       else
         format.html { render :edit }
