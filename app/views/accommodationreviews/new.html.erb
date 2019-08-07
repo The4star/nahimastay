@@ -5,6 +5,6 @@
 
     <%= render 'form', accommodationreview: @accommodationreview %>
 
-    <%= link_to 'Back', stay_path(params[:stay_id]) %>
+    <%= link_to 'Back', stay_path(params[:stay_id], guest_id: params[:guest_id]) %>
   </div>
 </div>
