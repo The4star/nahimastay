@@ -1,7 +1,7 @@
 <div class="review-form-page">'
     <%= image_tag("/img/editprofile.jpg",  alt: "beers on the couch", class: "hero-image") %>
     <div class="devise">
-    <h2>Guest Review for <%= @stay.guest.first_name  %> <%= @stay.guest.last_name  %></h2>
+    <h2>Guest Review for <%= @stay.guest.profile.first_name  %> <%= @stay.guest.profile.last_name  %></h2>
         <%= render 'form', guestreview: @guestreview %>
 
         <%= link_to 'Back', stay_path(params[:stay_id], accommodation_id: params[:accommodation_id]) %>
