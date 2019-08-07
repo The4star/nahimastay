@@ -108,8 +108,6 @@
       </p>
       <%= render partial: '/stays/form', locals: {stay: @stay, accommodation_id: @accommodation.id}, class: 'form-inline' %>
     </div>
-<% end %>
- 
   <% else %>
     <p class="center-text">
       <strong>
@@ -117,6 +115,10 @@
       </strong>
     </p>
   <% end %>
+<% end %>
+ 
+
+
 
 <% if current_user && @accommodation.host.id == current_user.id %>
 <p class="center-text">
