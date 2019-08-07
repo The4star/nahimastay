@@ -12,11 +12,11 @@ class GuestreviewPolicy < ApplicationPolicy
     end
 
     def show?
-      @guestreview.stay.accommodation.host == @user.id
+      @guestreview.stay.accommodation.host.id == @user.id
     end
 
     def create?
-      @guestreview.stay.accommodation.host == @user.id
+      @guestreview.stay.accommodation.host.id == @user.id
     end
 
 end
