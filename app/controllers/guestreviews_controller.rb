@@ -4,14 +4,14 @@ class GuestreviewsController < ApplicationController
   # GET /guestreviews
   # GET /guestreviews.json
   def index
-    authorize(@accommodationreview)
+    authorize(@guestreview)
     @guestreviews = Guestreview.all
   end
 
   # GET /guestreviews/1
   # GET /guestreviews/1.json
   def show
-    authorize(@accommodationreview)
+    authorize(@guestreview)
   end
 
   # GET /guestreviews/new

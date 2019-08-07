@@ -4,7 +4,6 @@ class GuestreviewPolicy < ApplicationPolicy
     def initialize(user, guestreview)
       @guestreview = guestreview
       @user = user
-      @accommodationreview = guestreview
     end
 
     def index?
