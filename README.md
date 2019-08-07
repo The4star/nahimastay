@@ -3,29 +3,29 @@ ________________________________________________________________________________
 # Nah..ImaStay
 
 ## Contributors
+![Clinton Forster](./docs/clinton.png)
+##### | Clinton Forster |        https://github.com/The4Star |
 
-|[![Clinton Forster](./docs/clinton.jpg)] 
-https://github.com/The4Star|
+![Emma Cullen](./docs/emma.png)
+##### | Emma Cullen | https://github.com/ |
 
-[![Emma Cullen](./docs/emma.jpg)] 
-https://github.com/| 
+![Kristy Lake](./docs/kristy.png)
 
-[![Kristy Lake](./docs/kristy.jpg)]
- https://github.com/klps007|
+##### Kristy Lake | https://github.com klps007|
 
-| Clinton Forster | Emma Cullen   | Kristy Lake |
+##### | Clinton Forster | Emma Cullen   | Kristy Lake |
 ________________________________________________________________________________________________
 ## Links
 
-URL - https://nahmastay.herokuapp.com/
+##### URL - https://nahmastay.herokuapp.com/
 
-GitHub - https://github.com/Nah..ImaStay
+##### GitHub - https://github.com/Nah..ImaStay
 ________________________________________________________________________________________________
 
 ### Section 1 - Description
 ### Section 2 - Design Documents
 ### Section 3 - Planning Process
-### Section 4 - Short question answers
+### Section 4 - Short question & answers
 ________________________________________________________________________________________________
 ## SECTION 1 - DESCRIPTION
 
@@ -210,8 +210,6 @@ ___________________________________________________________________
 ![Project Planning](./docs/planning2.png)
 ![Project Planning](./docs/planning3.png)
 
-
-
 ### Screenshots of Trello board(s)
 
 ##### Trello board
@@ -224,12 +222,11 @@ ___________________________________________________________________
 ___________________________________________________________________
 ## SECTION 4 - Short Answer Questions (Section 2.2)
 ___________________________________________________________________
-### 1. What is the need (i.e. challenge) that you will be addressing in your project?
+#### 1. What is the need (i.e. challenge) that you will be addressing in your project?
 
 Some people would like to be able to travel the world and stay for free with likeminded individuals, whilst feeling safe and secure.
 
 Who doesn't love free accommodation and making new friends around the world and feeling safe while doing so?
-
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 
