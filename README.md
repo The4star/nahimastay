@@ -187,19 +187,28 @@ ___________________________________________________________________
 ___________________________________________________________________
 ### 1. What is the need (i.e. challenge) that you will be addressing in your project?
 
-Nah..ImaStay was created as a solution of making couch surfing more secure and safe.
+Some people would like to be able to travel the world and stay for free with likeminded individuals, whilst feeling safe and secure.
 
 Who doesn't love free accommodation and making new friends around the world and feeling safe while doing so?
 
-Nah..ImaStay is a reciprocal society which means that everyone must host guests avoiding people simply traveling and not giving back.
-
-When you host people you earn Karma Coins which you can then spend on your own travels.
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 
-Nah..ImaStay provides a safe and secure platform for people to search, book, stay and host couch surfing availabilities Worldwide. The internal messaging systems provides a means of effective communication between the host and guest
+In the current marketplace for this kind of service, the problem is that the currently available solutions are not very secure. It is hard to have peace of mind about the kind of people you will sharing an accommodation with. 
+
+Nah..ImaStay is a platform to facilitate participation in a community of people with similar values and goals, in that every user has to be both a host and a guest. 
+
+This removes situations that are common with current couch surfing solutions, such as one questionable person only renting a place to travellers for unknown motives. 
+
+Nah..ImaStay is a reciprocal society which also means that everyone must host guests - avoiding people simply travelling and not giving back.
 
 #### 3. Describe the project will you be conducting and how. your App will address the needs.
+
+Nah..ImaStay was created as a solution of making couch surfing more secure and safe. The setup of Nah..ImaStay is intended to offer more peace of mind about the kinds of people we are hosting and staying with.
+
+When you host people you earn Karma Coins which you can then spend on your own travels. This concept can be expanded in the future to cover other services, and encourages the culture of giving things to others for benefits that do not revolve around financial gain.
+
+Nah..ImaStay provides a safe and secure platform for people to search, book, stay and host couch surfing availabilities Worldwide. The internal messaging systems provides a means of effective communication between the host and guest
 
 #### 4. Describe the network infrastructure the App may be based on.
 
