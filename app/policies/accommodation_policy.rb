@@ -6,29 +6,29 @@ class AccommodationPolicy < ApplicationPolicy
     @accommodation = accommodation
   end
 
-  def index?
-    false
-  end
+  # def index?
+  #   false
+  # end
 
   def show?
-    false
+    @accommodation.host.id == @user.id
   end
 
   def create?
-    false
+    @accommodation.host.id == @user.id
   end
 
-  def new?
-    false
-  end
+  # def new?
+  #   false
+  # end
 
   def update?
-    false
+    @accommodation.host.id == @user.id
   end
 
-  def edit?
-    update?
-  end
+  # def edit?
+  #   update?
+  # end
 
   def destroy?
     false

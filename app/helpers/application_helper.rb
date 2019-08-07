@@ -42,4 +42,21 @@ module ApplicationHelper
         # raise
         return options
     end
+
+    def convert_float_to_1sf(float)
+        remainder = ((float * 100) % 10)
+        if remainder < 5
+            new_num = (float * 100) - remainder
+        else 
+            new_num = ((float * 100) - remainder) + 10
+        end
+
+        new_num = new_num / 100
+
+        return new_num
+    end
+
+    def profile_complete(profile)
+        profile.first_name && profile.last_name && profile.bio && profile.uploaded_image.attached?
+    end    
 end

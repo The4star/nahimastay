@@ -36,7 +36,7 @@
     <p>
       <strong>Host rating:</strong>
       <% if @profile.host_rating %>
-        <%= @profile.host_rating %></p>
+        <%= convert_float_to_1sf(@profile.get_host_rating) %></p>
       <% else %>
         No rating recieved yet</p>
       <% end %>
@@ -44,7 +44,7 @@
     <p>
       <strong>Guest rating:</strong>
       <% if @profile.guest_rating %>
-        <%= @profile.guest_rating %>
+        <%= convert_float_to_1sf(@profile.get_guest_rating) %>
       <% else %>
         No rating recieved yet</p>
       <% end %>
@@ -62,7 +62,7 @@
         <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
       <% end %>
       <div class="prof-button-flex">
-        <%= button_to "View Accommodation", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
+        <%= button_to "View Property Listing", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
       </div>
     <% else %>
        <div class="prof-button-flex">

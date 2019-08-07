@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Alef|Taviraj&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
 @import 'pages';
 @import 'devise';
 @import 'profiles';
@@ -7,6 +8,8 @@
 @import 'accom-results';
 @import 'stays';
 @import 'stay-results';
+@import 'messages';
+@import 'accommodationreviews';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -79,13 +82,17 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 160px;
+    height: 180px;
     width: 100%;
     position: fixed;
     top: 0;
     background: rgba(250, 250, 250, 0.8);
     box-shadow: inset 4px 4px 100px rgba(0, 0, 0, 0.1);
     z-index: 2;
+    a:link, a {
+        font-size: 30px;
+        font-family: 'Alef', sans-serif;
+    }
 }
 
 ul {
@@ -94,7 +101,7 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
+    width: 28%;
 }
 
 #main-menu {
@@ -103,7 +110,12 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
+    width: 28%;
+    margin: 5px;
+}
+
+#footer-menu {
+    width:50%
 }
 
 li {
@@ -113,6 +125,7 @@ li {
 
 li a:link {
     text-decoration: none;
+    font-family: 'Alef', sans-serif;
 }
 
 a:link, a {
@@ -121,6 +134,7 @@ a:link, a {
     font-size: 30px;
     font-family: 'Alef', sans-serif;
 }
+
 
 #logo {
     display: flex;
@@ -133,11 +147,11 @@ a:link, a {
 #world {
     width: 150px;
     height: auto;
-    margin: 20px;
+    margin: 20px 0px 0px 20px;
 }
 
 .container {
-    margin: 160px 0px 20px 0px;
+    margin: 180px 0px 20px 0px;
 }
 
 .searchform {
@@ -177,6 +191,10 @@ footer {
 .footer-menu {
     color: #fafafa;
     margin: 20px;
+    font-size: 30px;
+    li:link a:link {
+        color: #fafafa;
+    }
 }
 
 .text-field-label {
@@ -210,4 +228,77 @@ footer {
 
 .center-text {
     text-align: center;
+}
+
+.form-inline {
+    font-size: 30px;
+    font-family: 'Alef', sans-serif;
+    .field {
+    display: inline-block;
+    }
+}
+
+.message-button {
+    font-family: 'Alef', sans-serif;
+    color: #fafafa;
+    font-size: 30px;
+    width: 240px;
+    height: 46px;
+    text-align: center;
+    background: #2D936C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin:20px;
+    cursor: pointer;
+}
+
+#logo-with-slogan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#cog {
+    font-size: 25px;
+    margin:0;
+    padding:0;
+    font-family: 'Satisfy', cursive;
+}
+
+@media only screen and (max-width: 1400px) {
+    h1 {
+        font-size: 38px;
+    }
+    
+    h2 {
+        font-size: 35px;
+    }
+    
+    h3 {
+        font-size: 30px;
+    }
+    
+    p {
+        font-size: 25px;
+    }
+    
+    a {
+        font-size: 25px;
+    }
+
+    li {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    li a:link {
+        font-size: 20px;
+    }
+    
+    a:link, a {
+        font-size: 25px;
+        text-align: center;
+    }
+
 }

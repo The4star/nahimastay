@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 <div class="results-wrapper">
 <p><%= render '/shared/searchform', class: 'searchform' %></p>
+
+<% if params[:search].present? && @accommodations.length == 0 %>
+    <%= render 'no_results'%>
+<% end %>
+
+<% if params[:search].present? %>
     <% @accommodations.each do |accommodation| %>
         <div class="accommodation-wrapper">
             <div class="accom-img-container">
@@ -12,9 +18,11 @@
             </div>
         <div class="accom-para-flex">
             <h3>
-                <%= accommodation.name %>
+                <%= link_to accommodation.name, accommodation, class: 'accom-link' %>
             </h3>
-            
+            <p>
+                <strong>Rating: </strong> <%= accommodation.get_accommodation_rating %>
+            </p>
             <p>
                 <strong>Bed type:</strong>  <%= accommodation.accomtype.name %>
                 <strong>Cost:</strong> <%= image_tag '/img/kksym.png', class: 'kksym' %> <%= accommodation.accomtype.cost %>
@@ -30,7 +38,6 @@
             </p>
             
             <p>
-               <strong>Rating: </strong> <%= accommodation.accommodation_rating %>
                <strong>Available from: </strong>  <%= accommodation.available_start_date.day %> <%= I18n.l(accommodation.available_start_date, format: "%B") %> <%= accommodation.available_start_date.year %>
                <strong>Available Until:</strong>  <%= accommodation.available_end_date.day %> <%= I18n.l(accommodation.available_start_date, format: "%B") %> <%= accommodation.available_end_date.year %>
             </p>
@@ -38,4 +45,7 @@
         </div>
      </div>
     <% end %>
+<% else %>
+    <%= render 'no_search' %>
+<% end %>
 </div>

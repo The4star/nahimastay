@@ -12,46 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :communication_rating %>
-    <%= form.number_field :communication_rating %>
+    <%= form.label :communication_rating, "Communication Rating /5" %>
+    <%= form.select :communication_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
   <div class="field">
-    <%= form.label :location_rating %>
-    <%= form.number_field :location_rating %>
+    <%= form.label :location_rating, "Location Rating /5" %>
+    <%= form.select :location_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
   <div class="field">
-    <%= form.label :cleanliness_rating %>
-    <%= form.number_field :cleanliness_rating %>
+    <%= form.label :cleanliness_rating, "Cleanliness Rating /5" %>
+    <%= form.select :cleanliness_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
   <div class="field">
-    <%= form.label :ammenities_rating %>
-    <%= form.number_field :ammenities_rating %>
+    <%= form.label :ammenities_rating, "Amenities Rating /5" %>
+   <%= form.select :ammenities_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
   <div class="field">
-    <%= form.label :host_rating %>
-    <%= form.number_field :host_rating %>
+    <%= form.label :host_rating, "Host Rating /5" %>
+    <%= form.select :host_rating, options_for_select(rating_select), {} , class: 'devise-field'%>
   </div>
 
-  <div class="field">
+  <div class="valign">
     <%= form.label :comments %>
-    <%= form.text_area :comments %>
+    <%= form.text_area :comments, class: 'devise-field' %>
   </div>
 
-  <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stay_id %>
-    <%= form.text_field :stay_id %>
-  </div>
+  <input type="hidden" value="<%= @stay_id %>" name="stay_id">
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Accommodation Review", class: 'rating-button' %>
   </div>
 <% end %>

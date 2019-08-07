@@ -1,3 +1,4 @@
+<div class ="form-inline">
   <%= form_with(model: stay, local: true) do |form| %>
     <% if stay.errors.any? %>
       <div id="error_explanation">
@@ -10,7 +11,7 @@
         </ul>
       </div>
     <% end %>
-
+    
     <div class="field">
       <%= form.label :start_date %>
       <%= form.date_select :start_date, {order: [:day, :month, :year] }, class: 'devise-field' %>
@@ -24,3 +25,4 @@
     
     <%= form.submit "Request Stay!", class: 'stay-button' %>
   <% end %>
+</div>

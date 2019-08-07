@@ -46,27 +46,31 @@
 
     <p>
       <strong>Host rating:</strong>
-      <% if @profile.host_rating %>
-        <%= @profile.host_rating %></p>
+      <% if @profile.host_rating > 0 %>
+        <%= convert_float_to_1sf(@profile.get_host_rating) %></p>
       <% else %>
         No rating recieved yet</p>
       <% end %>
 
     <p>
       <strong>Guest rating:</strong>
-      <% if @profile.guest_rating %>
-        <%= @profile.guest_rating %>
+      <% if @profile.guest_rating > 0 %>
+        <%= convert_float_to_1sf(@profile.get_guest_rating) %>
       <% else %>
         No rating recieved yet</p>
       <% end %>
 
     <p>
     <% if @profile.user.role_id == 2 %>
-      You are a <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
+      <%= @profile.user.role.privilege %>. <%= link_to("Upgrade to premium today!", upgrade_path) %> 
     <% elsif @profile.user.role_id == 3 %>
-      You are a <%= @profile.user.role.privilege %>. <%= link_to("Change back to free account", upgrade_path) %> 
+      <%= @profile.user.role.privilege %> 
     <% end %>
     
+    <% if @profile.user.role_id == 3 %>
+      <%= image_tag '/img/premium_badge.png', class: 'premium' %>
+    <% end %>
+
     </p>
 
     <p><%= link_to 'Edit Profile', edit_profile_path(@profile) %> | <%= link_to 'Edit Email & Password', edit_user_registration_path(current_user) %></p>

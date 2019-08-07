@@ -1,6 +1,5 @@
-<h1>Editing Stay</h1>
-
-<%= render partial: 'form', locals: { stay: @stay, accommodation_id: params[:accommodation_id] }%>
-
-<%= link_to 'Show', @stay %> |
-<%= link_to 'Back', stays_path %>
+<div class="stay-flex">
+    <h1>Editing Stay at <%= @stay.accommodation.name %></h1>
+    <%= render partial: 'form', locals: { stay: @stay, accommodation_id: params[:accommodation_id] }%>
+    <%= link_to 'Back', @stay%>
+</div>
