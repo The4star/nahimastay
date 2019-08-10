@@ -3,7 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .profile-wrapper {
+    width: 80%;
     display: flex;
+    align-self: center;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -185,6 +187,18 @@
     }
 }
 
+@media only screen and (max-width: 1500px) {
+    .accom-stay-button {
+        font-size: 15px;
+        width: 250px;
+    }
+    
+    .stay-accom-button {
+        font-size: 15px;
+        width: 180px;
+    }
+}
+
 @media only screen and (max-width: 1400px) {
     .prof-button-flex {
         flex-direction: column;
@@ -230,3 +244,4 @@
     }
 
 }
+
