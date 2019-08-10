@@ -5,10 +5,10 @@ class AccommodationreviewsController < ApplicationController
   # GET /accommodationreviews.json
   def index
     # authorize(@accommodationreview)
+    @accommodation_reviews = []
     if params[:accommodation_id]
       @accommodation = Accommodation.find(params[:accommodation_id])
       if @accommodation.stays.length > 0
-        @accommodation_reviews = []
         @accommodation.stays.each do |stay|
           if stay.accommodationreview
             @accommodation_reviews << stay.accommodationreview

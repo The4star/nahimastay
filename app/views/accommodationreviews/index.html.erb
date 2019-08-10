@@ -5,7 +5,7 @@
   <h1 class="center-text">Accommodation Reviews for <%= @accommodation.name %></h1>
 
   <div class="results-wrapper">
-    <% if @accommodation_reviews %>
+    <% if @accommodation_reviews.length > 0 %>
       
       <% @accommodation_reviews.reverse.each do |accommodation_review| %>
         <div class="accom-review">
