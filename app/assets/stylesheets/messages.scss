@@ -1,11 +1,12 @@
 .message-section {
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 
     #messages-container {
-        width: 60%;
+        width: 80%;
         background-color: #c4c4c4;
         border-radius: 10px;
         opacity: .8;
