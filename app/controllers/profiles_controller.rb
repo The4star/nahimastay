@@ -11,8 +11,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     # @profile = Profile.find(params[:id])
+    @guest_reviews = []
     if @profile.user.stays.length > 0
-      @guest_reviews = []
       @profile.user.stays.each do |stay|
         if stay.guestreview
           @guest_reviews << stay.guestreview
