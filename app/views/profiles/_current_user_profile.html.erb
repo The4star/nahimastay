@@ -47,7 +47,7 @@
     <p>
       <strong>Host rating:</strong>
       <% if @profile.host_rating > 0 %>
-        <%= convert_float_to_1sf(@profile.get_host_rating) %></p>
+        <%= convert_float_to_1sf(@profile.get_host_rating) %> / 5</p>
       <% else %>
         No rating recieved yet</p>
       <% end %>
@@ -55,7 +55,7 @@
     <p>
       <strong>Guest rating:</strong>
       <% if @profile.guest_rating > 0 %>
-        <%= convert_float_to_1sf(@profile.get_guest_rating) %>
+        <%= convert_float_to_1sf(@profile.get_guest_rating) %> / 5
       <% else %>
         No rating recieved yet</p>
       <% end %>
@@ -106,6 +106,35 @@
       <% else %>
         <p><strong>Guest Profile</strong></p>
       <% end %>
+
+      <% if @profile.user.stays.length > 0 %>
+        <div class="profile-stay-section">
+        <p class="stay-header"><strong>Your Most Recent Stay Activity</strong></p>
+        <p>
+        <strong>Accommodation Name: </strong><%= @profile.user.stays.last.accommodation.name %>
+        </p>
+        <p>
+        <strong>Start date: </strong><%= @profile.user.stays.last.start_date.day %> <%= I18n.l(@profile.user.stays.last.start_date, format: "%B") %> <%= @profile.user.stays.last.start_date.year %> | 
+        <strong>End date: </strong><%= @profile.user.stays.last.end_date.day %> <%= I18n.l(@profile.user.stays.last.end_date, format: "%B") %> <%= @profile.user.stays.last.end_date.year %>
+        </p>
+        <p>
+          <strong>Request Status:
+              <% if @profile.user.stays.last.state_pending? and @profile.user.stays.last.end_date < Time.now %>
+                <span class="pending">Stay request is expired </span>
+              <% elsif @profile.user.stays.last.state_pending? %>
+                <span class="pending">Stay request is pending</span>
+              <% elsif @profile.user.stays.last.rejected? %>
+                <span class="rejected">Stay Declined</span>
+              <% elsif @profile.user.stays.last.confirmed? %>
+                <span class="confirmed">Stay Accepted</span>
+              <% elsif @profile.user.stays.last.cancelled? %>
+              <span class="rejected">Stay Cancelled</span></p>
+              <% end %>
+              </strong>
+        </p>
+        </div>
+      <% end %>
+      
       <%= button_to "View your stays as a guest", guest_stays_path(guest_id: @profile.user.id ), method: :get, class: "stay-profile-button" %>
 
     </div>

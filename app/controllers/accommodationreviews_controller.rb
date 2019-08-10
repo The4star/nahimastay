@@ -4,14 +4,24 @@ class AccommodationreviewsController < ApplicationController
   # GET /accommodationreviews
   # GET /accommodationreviews.json
   def index
-    authorize(@accommodationreview)
-    @accommodationreviews = Accommodationreview.all
+    # authorize(@accommodationreview)
+    if params[:accommodation_id]
+      @accommodation = Accommodation.find(params[:accommodation_id])
+      if @accommodation.stays.length > 0
+        @accommodation_reviews = []
+        @accommodation.stays.each do |stay|
+          if stay.accommodationreview
+            @accommodation_reviews << stay.accommodationreview
+          end
+        end
+      end
+    end
   end
 
   # GET /accommodationreviews/1
   # GET /accommodationreviews/1.json
   def show
-    authorize(@accommodationreview)
+    # authorize(@accommodationreview)
   end
 
   # GET /accommodationreviews/new

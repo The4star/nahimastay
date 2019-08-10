@@ -7,11 +7,11 @@ class AccommodationreviewPolicy < ApplicationPolicy
     end
 
     def index?
-      @user.id == Role.find(3)
+      # @user.id == Role.find(3)
     end
 
     def show?
-      @accommodationreview.stay.guest.id == @user.id
+      # @accommodationreview.stay.guest.id == @user.id
     end
 
     def create?
