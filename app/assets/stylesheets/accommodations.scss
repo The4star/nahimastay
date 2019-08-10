@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .top-container {
+    width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center; 
@@ -60,6 +61,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin:20px;
+    cursor: pointer;
 }
 
 .stay-flex {
@@ -95,3 +97,4 @@
         margin:40px;
     }
 }
+

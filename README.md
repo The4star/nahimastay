@@ -78,12 +78,12 @@ In the terminal:
 
 1. Copy and paste the following into the terminal where you want to install:
 
-  	git clone git@github.com:The4star/Nah..ImaStay
+  	git clone git@github.com:The4star/nah..imastay
     .git
 
 2. change into the file:
 
-    cd  Nah..ImaStay
+    cd  nahimastay
 /
 
 3. Input the following in terminal this will open postgres:
@@ -92,7 +92,7 @@ In the terminal:
 
 4. Then copy and paste the following: 
 
- 	create role Nah..ImaStay
+ 	create role nahimastay
      with createdb login password '123456';
 
 5. Exit out of progress back to terminal by entering:
@@ -109,12 +109,10 @@ In the terminal:
 
 8. Open browser and put the following in the address bar:
 
-    localhost3000
+    localhost:3000
 ___________________________________________________________________
 ### Site Map
-
-
-##### This is our sitemap 
+ 
 
 ![Site Map for Nah..ImaStay](./docs/sitemap.jpeg)
 
@@ -182,7 +180,7 @@ ___________________________________________________________________
  
  ##### Workflow diagram of users journey
 
-![Workflow diagram of the user journey](./docs/sitemap.jpeg)
+![Workflow diagram of the user journey](./docs/user_workflow.jpeg)
 ___________________________________________________________________
 
 ### Database Entity Relationship Diagrams
@@ -347,33 +345,33 @@ Stripe - Payment processing Software as a Service (SASS) from Stripe allowing us
 
 ##### Full List of Dependencies:
 
-ruby "2.5.5"
-gem "stripe'
-gem "devise"
-gem "geocoder"
-gem "aws-sdk-s3", require: false
-gem "rails", "~> 5.2.3"
-gem "pg", ">= 0.18", "< 2.0"
-gem "puma", "~> 3.11"
-gem "sass-rails", "~> 5.0"
-gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.2"
-gem "turbolinks", "~> 5"
-gem "jbuilder", "~> 2.5"
-gem "bootsnap", ">= 1.1.0", require: false
-group :development, :test do
-gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-group :development do
-gem "web-console", ">= 3.3.0"
-gem "listen", ">= 3.0.5", "< 3.2"
-gem "spring"
-gem "spring-watcher-listen", "~> 2.0.0"
-group :test do
-gem "capybara", ">= 2.15"
-gem "selenium-webdriver"
-gem "chromedriver-helper"
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "devise", "~> 4.6"
+* ruby "2.5.5"
+* gem "stripe'
+* gem "devise"
+* gem "geocoder"
+* gem "aws-sdk-s3", require: false
+* gem "rails", "~> 5.2.3"
+* gem "pg", ">= 0.18", "< 2.0"
+* gem "puma", "~> 3.11"
+* gem "sass-rails", "~> 5.0"
+* gem "uglifier", ">= 1.3.0"
+* gem "coffee-rails", "~> 4.2"
+* gem "turbolinks", "~> 5"
+* gem "jbuilder", "~> 2.5"
+* gem "bootsnap", ">= 1.1.0", require: false
+* group :development, :test do
+* gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+* group :development do
+* gem "web-console", ">= 3.3.0"
+* gem "listen", ">= 3.0.5", "< 3.2"
+* gem "spring"
+* gem "spring-watcher-listen", "~> 2.0.0"
+* group :test do
+* gem "capybara", ">= 2.15"
+* gem "selenium-webdriver"
+* gem "chromedriver-helper"
+* gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+* gem "devise", "~> 4.6"
 
 #### 11.Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 
@@ -407,7 +405,6 @@ Accommodation has_one and belongs_to User (Host) has_one accommodation type, has
    has_many :users
 
 ##### Accommodation:
-
 
   belongs_to :host
   belongs_to :accomtype
@@ -498,8 +495,6 @@ has_one :stays
 * Cancel and deactivate Users
 
 #### 16. Provide Wireframes for your App.
-
-##### These are our wireframes
 
 ![Wireframe for Stay and Stay Show pages](./docs/wireframe1.jpeg)
 ![Wireframe for Profile and Accommodation pages](./docs/wireframe2.jpeg)
