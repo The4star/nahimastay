@@ -80,7 +80,7 @@
       <% else %>
         <p><strong>Guest Profile</strong></p>
       <% end %>
-      <% if @guest_reviews %>
+      <% if @guest_reviews.length > 0 %>
       <div class="profile-stay-section">
           <p class="stay-header"><strong><%= @profile.first_name %>'s latest review as a guest</strong></p>
           <p>
