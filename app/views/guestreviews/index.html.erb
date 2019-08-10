@@ -1,37 +1,30 @@
 <p id="notice"><%= notice %></p>
+<% if params[:guest_id] %>
+  
+  <h1 class="center-text">Guest Reviews for <%= @guest.profile.first_name %> <%= @guest.profile.last_name %></h1>
 
-<h1>Guestreviews</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Created at</th>
-      <th>Cleanliness rating</th>
-      <th>Communication rating</th>
-      <th>Ease of hosting rating</th>
-      <th>Comments</th>
-      <th>Stay</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @guestreviews.each do |guestreview| %>
-      <tr>
-        <td><%= guestreview.created_at %></td>
-        <td><%= guestreview.cleanliness_rating %></td>
-        <td><%= guestreview.communication_rating %></td>
-        <td><%= guestreview.ease_of_hosting_rating %></td>
-        <td><%= guestreview.comments %></td>
-        <td><%= guestreview.stay %></td>
-        <td><%= link_to 'Show', guestreview %></td>
-        <td><%= link_to 'Edit', edit_guestreview_path(guestreview) %></td>
-        <td><%= link_to 'Destroy', guestreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="results-wrapper">
+    <% @guest_reviews.reverse.each do |guest_review| %>
+      <div class="guest-review">
+        <p>
+          <strong>Reviewed by: <%= link_to "#{guest_review.stay.accommodation.host.profile.first_name} #{guest_review.stay.accommodation.host.profile.last_name}", profile_path(guest_review.stay.accommodation.host.id) %></strong>
+          </p>
+          <p>
+          <strong>Review Date: </strong><%= guest_review.created_at.day %> <%= I18n.l(guest_review.created_at, format: "%B") %> <%= guest_review.created_at.year %>
+          <p>
+          <strong>Cleanliness: </strong><%= guest_review.cleanliness_rating %>
+          <strong>Communication: </strong><%= guest_review.communication_rating %>
+          <strong>Easy to host: </strong><%= guest_review.ease_of_hosting_rating %>
+          </p>
+          <div class="comments">
+          <p>
+            <strong>Comments: </strong><%= guest_review.comments %>
+          </p>
+          </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Guestreview', new_guestreview_path %>
+  </div>
+<% else %>
+  <h1 class="center-text">You have come to the wrong page.</h1>
+  <h2 class="center-text">You can access reviews for specific guests via their profile page.</h2>
+<% end %>

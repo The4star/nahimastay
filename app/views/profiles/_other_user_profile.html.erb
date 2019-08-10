@@ -36,7 +36,7 @@
     <p>
       <strong>Host rating:</strong>
       <% if @profile.host_rating > 0%>
-        <%= convert_float_to_1sf(@profile.get_host_rating) %></p>
+        <%= convert_float_to_1sf(@profile.get_host_rating) %> / 5</p>
       <% else %>
         No rating recieved yet</p>
       <% end %>
@@ -44,7 +44,7 @@
     <p>
       <strong>Guest rating:</strong>
       <% if @profile.guest_rating > 0 %>
-        <%= convert_float_to_1sf(@profile.get_guest_rating) %>
+        <%= convert_float_to_1sf(@profile.get_guest_rating) %> / 5
       <% else %>
         No rating recieved yet</p>
       <% end %>
@@ -60,9 +60,12 @@
       <% end %>
       <% if @profile.user.accommodation.hero_image.attached? %>
         <%= image_tag @profile.user.accommodation.hero_image.service_url, class: 'accom-img-size' %>
+      <% else %>
+      <p>No Image has been provided for this Accommodation</p>
       <% end %>
       <div class="prof-button-flex">
         <%= button_to "View Property Listing", accommodation_path(@profile.user.accommodation.id), method: :get, class: "stay-accom-button" %>
+        <%= button_to "View Reviews", accommodationreviews_path, method: :get, params: {accommodation_id: @profile.user.accommodation.id}, class: "accom-stay-button" %>
       </div>
     <% else %>
        <div class="prof-button-flex">
@@ -77,7 +80,31 @@
       <% else %>
         <p><strong>Guest Profile</strong></p>
       <% end %>
-        <%= button_to "View Guest Reviews", guest_stays_path(guest_id: @profile.user.id ), method: :get, class: "stay-profile-button" %>
+      <% if @guest_reviews %>
+      <div class="profile-stay-section">
+          <p class="stay-header"><strong><%= @profile.first_name %>'s latest review as a guest</strong></p>
+          <p>
+            <strong>Reviewed by: <%= link_to "#{@guest_reviews.last.stay.accommodation.host.profile.first_name} #{@guest_reviews.last.stay.accommodation.host.profile.last_name}", profile_path(@guest_reviews.last.stay.accommodation.host.id) %></strong>
+          </p>
+          <p>
+          <strong>Review Date: </strong><%= @guest_reviews.last.created_at.day %> <%= I18n.l(@guest_reviews.last.created_at, format: "%B") %> <%= @guest_reviews.last.created_at.year %>
+          <p>
+          <strong>Cleanliness: </strong><%= @guest_reviews.last.cleanliness_rating %>
+          <strong>Communication: </strong><%= @guest_reviews.last.communication_rating %>
+          <strong>Easy to host: </strong><%= @guest_reviews.last.ease_of_hosting_rating %>
+          </p>
+          <p>
+            <strong>Comments: </strong><%= @guest_reviews.last.comments %>
+          </p>
+        </div> 
+        <%= button_to "View Guest Reviews", guestreviews_path, method: :get, params: {guest_id: @profile.user.id}, class: "stay-profile-button" %>
+      <% else %>
+        <p>
+          User does not have any reviews as a guest yet.
+        </p>
+      <% end %>
+      
+        
     </div>
   </div>
 </div>

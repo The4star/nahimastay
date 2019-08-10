@@ -10,6 +10,16 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    # @profile = Profile.find(params[:id])
+    if @profile.user.stays.length > 0
+      @guest_reviews = []
+      @profile.user.stays.each do |stay|
+        if stay.guestreview
+          @guest_reviews << stay.guestreview
+        end
+      end
+    end
+
   end
 
   # GET /profiles/new

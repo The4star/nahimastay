@@ -1,41 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Accommodationreviews</h1>
+<% if params[:accommodation_id] %>
+  
+  <h1 class="center-text">Accommodation Reviews for <%= @accommodation.name %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Communication rating</th>
-      <th>Location rating</th>
-      <th>Cleanliness rating</th>
-      <th>Ammenities rating</th>
-      <th>Host rating</th>
-      <th>Comments</th>
-      <th>Created at</th>
-      <th>Stay</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @accommodationreviews.each do |accommodationreview| %>
-      <tr>
-        <td><%= accommodationreview.communication_rating %></td>
-        <td><%= accommodationreview.location_rating %></td>
-        <td><%= accommodationreview.cleanliness_rating %></td>
-        <td><%= accommodationreview.ammenities_rating %></td>
-        <td><%= accommodationreview.host_rating %></td>
-        <td><%= accommodationreview.comments %></td>
-        <td><%= accommodationreview.created_at %></td>
-        <td><%= accommodationreview.stay %></td>
-        <td><%= link_to 'Show', accommodationreview %></td>
-        <td><%= link_to 'Edit', edit_accommodationreview_path(accommodationreview) %></td>
-        <td><%= link_to 'Destroy', accommodationreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="results-wrapper">
+    <% if @accommodation_reviews.length > 0 %>
+      
+      <% @accommodation_reviews.reverse.each do |accommodation_review| %>
+        <div class="accom-review">
+        <p>
+            <strong>Reviewed by: <%= link_to "#{accommodation_review.stay.guest.profile.first_name} #{accommodation_review.stay.guest.profile.last_name}", profile_path(accommodation_review.stay.guest.id) %></strong>
+            </p>
+            <p>
+            <strong>Review Date: </strong><%= accommodation_review.created_at.day %> <%= I18n.l(accommodation_review.created_at, format: "%B") %> <%= accommodation_review.created_at.year %>
+            <p>
+            <strong>Location: </strong><%= accommodation_review.location_rating %> | 
+            <strong>Cleanliness: </strong><%= accommodation_review.cleanliness_rating %> |
+            <strong>Communication: </strong><%= accommodation_review.communication_rating %> |
+            <strong>Ammenities: </strong><%= accommodation_review.ammenities_rating %> |
+            <strong>Host: </strong><%= accommodation_review.host_rating %>
+            </p>
+            <div class="comments">
+            <p>
+              <strong>Comments: </strong><%= accommodation_review.comments %>
+            </p>
+            </div>
+        </div>
+      <% end %>
+      <% else %>
+        <h1 class="center-text">There are no reviews for this accommodation currently</h1>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Accommodationreview', new_accommodationreview_path %>
+  </div>
+<% else %>
+  <h1 class="center-text">You have come to the wrong page.</h1>
+  <h2 class="center-text">You can access reviews for specific accommodation via their information page.</h2>
+<% end %>

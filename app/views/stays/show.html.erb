@@ -146,13 +146,12 @@
 <div id="review-section">
   
     <% if @stay.accommodationreview %>
-      <div id="accom-review">
+      <div class="accom-review">
       <div class="review-title">
-     <p> <strong><%= @stay.guest.profile.first_name %>'s</strong></p>
-      <% if @stay.guest.profile.uploaded_image.attached? %>
+        <% if @stay.guest.profile.uploaded_image.attached? %>
           <%= image_tag @stay.guest.profile.uploaded_image.service_url, class: 'review-image-thumb' %>
         <% end %>
-      <p><strong>Accommodation Review</strong></p>
+        <p> <strong><%= @stay.guest.profile.first_name %>'s Review of <%= @stay.accommodation.name %></strong></p>
       </div>
         <p>
           Communication: <%= @stay.accommodationreview.communication_rating %> | 
@@ -162,7 +161,7 @@
           Host: <%= @stay.accommodationreview.host_rating %> 
         </p>
 
-        <div id="comments">
+        <div class="comments">
           <p><strong>Comments</strong></p>
           <p>  
             <%= @stay.accommodationreview.comments %>
@@ -173,13 +172,12 @@
     <% end %>
 
     <% if @stay.guestreview %>
-      <div id="guest-review">
+      <div class="guest-review">
         <div class="review-title">
-          <p> <strong><%= @stay.accommodation.host.profile.first_name %>'s</strong></p>
           <% if @stay.accommodation.host.profile.uploaded_image.attached? %>
             <%= image_tag @stay.accommodation.host.profile.uploaded_image.service_url, class: 'review-image-thumb' %>
           <% end %>
-        <p><strong>Review of Guest</strong></p>
+          <p> <strong><%= @stay.accommodation.host.profile.first_name %>'s Review of <%= @stay.guest.profile.first_name %> as a Guest</strong></p>
         </div>
         <p>
           Communication: <%= @stay.guestreview.communication_rating %> | 
@@ -187,7 +185,7 @@
           Easy to host: <%= @stay.guestreview.ease_of_hosting_rating %> 
         </p>
 
-        <div id="comments">
+        <div class="comments">
           <p><strong>Comments</strong></p> 
           <p>  
            <%= @stay.guestreview.comments %>

@@ -4,14 +4,24 @@ class GuestreviewsController < ApplicationController
   # GET /guestreviews
   # GET /guestreviews.json
   def index
-    authorize(@guestreview)
-    @guestreviews = Guestreview.all
+    # authorize(@guestreview)
+    if params[:guest_id]
+      @guest = User.find(params[:guest_id])
+      if @guest.stays.length > 0
+        @guest_reviews = []
+        @guest.stays.each do |stay|
+          if stay.guestreview
+            @guest_reviews << stay.guestreview
+          end
+        end
+      end
+    end
   end
 
   # GET /guestreviews/1
   # GET /guestreviews/1.json
   def show
-    authorize(@guestreview)
+    # authorize(@guestreview)
   end
 
   # GET /guestreviews/new
