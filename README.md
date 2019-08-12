@@ -572,6 +572,8 @@ We created a master repository on GitHub and would create a seperate branch base
 
 Everyone was then able to pull the master down to their local computer and then continue work or push the updated application to Heroku.  
 
+A total of 230 commits from 85 feature branches were made from three team members for this project. 
+
 Our Github Process was written in our trello to be followed by all members as below: 
 
 ![Trello screenshot of Team Git Process](./docs/trellloteams1.png)
@@ -602,6 +604,8 @@ At various stages during development the site was shared with third parties (fri
 An excel spreadsheet was created of the user stories and all the tests that were needed to be carried out in order to verify that the app was functioning as it should. Different members performed the tests required and either marked it as complete or as incomplete including notes. 
 
 Bugs that were discovered during final testing were added to a "Bugs that need fixing" column in trello and assigned a user to debug and fix. Once fixed, the test case was repeated and the trello card moved to the  "Bugs fixed" column.
+
+A total of 16 bugs were discovered and fixed during integration testing. 
 
 ##### Testing record
 
