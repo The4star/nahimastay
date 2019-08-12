@@ -9,11 +9,19 @@
   <% @stays.reverse.each do |stay| %>
     <div class="stay-wrapper">
       <div class="accom-img-container">
+        <% if params[:guest_id] %>
           <% if stay.accommodation.hero_image.attached? %>
               <%= image_tag stay.accommodation.hero_image.service_url, class: 'accom-img-thumb' %>
           <% else %>
               <p>No Image has been provided for this Accommodation</p>
           <% end %>
+        <% elsif params[:accommodation_id] %>
+           <% if stay.guest.profile.uploaded_image.attached? %>
+              <%= image_tag stay.guest.profile.uploaded_image.service_url, class: 'accom-img-thumb' %>
+          <% else %>
+              <p>No Image has been provided for this Guest</p>
+          <% end %>
+        <% end %>
       </div>
       <div class="stay-para-flex">
         <% if params[:accommodation_id] %>
