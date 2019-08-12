@@ -122,9 +122,9 @@
 
       <p>
         <% if current_user == @stay.guest %>
-          <% <% if !@stay.confirmed && !@stay.rejected %> 
+          <% if !@stay.confirmed && !@stay.rejected %> 
             <%= link_to 'Edit Stay', edit_stay_path(@stay, {:accommodation_id => @stay.accommodation.id}) %> |
-          <% <% end %>
+          <% end %>
         <% end %>
 
         <% if params[:accommodation_id] %>
