@@ -36,8 +36,8 @@ class StaysController < ApplicationController
       @title = "#{@guest.first_name} #{@guest.last_name}"
     end
 
-    @stay_length = @stay.end_date.day - @stay.start_date.day
-    @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+    @stay_length = (@stay.end_date - @stay.start_date) / 1.day.round
+    @stay_cost = @stay_length * @stay.accommodation.accomtype.cost
 
   end
 
@@ -56,8 +56,9 @@ class StaysController < ApplicationController
   # POST /stays.json
   def create
     @stay = Stay.new(stay_params)
-    @stay_length = @stay.end_date.day - @stay.start_date.day
-    @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+    @stay_length = (@stay.end_date - @stay.start_date) / 1.day.round
+    @stay_cost = @stay_length * @stay.accommodation.accomtype.cost
+    
     if current_user.profile.karma_coins < @stay_cost
       respond_to do |format|
         format.html { redirect_to accommodation_path(@stay.accommodation, guest_id: current_user.id), notice: "You do not have enough Karma Coins to request this stay." }
@@ -97,8 +98,8 @@ class StaysController < ApplicationController
   def update_status
     @stay = Stay.find(params[:stay])
     authorize(@stay)
-    @stay_length = @stay.end_date.day - @stay.start_date.day
-    @stay_cost = @stay_length. * @stay.accommodation.accomtype.cost
+    @stay_length = (@stay.end_date - @stay.start_date) / 1.day.round
+    @stay_cost = @stay_length * @stay.accommodation.accomtype.cost
     if params[:confirmed]
       @stay.set_state_confirmed
       @stay.accommodation.host.profile.increment!(:karma_coins, @stay_cost) 
