@@ -32,7 +32,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 ### Purpose 
 
-Nah..Imastay is a reciprocal platform where travelers host and stay at each others homes in return for karma Coins.
+Nah..Imastay is a project that was created in a limited timeframe of 3 weeks to achieve a minimum viable product. It is a reciprocal platform where travelers host and stay at each others homes in return for karma Coins.
 
 Karma coins are earned by hosting travelers first and can then be saved up and spent on your own stays along your journey.
 
@@ -572,7 +572,7 @@ We created a master repository on GitHub and would create a seperate branch base
 
 Everyone was then able to pull the master down to their local computer and then continue work or push the updated application to Heroku.  
 
-A total of 230 commits from 85 feature branches were made from three team members for this project. 
+A total of over 230 commits from 85 feature branches were made from three team members for this project. 
 
 Our Github Process was written in our trello to be followed by all members as below: 
 
