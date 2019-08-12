@@ -6,12 +6,12 @@ ________________________________________________________________________________
 ![Clinton Forster](./docs/clinton.png)
 ##### | Clinton Forster |        https://github.com/The4Star |
 
-![Emma Cullen](./docs/emma.png)
+![Emma Cullen](./docs/emmac.jpg)
 ##### | Emma Cullen | https://github.com/ |
 
 ![Kristy Lake](./docs/kristy.png)
 
-##### Kristy Lake | https://github.com klps007|
+##### Kristy Lake | https://github.com/klps007|
 
 ##### | Clinton Forster | Emma Cullen   | Kristy Lake |
 ________________________________________________________________________________________________
@@ -32,17 +32,15 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 ### Purpose 
 
-A reciprocal platform where travelers host and stay at each others homes in return for karma Coins.
+Nah..Imastay is a reciprocal platform where travelers host and stay at each others homes in return for karma Coins.
 
 Karma coins are earned by hosting travelers first and can then be saved up and spent on your own stays along your journey.
-
-Let us break it down for you
 
 Hosting people first gives you the chance to see if sharing space with a new friend is something you are comfortable with before you start your own travels.
 
 It also gives the person that stays with you a chance to let everyone else know how great a host you were, making people much more willing to host you and leaving all members of the community feeling secure.
 
-Karma Coins?
+#### Karma Coins?
 
 These are a currency exclusive to Nah..ImaStay. They don't cost any money but you do need to earn them to spend them simply by hosting your fellow travelers and making new friends.
 
@@ -63,13 +61,17 @@ ___________________________________________________________________
 * Give and view guest review and rating
 * View all past stay and future booked stays
 * View all past guests and future booked guests
-* View Karma
+* Nahmastay’s exclusive currency (Karma Coins) which are exchanged for accommodation.
+
 ___________________________________________________________________
 ### Tech Stack
 
 Front-end: HTML, ERB, CSS
+
 Back-end: Ruby, Ruby on Rails
+
 Database: PostgreSQL Database with ActiveRecord
+
 Deployment: Heroku
 ___________________________________________________________________
 ### Configuration / Installation Instructions
@@ -78,36 +80,46 @@ In the terminal:
 
 1. Copy and paste the following into the terminal where you want to install:
 
-  	git clone git@github.com:The4star/nah..imastay
-    .git
+  	git clone git@github.com:The4star/nahimastay.git
 
 2. change into the file:
 
-    cd  nahimastay
+    cd  nahimastay/src
 /
 
-3. Input the following in terminal this will open postgres:
-   	
-    psql postgres
+3. Start the postgres server on your machine if required:
 
-4. Then copy and paste the following: 
+    Windows subsystem Linux: sudo service postgresql start
 
- 	create role nahimastay
-     with createdb login password '123456';
+4. Connect to Postgres
 
-5. Exit out of progress back to terminal by entering:
+    MAC: psql
+
+    Windows Subsystem Linux: sudo -u postgres psql
+
+5. Then copy and paste the following: 
+
+ 	create role nahimastay with createdb login password '123456';
+
+6. Exit out of progress back to terminal by entering:
 
      \q
 
-6. Now input this to terminal
+7. Now input the following into terminal
 
-    rails db:create
+    bundle install
 
-7. And start the server with:
+    rails db: create
+
+    rails db: migrate
+
+    rails db: seed
+
+8. Start the server with:
 
     rails s
 
-8. Open browser and put the following in the address bar:
+9. Open your browser and put the following in the address bar:
 
     localhost:3000
 ___________________________________________________________________
@@ -164,6 +176,30 @@ ___________________________________________________________________
 
 ### Design process
 
+To Design Nah..Imastay The following steps were taken: 
+* Design the Database
+* Design the Sitemap and User Workflow
+* Design the wireframes
+
+___________________________________________________________________
+
+
+### Database Entity Relationship Diagram
+ 
+ ###### Database ERD
+
+![Database entity relationship diagram](./docs/erd.png) 
+
+___________________________________________________________________
+
+### A workflow diagram of the user journey/s.
+ 
+ ##### Workflow diagram of users journey
+
+![Workflow diagram of the user journey](./docs/user_workflow.jpeg)
+
+___________________________________________________________________
+
 ##### MockUps Figma -  
 https://www.figma.com/file/fglPB5H0edn2CTdPFMvXS3/Nah..ImaStay?node-id=0%3A1
 
@@ -176,22 +212,16 @@ https://www.figma.com/file/fglPB5H0edn2CTdPFMvXS3/Nah..ImaStay?node-id=0%3A1
 ![Screenshot  Figma mockup](./docs/figma7.png) 
 ___________________________________________________________________
 
-### A workflow diagram of the user journey/s.
- 
- ##### Workflow diagram of users journey
-
-![Workflow diagram of the user journey](./docs/user_workflow.jpeg)
-___________________________________________________________________
-
-### Database Entity Relationship Diagrams
- 
- ###### Database ERD
-
-![Database entity relationship diagram](./docs/erd.png) 
-___________________________________________________________________
 ## SECTION 3 - PLANNING PROCESS 
 ___________________________________________________________________
 ### Project plan & timeline
+
+To plan Nah..Imastay the following steps were taken: 
+* Write out the project timeline on paper
+* Draw out and whiteboard initial design ideas on paper
+* Create a group in Slack to maintain contact and update each other on progress
+* Create tasks in Trello
+* Maintain and constantly update Trello so that no work overlaps
 
 ##### Project Plan
 
@@ -222,15 +252,15 @@ ___________________________________________________________________
 ___________________________________________________________________
 #### 1. What is the need (i.e. challenge) that you will be addressing in your project?
 
-Some people would like to be able to travel the world and stay for free with likeminded individuals, whilst feeling safe and secure.
+As costs increase and travelling becomes more expensive, budget travel becomes harder to achieve. There is a need for people  to be able to travel the world and stay for free with likeminded individuals, whilst feeling safe and secure, something not yet achieved thus far.
 
-Who doesn't love free accommodation and making new friends around the world and feeling safe while doing so?
+Nah..Imastay provides a platform for people to travel safely and securely by being a reciprocal society where users are reviewed by each other giving all members peace of mind.
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 
 In the current marketplace for this kind of service, the problem is that the currently available solutions are not very secure. It is hard to have peace of mind about the kind of people you will sharing an accommodation with. 
 
-Nah..ImaStay is a platform to facilitate participation in a community of people with similar values and goals, in that every user has to be both a host and a guest. 
+Nah..ImaStay is a platform that facilitates participation in a community of people with similar values and goals, in that every user has to be both a host and a guest. 
 
 This removes situations that are common with current couch surfing solutions, such as one questionable person only renting a place to travellers for unknown motives. 
 
@@ -246,13 +276,13 @@ Nah..ImaStay provides a safe and secure platform for people to search, book, sta
 
 #### 4. Describe the network infrastructure the App may be based on.
 
-Nah..ImaStay is deployed via Heroku's deployment platform, Heroku offer a free service allowing for apps to be quickly and easily created and deployed without the cost of owning a server or network infrastructure.
+Nah..ImaStay is deployed via Heroku's platform, Heroku offer a free service allowing for apps to be quickly and easily created and deployed without the cost of owning a server or network infrastructure.
 
-Development - Developed using rails, source code was written and database established and committed to GitHub as a means of source and version control
+Development - Developed using rails, source code was written and database established and committed to GitHub as a means of source and version control.
 
-Build - Once coding was complete and committed GitHub the code is pushed to Herko, bundle file known as a slug is prepared within Heroku
+Build - Once coding was complete and committed to GitHub the code is pushed to Heroku, the bundle file known as a slug is prepared within Heroku.
 
-Deployment - once ready the slug is executed in Dyno, Heroku's mini operating system responsible for running and managing the app, environmental variable and third party application where included to extend functionality.
+Deployment - Once ready the slug is executed in Dyno, Heroku's mini operating system responsible for running and managing the app, environmental variable and third party application where included to extend functionality.
 
 A version of Nah..ImaStay is delivered.
 
@@ -264,7 +294,7 @@ ERB - Responsible for rendering data in the browser
 
 CSS - Cascading Style Sheets responsible for styling the web page.
 
-RUBY - flexible object-orientated programming language
+RUBY - Flexible object-orientated programming language
 
 RUBY ON RAILS - Web application framework written in Ruby and used to create fullstack web applications
 
@@ -284,9 +314,9 @@ PostgreSQL allows for complex data structures to be created, stored and retrieve
 
 #### 7. Identify and describe the production database setup (i.e. postgres instance).
 
-Nah...ImaStay's production database is an instance of a postgres database, hosted on Heroku and built with Ruby on Rails 
+Nah...ImaStay's production database is an instance of a postgres database, hosted on Heroku and built with Ruby on Rails.
 
-The instance of PostgreSQL database was created when the app was created via rails new Nah..ImaStay --database=postgresql and then rails db:create and db:migrate to set up the tables and columns thus forming our database. For testing purposes dummy data was seeded via the seed.rb file
+The instance of PostgreSQL database was created when the app was created via rails new nahimastay --database=postgresql and then rails db:create and db:migrate to set up the tables and columns thus forming our database. For testing purposes dummy data was seeded via the seed.rb file
 
 We initially created an local instance of a PostgreSQL database using Ruby on Rails by calling the flag -d postgresql when creating the Rails app. We then call 'rails db:create' and set up our tables and columns using migrations: eg 'rails g model user' & 'rails g migration AddNameToUser'. This database then becomes our Development and testing database which we seed with fake data using the seeds.rb file.
 
@@ -301,45 +331,45 @@ For Production, the Migrations and Schema of our Development Database are pushed
 
 ![Architecture Diagram ](./docs/architecturediagram.png)
 
-Client - Sends and receives HTTP requests to and from the web server 
+Client - Sends and receives HTTP requests to and from the web server.
 
-Web Server - Processes HTTP requests and directs the request to the requested Route
+Web Server - Processes HTTP requests and directs the request to the requested Route.
 
-Routes - Pathways defined with the application responsible for functions called by the controller in accordance to the request received from the server, common HTTP requests include GET, DELETE, POST, PATCH/update
+Routes - Pathways defined with the application responsible for functions called by the controller in accordance to the request received from the server, common HTTP requests include GET, DELETE, POST, PATCH/update.
 
-Controller - Contains the logic and the functions requested by the server and is responsible for database queries, requesting required files and telling the webpage how to display database information
+Controller - Contains the logic and the functions requested by the server and is responsible for database queries, requesting required files and telling the webpage how to display database information.
 
-Views - Tells the browser what to display rendering the final representation of the users request
+Views - Tells the browser what to display rendering the final representation of the users request.
 
-ORM - translates the code from the controller to native SQL language allowing for data to be received by the app
+ORM - Translates the code from the controller to native SQL language allowing for data to be received by the app.
 
 Database - PostgreSQL relational database
 
 #### 9. Explain the different high-level components (abstractions) in your App.
 
-M (MODEL) - Handles the structure of the data in the database or object relationships / database associations 
+M (MODEL) - Handles the structure of the data in the database or object relationships / database associations.
 
-V (VIEW) - Handles graphical user interface objects and presentation, what is rendered in the browser
+V (VIEW) - Handles graphical user interface objects and presentation, what is rendered in the browser.
 
-C (CONTROLLER) - Handles the user interface and application, provides the logic and contains the functions requested by the web server, receives request from browser, retrieves requested data from model and sends to views   
+C (CONTROLLER) - Handles the user interface and application, provides the logic and contains the functions requested by the web server, receives request from browser, retrieves requested data from model and sends to views.   
 
-ACTIVE RECORD - Handles all the database related tasks and communication, establishes a connection with the database server, retrieves data from tables and stores new data in the database
+ACTIVE RECORD - Handles all the database related tasks and communication, establishes a connection with the database server, retrieves data from tables and stores new data in the database.
 
-ACTIVE STORAGE - Is responsible for image uploads
+ACTIVE STORAGE - Is responsible for image uploads.
 
 #### 10.  Detail any third party services that your App will use.
 
 ##### Key Gems / Modules:
 
-Pundit - User Authorization module used to manage users access to particular routes and sections of application protecting the integrity of the data
+Pundit - User Authorization module used to manage users access to particular routes and sections of application protecting the integrity of the data.
 
-Devise - User Authentication module used to manage user registration, sign-in, passwords, confirmation etc
+Devise - User Authentication module used to manage user registration, sign-in, passwords, confirmation etc.
 
-AWS / Active Storage - hosting service for image uploads via Amazon Web Services
+AWS / Active Storage - hosting service for image uploads via Amazon Web Services.
 
-GeoCoder - Computational process of transforming a physical address description and providing geographical coordinates corresponding to that location
+GeoCoder - Computational process of transforming a physical address description and providing geographical coordinates corresponding to that location.
 
-S3 Module - Image Storage from Amazon Web Services
+S3 Module - Image Storage from Amazon Web Services.
 
 Stripe - Payment processing Software as a Service (SASS) from Stripe allowing users to pay Premium Membership Fees within the app using credit card.
 
@@ -375,38 +405,47 @@ Stripe - Payment processing Software as a Service (SASS) from Stripe allowing us
 
 #### 11.Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 
-Airbnb - Built with Rails Airbnb uses Amazon Web Services for image uploads, users have one login for both host and guest users with information being displayed on separate profile pages. Relevant services are in place to handle the massive amounts of data
+Airbnb - Built with Rails, Airbnb uses Amazon Web Services for image uploads, users have one login for both host and guest users with information being displayed on separate profile pages. Relevant services are in place to handle the massive amounts of data.
 
 #### 12. Discuss the database relations to be implemented.
 
-Role has_many user, users has_one role and has_one profile (profile belongs_to users) 
+Role has_many users, user has_one role and has_one profile (profile belongs_to users). 
 
-Users has_one profile and has_one accommodation (property) has_many stays (guests) and has_one_attached relationship for image upload  
+User has_one profile and has_one accommodation (property) has_many stays (guests) and has_one_attached relationship for image upload.  
 
-Stays belongs_to and has_one accommodation, one stay has_one accommodation review and has_one guest review, one stay has_many messages, messages has_one stay
+Stays belongs_to and has_one accommodation, stay has_one accommodationreview and has_one guestreview, stay has_many messages, message has_one stay.
 
-Accommodation has_one and belongs_to User (Host) has_one accommodation type, has_many stays (guests), and has_one_attached relations for hero and interior images
+Accommodation has_one and belongs_to User ( as Host) has_one accommodation type, has_many stays (guests), and has_one_attached relations for hero and interior images.
 
 #### 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 
 ##### User: 
 
   belongs_to :role 
+
   has_many :stays
+
   has_one :profile
+
   has_one :accommodation
+
+  has_many :stays, :foreign_key => 'guest_id'
+
+  has_one :accommodation, :foreign_key => 'host_id'
 
 ##### Profile:
 
   belongs_to :user   
-  has_one_attached :uploaded_image
 
+  has_one_attached :uploaded_image
+  
 ##### Role:
+
    has_many :users
 
 ##### Accommodation:
 
-  belongs_to :host
+  belongs_to :host, :class_name => 'User'
   belongs_to :accomtype
   has_many :stays
   has_one_attached :hero_image
@@ -419,21 +458,21 @@ Accommodation has_one and belongs_to User (Host) has_one accommodation type, has
 
 ##### Accommodation Review:
 
-has_one :stays
+belongs_to :stay
 
-##### Stays: 
+##### Stay: 
 
   belongs_to :accommodation  
-  belongs_to :guest   
+  belongs_to :guest, :class_name => 'User'
   has_many :messages  
   has_one :accommodationreview  
   has_one :guestreview
 
 ##### Guest Review:
-  has_one :stay
+  belongs_to :stay
 
 ##### Message:
-   has_one :stay
+   belongs_to :stay
 
 #### 14. Provide your database schema design.
  
@@ -502,22 +541,19 @@ has_one :stays
 
 #### 17. Describe the way tasks are allocated and tracked in your project.
 
-Trello was used to allocate and track task, included columns for planning, design, build, stretch goals and rubric and organized tasks accordingly. 
+Trello was used to allocate and track tasks, it included columns for planning, design, build, stretch goals and rubric and organized tasks accordingly. 
 
 The team member completing the task assigns it to them self and moves the trello card to the "Doing" and then "Done" column on completion. 
 
 This system made it easy for everyone to know what the everyone else was working on reducing conflict with pulling and pushing to github.
 
-![Trello screenshot of Team Git Process](./docs/trellloteams1.png)
-
-
 #### 18. Discuss how Agile methodology is being implemented in your project.
 
-Agile methodology has been implemented in our project through close communication, sprint planning and breaking down tasks and assigning to team members thus allowing us to complete the project in the given short amount of time
+Agile methodology has been implemented in our project through close communication, sprint planning and breaking down tasks and assigning to team members thus allowing us to complete the project in the given short amount of time.
 
 Small projects can be implemented very quickly. For large projects, it is difficult to estimate the development time.
 
-We had sprint meetings a the start and end of each week to discuss tasks to be completed and make any planning decisions.
+We had sprint meetings at the start and end of each week to discuss tasks to be completed and make any planning decisions.
 
 The product or task backlog list was then updated on trello so everyone was aware of what was being worked on and the goals to complete for the day. 
 
@@ -528,11 +564,17 @@ User stories include experience as a guest, host and as an admin user to include
 For source control we used:
 
 * Git CLI 
-* GitHub and 
+* GitHub
 * Heroku 
 * CLI (for source control / version control)
 
-We created a new respiratory on GitHub and then created a new branch separate from the master and then pushed the branch to git hub once the work had been completed. Once assigning yourself the task from the trello board the new branch is created protecting the master from screw ups and mishaps. 
+We created a master repository on GitHub and would create a seperate branch based off master for each seperate task. We would complete the work on the branch as assigned to us in Trello and push to Github where we would create a pull request to merge back into master after being reviewed by our peers.
+
+Everyone was then able to pull the master down to their local computer and then continue work or push the updated application to Heroku.  
+
+Our Github Process was written in our trello to be followed by all members as below: 
+
+![Trello screenshot of Team Git Process](./docs/trellloteams1.png)
 
 ##### Heroku
 
@@ -546,6 +588,20 @@ We created a new respiratory on GitHub and then created a new branch separate fr
 ![GitHub Screenshot](./docs/git1.png)
 
 #### 20. Provide an overview and description of your Testing process.
+
+##### Feature Testing
+
+Each feature was tested by each member individually on the local machine before pushing the feature branch to github to identify any bugs and potential hazards in the application and verify the feature is working as intended. 
+
+##### User Testing
+
+At various stages during development the site was shared with third parties (friends and family) to observe their use and interaction and gain their valuable feedback. This feedback was then incorporated into the desing and development as we continued. e.g Users complained of having to delete the "Enter a city here" from the search field in order to search so the data type was changed to a placeholder instead of a value. 
+
+##### Final Stage integration testing
+
+An excel spreadsheet was created of the user stories and all the tests that were needed to be carried out in order to verify that the app was functioning as it should. Different members performed the tests required and either marked it as complete or as incomplete including notes. 
+
+Bugs that were discovered during final testing were added to a "Bugs that need fixing" column in trello and assigned a user to debug and fix. Once fixed, the test case was repeated and the trello card moved to the  "Bugs fixed" column.
 
 ##### Testing record
 
@@ -565,11 +621,11 @@ Availability - Ensures reliability and timely access to data and resources to au
 
 Protecting information and data is achieved through authorization and authentication to protect systems’ and individual files, appropriate virus protection / firewalls in place prevent vulnerability of data, adequate data back up allowing the business to survive a disaster or major data loss. 
 
-Lastly a cyber security policy outlining technology and information assets of the business, the threats to those assets, the rules and controls for protecting them as well as the responsibilities of employees and approved users 
+Lastly a cyber security policy outlining technology and information assets of the business, the threats to those assets, the rules and controls for protecting them as well as the responsibilities of employees and approved users.
 
 #### 23. Research what your legal obligations are in relation to handling user data.
 
-Australian businesses have a legal obligation to adhere to guidelines for the collection, storing, provision of access and the management of personal information on individuals as stated in Australian Privacy Principles (APPs) in the Privacy Act (1988) and other related legislation. It is a legal requirement for businesses to make available a clear and up-tp-date privacy policy setting out how personal information will be handled 
+Australian businesses have a legal obligation to adhere to guidelines for the collection, storing, provision of access and the management of personal information on individuals as stated in Australian Privacy Principles (APPs) in the Privacy Act (1988) and other related legislation. It is a legal requirement for businesses to make available a clear and up-tp-date privacy policy setting out how personal information will be handled. 
 
 In the instance of a data breach business must comply with the Notifiable Data Breaches scheme under the Privacy Act 1988. If a data breach involves personal information and is likely to cause serious harm to an individual, both the individual involved and the Office of Australian Information Commissioner (OAIC) must be notified. 
 
@@ -577,8 +633,3 @@ It is a legal obligations to consider the safety of personal information about u
 
 ![Nah..ImaStay Privacy Policy screenshot](./docs/ppscreenshot.png)
 ![Nah..ImaStay Privacy Policy PDF](./docs/privacypolicy.pdf)
-
-
-
-
-
