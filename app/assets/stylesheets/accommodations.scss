@@ -96,5 +96,17 @@
     .stay-flex {
         margin:40px;
     }
+
+    .top-container {
+        flex-direction: column;
+    }
+
+    .left-container {
+        width: 100%;
+    }
+
+    .right-container {
+        width: 100%;
+    }
 }
 

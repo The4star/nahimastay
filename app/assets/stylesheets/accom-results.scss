@@ -55,3 +55,29 @@
     margin:20px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1000px) {
+    .accommodation-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width:80%;
+        max-height: 800px;
+    }
+
+    .accom-para-flex {
+        width: 90%;
+        text-align: center;
+        align-items: center;
+
+        p {
+            font-size: 15px;
+        }
+    }
+
+    .view-accom-button {
+      font-size: 15px;
+      margin: 5px;
+      width: 170px;
+    }
+    
+}
