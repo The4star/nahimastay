@@ -96,3 +96,25 @@
     justify-content: center;
     z-index: 1;
 }
+
+@media only screen and (max-width: 1000px) {
+    .top-text-devise {
+        text-align: center;
+
+        h1 {
+            font-size: 25px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+    }
+
+    .devise {
+        top:280px;
+    }
+
+    form {
+        text-align: center;
+    }
+}

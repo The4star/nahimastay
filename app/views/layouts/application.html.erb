@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nahimastay</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,7 +23,7 @@
           <li><%= link_to "About", '/pages/about'  %></li>
           <li><%= link_to "Find Accommodation", accommodations_path  %></li>
         </ul>
-        <ul>
+        <ul id="user-menu">
         <% if current_user.profile.uploaded_image.attached? %>
           <%= image_tag current_user.profile.uploaded_image.service_url, class: 'image-thumb' %>
           <li><%= link_to("Profile", profile_path(current_user.profile)) %></li>
@@ -36,7 +38,7 @@
           <li><%= link_to "About", '/pages/about'  %></li>
           <li><%= link_to "Find Accommodation", accommodations_path  %></li>
         </ul>
-        <ul>
+        <ul id="user-menu">
         <li><%= link_to "Log in", new_user_session_path %></li>
         <li>|</li>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
@@ -49,10 +51,9 @@
     </div>
 
     <footer>
-     <ul id="footer-menu">
+     <ul class="footer-menu">
        <li><%= link_to "Home", '/', class: 'footer-menu'  %></li>
        <li><%= link_to "About", '/pages/about', class: 'footer-menu'  %></li>
-       <li><%= link_to "Find Accommodation", accommodations_path, class: 'footer-menu'  %></li>
      </ul>
      <p class="footer-menu">&#169; Copyright Nah..ImaStay 2019</p>
     </footer>
